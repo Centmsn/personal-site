@@ -53,9 +53,9 @@ const NavDot = styled.div`
   margin: 0 15px;
 
   border-radius: 50%;
-  box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.shadow};
+  box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.gray};
   background-color: ${({ theme, active }) =>
-    active ? theme.colors.title : "none"};
+    active ? theme.colors.yellow : "none"};
 
   cursor: pointer;
   transition: 300ms;
@@ -72,7 +72,7 @@ const NavDot = styled.div`
     letter-spacing: 3px;
 
     color: white;
-    background-color: ${({ theme }) => theme.colors.shadow};
+    background-color: ${({ theme }) => theme.colors.gray};
 
     padding: 0 5px;
 
@@ -83,6 +83,11 @@ const NavDot = styled.div`
   &:hover&::before {
     opacity: 1;
     visibility: visible;
+  }
+
+  &:hover {
+    background-color: ${({ theme, active }) =>
+      active ? theme.colors.yellow : theme.colors.gray};
   }
 `;
 

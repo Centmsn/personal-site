@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 
 const theme = {
-  colors: { title: "rgb(255, 219, 74)", shadow: "rgb(60, 60, 60)" },
+  colors: { yellow: "rgb(255, 219, 74)", gray: "rgb(60, 60, 60)" },
   fonts: { title: "'Cairo', sans-serif", text: "'Rajdhani', sans-serif" },
   others: {},
 };

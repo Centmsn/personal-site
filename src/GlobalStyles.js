@@ -22,13 +22,17 @@ const GlobalStyles = createGlobalStyle`
 
     h1, h2, h3, h4, h5, h6 {
         font-family: ${({ theme }) => theme.fonts.title};
-        text-shadow: 10px 10px 0 ${({ theme }) => theme.colors.shadow};
+        text-shadow: 10px 10px 0 ${({ theme }) => theme.colors.gray};
 
-        color: ${({ theme }) => theme.colors.title}
+        color: ${({ theme }) => theme.colors.yellow}
     }
 
     ul, ol {
         list-style: none;
+    }
+
+    img {
+        height: 100%;
     }
 `;
 

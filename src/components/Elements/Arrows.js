@@ -19,7 +19,9 @@ const Arrows = ({ changeSection, sections }) => {
     )
       return;
 
-    changeSection(sections[active + (direction === "prev" ? -1 : 1)].name);
+    const currentSection = sections[active + (direction === "prev" ? -1 : 1)];
+
+    changeSection(currentSection.name);
   };
 
   return (
@@ -53,6 +55,7 @@ Arrows.propTypes = {
 };
 
 const Wrapper = styled.div`
+  z-index: 999;
   position: absolute;
   bottom: 0;
   right: 10px;
@@ -62,7 +65,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   font-size: 6rem;
 
-  color: ${({ theme }) => theme.colors.shadow};
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 const Icon = styled.div`

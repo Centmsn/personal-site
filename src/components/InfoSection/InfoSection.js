@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-const InfoSection = () => {
-  return <Wrapper></Wrapper>;
+import SectionContainer from "../SectionContainer/SectionContainer";
+
+const InfoSection = ({ isVisible }) => {
+  return <SectionContainer isVisible={isVisible}>INFO</SectionContainer>;
 };
 
 const Wrapper = styled.div``;

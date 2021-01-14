@@ -1,9 +1,28 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const HobbiesSection = () => {
-  return <Wrapper></Wrapper>;
+import SectionContainer from "../SectionContainer/SectionContainer";
+
+const HobbiesSection = ({ isVisible }) => {
+  return (
+    <SectionContainer isVisible={isVisible}>
+      <Test />
+    </SectionContainer>
+  );
 };
 
-const Wrapper = styled.div``;
+HobbiesSection.propTypes = {
+  /**
+   * switches component visibility
+   */
+  isVisible: PropTypes.bool.isRequired,
+};
+
+const Test = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  background-color: red;
+`;
 
 export default HobbiesSection;

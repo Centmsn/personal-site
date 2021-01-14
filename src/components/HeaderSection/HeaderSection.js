@@ -1,47 +1,65 @@
+import RightArrow from "../../assets/right-arrow.svg";
+
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
-import Triangle from "../Elements/Triangle";
 
 /**
  * Header component - renders aplication header
  */
-const HeaderSection = () => {
+const HeaderSection = ({ isVisible }) => {
   return (
-    <SectionContainer>
-      <Navigation>
-        <NavList></NavList>
-      </Navigation>
+    <SectionContainer isVisible={isVisible}>
       <Title>Wojciech Rygorowicz</Title>
-      <SubTitle>Prudnicki deweloper</SubTitle>
-      <Triangle color={"rgb(255, 219, 74)"} position="bottom-right" />
+      <SubTitle>deweloper z Prudnika</SubTitle>
+      <Welcome>Cześć! Nazywam się</Welcome>
+      <NavInfo>
+        Użyj strzałek lub kropek do nawigacji po witrynie
+        <img src={RightArrow} alt="" />
+      </NavInfo>
     </SectionContainer>
   );
 };
 
-const Navigation = styled.nav`
-  grid-area: 1/1/3/-1;
-
-  display: flex;
-`;
-
-const NavList = styled.ul``;
-
-const NavListItem = styled.li``;
+HeaderSection.propTypes = {
+  /**
+   * switches component visibility
+   */
+  isVisible: PropTypes.bool.isRequired,
+};
 
 const Title = styled.h1`
-  grid-area: 3/1/6/-1;
+  grid-area: 1/3/3/11;
 
   font-size: 7rem;
   text-align: center;
 `;
 
 const SubTitle = styled.h2`
-  font-size: 5rem;
-  writing-mode: vertical-lr;
+  grid-area: 5/1/13/5;
 
-  color: ${({ theme }) => theme.colors.shadow};
-  text-shadow: 5px -10px 0 ${({ theme }) => theme.colors.title};
+  font-size: 5rem;
+  writing-mode: vertical-rl;
+  text-decoration: underline;
+
+  color: ${({ theme }) => theme.colors.gray};
+  text-shadow: 5px -10px 0 ${({ theme }) => theme.colors.yellow};
+`;
+
+const Welcome = styled(SubTitle)`
+  grid-area: 1/1/3/3;
+
+  font-size: 2rem;
+  writing-mode: horizontal-tb;
+
+  padding: 15px;
+`;
+
+const NavInfo = styled.section`
+  grid-area: 6/6/10/10;
+
+  font-size: 2rem;
 `;
 
 export default HeaderSection;

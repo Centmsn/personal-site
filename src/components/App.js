@@ -27,7 +27,7 @@ const sections = [
   {
     name: "info",
     isVisible: false,
-    desc: "O mnie",
+    desc: "Omnie",
     component: <InfoSection />,
   },
   {
@@ -40,40 +40,44 @@ const sections = [
 
 const App = () => {
   const [sectionVisibility, setSectionVisibility] = useState(sections);
+  const [activeSection, setActiveSection] = useState(sections[0]);
+  const [thorttle, setThrottle] = useState(false);
 
   /**
    * handle section change
    * @param slideName - section name
    */
   const handleSlideChange = (slideName) => {
+    if (thorttle) return;
+
+    setThrottle(true);
     const newState = [...sections];
 
     for (let i = 0; i < sections.length; i++) {
       newState[i].isVisible = false;
     }
-    newState.find((el) => el.name === slideName).isVisible = true;
+    const active = newState.find((el) => el.name === slideName);
+    active.isVisible = true;
 
     setSectionVisibility(newState);
-  };
+    setActiveSection(active);
 
-  const renderContent = () => {
-    let content;
-
-    sectionVisibility.forEach((section) => {
-      if (section.isVisible) {
-        content = section.component;
-      }
-    });
-
-    return content;
+    // throttle timeout
+    setTimeout(() => {
+      setThrottle(false);
+    }, 1000);
   };
 
   return (
     <>
       <ThemeProvider>
         <GlobalStyles />
-        <MainContainer>
-          {renderContent()}
+        <MainContainer pageInfo={activeSection.desc}>
+          <HeaderSection isVisible={sectionVisibility[0].isVisible} />
+          <HobbiesSection isVisible={sectionVisibility[1].isVisible} />
+          <InfoSection isVisible={sectionVisibility[2].isVisible} />
+          <FooterSection isVisible={sectionVisibility[3].isVisible} />
+
           <Navigation
             changeSection={handleSlideChange}
             sections={sectionVisibility}

@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -11,41 +12,40 @@ const positionEnum = {
 /**
  * Component renders triangle shape
  */
-const Triangle = ({ color, position }) => {
+const Triangle = forwardRef((props, ref) => {
   let style;
-
-  if (position === positionEnum[2]) {
+  if (props.position === positionEnum[2]) {
     style = {
       bottom: 0,
       left: 0,
-      borderBottom: `300px solid ${color}`,
-      borderRight: `500px solid transparent`,
+      borderBottom: `18vw solid ${props.color}`,
+      borderRight: `27vw solid transparent`,
     };
-  } else if (position === positionEnum[3]) {
+  } else if (props.position === positionEnum[3]) {
     style = {
       top: 0,
       right: 0,
-      borderTop: `300px solid ${color}`,
-      borderLeft: `500px solid transparent`,
+      borderTop: `18vw solid ${props.color}`,
+      borderLeft: `27vw solid transparent`,
     };
-  } else if (position === positionEnum[4]) {
+  } else if (props.position === positionEnum[4]) {
     style = {
       top: 0,
       left: 0,
-      borderTop: `300px solid ${color}`,
-      borderRight: `500px solid transparent`,
+      borderTop: `18vw solid ${props.color}`,
+      borderRight: `27vw solid transparent`,
     };
   } else {
     style = {
       bottom: 0,
       right: 0,
-      borderBottom: `300px solid ${color}`,
-      borderLeft: `500px solid transparent`,
+      borderBottom: `18vw solid ${props.color}`,
+      borderLeft: `27vw solid transparent`,
     };
   }
 
-  return <Shape style={style} />;
-};
+  return <Shape style={style} ref={ref} />;
+});
 
 Triangle.propTypes = {
   /**
