@@ -1,8 +1,7 @@
-import gsap from "gsap";
 import { useState } from "react";
 
 import Arrows from "./Elements/Arrows";
-import FooterSection from "./FooterSection/FooterSection";
+import ContactSection from "./ContactSection/ContactSection";
 import GlobalStyles from "../GlobalStyles";
 import HeaderSection from "./HeaderSection/HeaderSection";
 import HobbiesSection from "./HobbiesSection/HobbiesSection";
@@ -14,13 +13,13 @@ import ThemeProvider from "../context/ThemeContext";
 const sections = [
   {
     name: "header",
-    isVisible: true,
+    isVisible: false,
     desc: "Home",
     component: <HeaderSection />,
   },
   {
     name: "hobbies",
-    isVisible: false,
+    isVisible: true,
     desc: "Zainteresowania",
     component: <HobbiesSection />,
   },
@@ -31,26 +30,22 @@ const sections = [
     component: <InfoSection />,
   },
   {
-    name: "footer",
+    name: "contact",
     isVisible: false,
-    desc: "Stopka",
-    component: <FooterSection />,
+    desc: "Kontakt",
+    component: <ContactSection />,
   },
 ];
 
 const App = () => {
   const [sectionVisibility, setSectionVisibility] = useState(sections);
   const [activeSection, setActiveSection] = useState(sections[0]);
-  const [thorttle, setThrottle] = useState(false);
 
   /**
    * handle section change
    * @param slideName - section name
    */
   const handleSlideChange = (slideName) => {
-    if (thorttle) return;
-
-    setThrottle(true);
     const newState = [...sections];
 
     for (let i = 0; i < sections.length; i++) {
@@ -61,13 +56,8 @@ const App = () => {
 
     setSectionVisibility(newState);
     setActiveSection(active);
-
-    // throttle timeout
-    setTimeout(() => {
-      setThrottle(false);
-    }, 1000);
   };
-
+  console.log("rerender");
   return (
     <>
       <ThemeProvider>
@@ -76,7 +66,7 @@ const App = () => {
           <HeaderSection isVisible={sectionVisibility[0].isVisible} />
           <HobbiesSection isVisible={sectionVisibility[1].isVisible} />
           <InfoSection isVisible={sectionVisibility[2].isVisible} />
-          <FooterSection isVisible={sectionVisibility[3].isVisible} />
+          <ContactSection isVisible={sectionVisibility[3].isVisible} />
 
           <Navigation
             changeSection={handleSlideChange}

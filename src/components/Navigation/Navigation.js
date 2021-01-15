@@ -53,7 +53,9 @@ const NavDot = styled.div`
   margin: 0 15px;
 
   border-radius: 50%;
-  box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.gray};
+  box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.gray}, 0 0 0 4px white,
+    0 0 0 6px
+      ${({ theme, active }) => (active ? theme.colors.gray : "transparent")};
   background-color: ${({ theme, active }) =>
     active ? theme.colors.yellow : "none"};
 

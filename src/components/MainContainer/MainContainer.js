@@ -18,12 +18,12 @@ const MainContainer = ({ children, pageInfo }) => {
     const triangle = topTriangleRef.current;
     const text = pageInfoRef.current;
 
+    gsap.set(text, { color: "transparent" });
     const tl = gsap.timeline({ defaults: { duration: 0.5 } });
 
     tl.to(triangle, { x: "25vw", y: "-25vh" })
-      .to(text, { autoAlpha: 0, duration: 0.1 }, "-=0.5")
       .to(triangle, { x: 0, y: 0 }, "+=0.3")
-      .to(text, { autoAlpha: 1 });
+      .to(text, { color: "white" });
   }, [pageInfo]);
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const PageInfo = styled.div`
 
   font-size: 2rem;
   writing-mode: vertical-rl;
-  color: white;
+  color: transparent;
 `;
 
 export default MainContainer;
