@@ -39,7 +39,7 @@ const Title = styled.h1`
 const SubTitle = styled.h2`
   grid-area: 5/1/13/5;
 
-  font-size: 5rem;
+  font-size: 6rem;
   writing-mode: vertical-rl;
   text-decoration: underline;
 

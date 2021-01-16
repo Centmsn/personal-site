@@ -14,7 +14,7 @@ const TEMPLATE_ID = "template_oasdgmb";
 const USER_ID = "user_GfqNlxrr83xLpWWIrrG8x";
 
 const ContactSection = ({ isVisible }) => {
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(0);
   const contactFormRef = useRef(null);
 
   const validationSchema = () =>
@@ -63,21 +63,14 @@ const ContactSection = ({ isVisible }) => {
     },
   });
 
-  const nameTooltip = formik.errors.from_name ? (
-    <span>{formik.errors.from_name}</span>
-  ) : null;
-
-  const emailTooltip = formik.errors.reply_to ? (
-    <span>{formik.errors.reply_to}</span>
-  ) : null;
-
-  const messageTooltip = formik.errors.message ? (
-    <span>{formik.errors.message}</span>
-  ) : null;
-
   return (
     <SectionContainer isVisible={isVisible}>
-      <Form id="form" onSubmit={formik.handleSubmit} ref={contactFormRef}>
+      <Form
+        id="form"
+        onSubmit={formik.handleSubmit}
+        ref={contactFormRef}
+        onBlur={formik.handleBlur}
+      >
         <FormSection>
           <FormTitle>Napisz do mnie wiadomość</FormTitle>
         </FormSection>
@@ -91,7 +84,11 @@ const ContactSection = ({ isVisible }) => {
             value={formik.values.from_name}
             placeholder="Jak Cię zwą?"
           />
-          {nameTooltip}
+          <FormTooltip
+            active={!!(formik.errors.from_name && formik.touched.from_name)}
+          >
+            {formik.errors.from_name}
+          </FormTooltip>
         </FormSection>
 
         <FormSection>
@@ -103,7 +100,11 @@ const ContactSection = ({ isVisible }) => {
             value={formik.values.reply_to}
             placeholder="adres@email.com"
           />
-          {emailTooltip}
+          <FormTooltip
+            active={!!(formik.errors.reply_to && formik.touched.reply_to)}
+          >
+            {formik.errors.reply_to}
+          </FormTooltip>
         </FormSection>
 
         <FormSection>
@@ -117,7 +118,11 @@ const ContactSection = ({ isVisible }) => {
             as="textarea"
             style={{ height: "250px" }}
           ></Input>
-          {messageTooltip}
+          <FormTooltip
+            active={!!(formik.errors.message && formik.touched.message)}
+          >
+            {formik.errors.message}
+          </FormTooltip>
         </FormSection>
 
         <FormSection>
@@ -127,8 +132,7 @@ const ContactSection = ({ isVisible }) => {
           </Button>
         </FormSection>
       </Form>
-
-      <Footer />
+      <Footer isVisible={isVisible} />
     </SectionContainer>
   );
 };
@@ -149,16 +153,23 @@ const FormSection = styled.div`
 
   display: flex;
   justify-content: center;
+`;
 
-  span {
-    position: absolute;
-    top: calc(-1.25rem - 10px);
-    left: 0;
-    right: 0;
+const FormTooltip = styled.span`
+  position: absolute;
+  top: calc(-1.25rem - 10px);
+  left: 0;
+  right: 0;
+  transform: translateY(${({ active }) => (active ? 0 : "-10px")});
 
-    font-size: 1.25rem;
-    text-align: center;
-  }
+  font-size: 1.25rem;
+  text-align: center;
+
+  background-color: ${({ theme }) => theme.colors.gray};
+  color: white;
+
+  opacity: ${({ active }) => (active ? 1 : 0)};
+  transition: 300ms;
 `;
 
 const FormTitle = styled.h1`
@@ -206,7 +217,7 @@ const Button = styled.button`
   }
 
   &:hover img {
-    transform: translate(150%);
+    transform: translate(100px);
     opacity: 1;
   }
 

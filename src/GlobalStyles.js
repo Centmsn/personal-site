@@ -1,5 +1,24 @@
 import { createGlobalStyle } from "styled-components";
 
+// size for media queries
+const size = {
+  mobilesS: "320px",
+  mobilesL: "400px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "1600px",
+};
+
+export const device = {
+  mobilesS: `(min-width: ${size.mobilesS})`,
+  mobilesL: `(min-width: ${size.mobilesL})`,
+  tablet: `(min-width: ${size.tablet})`,
+  laptop: `(min-width: ${size.laptop})`,
+  laptopL: `(min-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktop})`,
+};
+
 const GlobalStyles = createGlobalStyle`
     * {
         margin: 0;
@@ -7,6 +26,30 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
 
         font-family: ${({ theme }) => theme.fonts.text};
+    }
+
+    html {
+        font-size: 8px;
+
+        @media ${device.mobilesL} {
+            font-size: 9px;
+        }
+
+        @media ${device.tablet} {
+            font-size: 11px;
+        }
+
+        @media ${device.laptop} {
+            font-size: 12px;
+        }
+
+        @media ${device.laptopL} {
+            font-size: 13px;
+        }
+
+        @media ${device.desktop} {
+            font-size: 16px;
+        }
     }
 
     body {
@@ -17,7 +60,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        text-decoration: none;
+        text-decoration-color: ${({ theme }) => theme.colors.yellow};
+        color: black;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -38,6 +82,22 @@ const GlobalStyles = createGlobalStyle`
     button {
         border: none;
         cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    small {
+        display: block;
+
+        font-size: 0.75rem;
+        color: ${({ theme }) => theme.colors.gray};
+
+    }
+
+    input {
+        background: none;
 
         &:focus {
             outline: none;

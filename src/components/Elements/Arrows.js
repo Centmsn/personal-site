@@ -75,7 +75,7 @@ const Icon = styled.div`
   &:hover {
     color: white;
 
-    transform: ${({ move }) => `translateY(${move}px)`};
+    transform: scale(1.2);
   }
 `;
 
