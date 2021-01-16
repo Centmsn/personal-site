@@ -5,7 +5,6 @@ import ContactSection from "./ContactSection/ContactSection";
 import GlobalStyles from "../GlobalStyles";
 import HeaderSection from "./HeaderSection/HeaderSection";
 import HobbiesSection from "./HobbiesSection/HobbiesSection";
-import InfoSection from "./InfoSection/InfoSection";
 import MainContainer from "./MainContainer/MainContainer";
 import Navigation from "./Navigation/Navigation";
 import ThemeProvider from "../context/ThemeContext";
@@ -22,12 +21,6 @@ const sections = [
     isVisible: true,
     desc: "Zainteresowania",
     component: <HobbiesSection />,
-  },
-  {
-    name: "info",
-    isVisible: false,
-    desc: "Omnie",
-    component: <InfoSection />,
   },
   {
     name: "contact",
@@ -65,8 +58,7 @@ const App = () => {
         <MainContainer pageInfo={activeSection.desc}>
           <HeaderSection isVisible={sectionVisibility[0].isVisible} />
           <HobbiesSection isVisible={sectionVisibility[1].isVisible} />
-          <InfoSection isVisible={sectionVisibility[2].isVisible} />
-          <ContactSection isVisible={sectionVisibility[3].isVisible} />
+          <ContactSection isVisible={sectionVisibility[2].isVisible} />
 
           <Navigation
             changeSection={handleSlideChange}

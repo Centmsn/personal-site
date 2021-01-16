@@ -1,3 +1,5 @@
+import email_svg from "../../assets/email.svg";
+
 import emailjs from "emailjs-com";
 import styled from "styled-components";
 import { useFormik } from "formik";
@@ -5,6 +7,7 @@ import * as Yup from "yup";
 import { useState, useRef } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
+import Footer from "../Footer/Footer";
 
 const SERVICE_ID = "service_r7i52mu";
 const TEMPLATE_ID = "template_oasdgmb";
@@ -23,7 +26,7 @@ const ContactSection = ({ isVisible }) => {
         .required("Muszę wiedzieć komu mam odpisać")
         .email("Niepoprawny adres email"),
       message: Yup.string()
-        .required("Zapomniałeś o najważniejszym! O czym chciałeś napisać?")
+        .required("Wiadomość jest trochę za krótka...")
         .min(10, "Wiadomość musi zawierać co najmniej 10 znaków"),
     });
 
@@ -60,21 +63,27 @@ const ContactSection = ({ isVisible }) => {
     },
   });
 
+  const nameTooltip = formik.errors.from_name ? (
+    <span>{formik.errors.from_name}</span>
+  ) : null;
+
+  const emailTooltip = formik.errors.reply_to ? (
+    <span>{formik.errors.reply_to}</span>
+  ) : null;
+
+  const messageTooltip = formik.errors.message ? (
+    <span>{formik.errors.message}</span>
+  ) : null;
+
   return (
     <SectionContainer isVisible={isVisible}>
-      <form
-        id="form"
-        onSubmit={formik.handleSubmit}
-        ref={contactFormRef}
-        className="form"
-      >
-        <div className="form__section">
-          <h4>Napisz do mnie wiadomość</h4>
-          <div className="form__status">{status}</div>
-        </div>
+      <Form id="form" onSubmit={formik.handleSubmit} ref={contactFormRef}>
+        <FormSection>
+          <FormTitle>Napisz do mnie wiadomość</FormTitle>
+        </FormSection>
 
-        <div className="form__section">
-          <input
+        <FormSection>
+          <Input
             type="text"
             name="from_name"
             id="from_name"
@@ -82,11 +91,11 @@ const ContactSection = ({ isVisible }) => {
             value={formik.values.from_name}
             placeholder="Jak Cię zwą?"
           />
-          {/* {nameTooltip} */}
-        </div>
+          {nameTooltip}
+        </FormSection>
 
-        <div className="form__section">
-          <input
+        <FormSection>
+          <Input
             type="email"
             name="reply_to"
             id="reply_to"
@@ -94,47 +103,120 @@ const ContactSection = ({ isVisible }) => {
             value={formik.values.reply_to}
             placeholder="adres@email.com"
           />
-          {/* {emailTooltip} */}
-        </div>
+          {emailTooltip}
+        </FormSection>
 
-        <div className="form__section form__section--large">
-          <textarea
+        <FormSection>
+          <Input
             type="text"
             name="message"
             id="message"
             onChange={formik.handleChange}
             value={formik.values.message}
             placeholder="wiadomość..."
-            re
-          ></textarea>
-          {/* {messageTooltip} */}
-        </div>
+            as="textarea"
+            style={{ height: "250px" }}
+          ></Input>
+          {messageTooltip}
+        </FormSection>
 
-        <div className="form__section">
-          <button
-            type="submit"
-            id="button"
-            value="Send Email"
-            className="button form__btn"
-          >
+        <FormSection>
+          <Button type="submit" id="button">
             Wyślij
-          </button>
-        </div>
-      </form>
+            <img src={email_svg} alt="" />
+          </Button>
+        </FormSection>
+      </Form>
 
-      {/* attribution */}
-      <div>
-        Icons made by{" "}
-        <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-          Freepik
-        </a>{" "}
-        from{" "}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
-      </div>
+      <Footer />
     </SectionContainer>
   );
 };
+
+const Form = styled.form`
+  grid-area: 2/3/11/6;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormSection = styled.div`
+  position: relative;
+  flex-basis: 100%;
+  margin-bottom: 25px;
+
+  display: flex;
+  justify-content: center;
+
+  span {
+    position: absolute;
+    top: calc(-1.25rem - 10px);
+    left: 0;
+    right: 0;
+
+    font-size: 1.25rem;
+    text-align: center;
+  }
+`;
+
+const FormTitle = styled.h1`
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 4px 4px 0 ${({ theme }) => theme.colors.yellow};
+
+  color: ${({ theme }) => theme.colors.gray};
+`;
+
+const Input = styled.input`
+  width: 100%;
+  margin-bottom: 25px;
+
+  border: 4px solid ${({ theme }) => theme.colors.gray};
+
+  font-size: 1.5rem;
+
+  resize: none;
+  padding: 5px;
+
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.yellow};
+  }
+`;
+
+const Button = styled.button`
+  position: relative;
+  width: 200px;
+
+  box-shadow: 0 0 0 5px ${({ theme }) => theme.colors.yellow};
+
+  font-size: 1.75rem;
+  font-family: ${({ theme }) => theme.fonts.title};
+  letter-spacing: 2px;
+
+  color: white;
+  background-color: ${({ theme }) => theme.colors.gray};
+
+  transition: 300ms;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 4px white, 0 0 0 9px ${({ theme }) => theme.colors.yellow};
+  }
+
+  &:hover img {
+    transform: translate(150%);
+    opacity: 1;
+  }
+
+  img {
+    z-index: -1;
+    position: absolute;
+
+    opacity: 0;
+    transition: 300ms;
+  }
+`;
 
 export default ContactSection;

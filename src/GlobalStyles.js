@@ -34,6 +34,15 @@ const GlobalStyles = createGlobalStyle`
     img {
         height: 100%;
     }
+
+    button {
+        border: none;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
 `;
 
 export default GlobalStyles;

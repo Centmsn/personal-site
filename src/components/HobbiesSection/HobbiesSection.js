@@ -197,17 +197,21 @@ const Card = styled.section`
     bottom: calc(-2rem - 25px);
     left: 0;
 
+    transform: translateX(50px);
+
     font-size: 1.75rem;
     font-family: ${({ theme }) => theme.fonts.title};
 
     background-color: ${({ theme }) => theme.colors.gray};
     padding: 0 10px;
 
-    visibility: hidden;
+    opacity: 0;
+    transition: 300ms;
   }
 
   &:hover&::after {
-    visibility: visible;
+    transform: translateX(0);
+    opacity: 1;
   }
 `;
 
@@ -240,6 +244,7 @@ const SectionInfo = styled.aside`
 
   font-size: 1.75rem;
   font-family: ${({ theme }) => theme.fonts.title};
+  line-height: 1.6rem;
   text-align: center;
 
   background-color: ${({ theme }) => theme.colors.yellow};
