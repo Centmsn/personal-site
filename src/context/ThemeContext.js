@@ -5,6 +5,7 @@ const theme = {
     yellow: "rgb(255, 219, 74)",
     gray: "rgb(60, 60, 60)",
     lightGray: "rgb(100, 100, 100)",
+    smokedWhite: "rgb(200,200,200)",
   },
   fonts: { title: "'Cairo', sans-serif", text: "'Rajdhani', sans-serif" },
   others: {},

@@ -3,7 +3,7 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 import styled from "styled-components";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import SubSectionContainer from "../SubSectionContainer";
 
@@ -110,32 +110,113 @@ const learning = [
 ];
 
 const HobbiesWebDev = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const renderSlides = () => {};
 
-  const renderList = () => {};
+  /**
+   * Renders list elements on the screen
+   *
+   * @param { Object[] } listElement
+   * @param {string} listElement[].title - element title
+   * @param {number} listElement[].percent - progress bar width
+   */
+  const renderList = (arr) => {
+    return arr.map((el, i) => (
+      <li key={i}>
+        {el.title}
+        <ProgressBar>
+          <InnerBar width={el.percent / 100} />
+        </ProgressBar>
+      </li>
+    ));
+  };
   return (
     <SubSectionContainer>
       <StartSection>
         <ListSection>
           <ListTitle>Co umiem?</ListTitle>
-          <ul>
-            <li>a</li>
-            <li>b</li>
-            <li>c</li>
-          </ul>
+          <ul>{renderList(learned)}</ul>
+          <small>
+            Do powyższej listy dopisać można jeszcze kilka mniejszych bibliotek:{" "}
+            React-router, Lodash - podstawy.
+          </small>
         </ListSection>
 
         <ListSection>
           <ListTitle>Czego się uczę?</ListTitle>
-          <ul>
-            <li>a</li>
-            <li>b</li>
-            <li>c</li>
-          </ul>
+          <ul>{renderList(learning)}</ul>
+          <small>
+            Aktualnie uczę się także Web components - choć nie jest to mój
+            priorytet, interesuję się także Node.js (zupełne podstawy).
+          </small>
         </ListSection>
 
         <Summary>
           <h1>Szybkie podsumowanie</h1>
+          <p>
+            Jestem samoukiem z wielkim zapałem do ciągłego rozwoju, tworzenie
+            aplikacji i stron internetowych to moja pasja, na którą każdego dnia
+            poświęcam długie godziny.
+          </p>
+
+          <p>
+            Szczególnie interesują mnie technologie front-endowe, uwielbiam
+            testować nowe rozwiązania, biblioteki i frameworki. Jestem wielkim
+            fanem Reacta, w związku z tym umiejętność na której doskonalenie
+            poświęcam najwięcej czasu to Javascript oraz jego "otoczka".
+          </p>
+
+          <p>
+            Jeżeli chodzi o komercyjne doświadczenie - do tej pory wykonywałem
+            strony internetowe na zamówienie dla małych firm lub osób
+            prywatnych. W tym momencie jestem pewny, że moje umiejętności, oraz
+            zapał do dalszego rozwoju wystarczają by rozpocząc szukanie
+            pierwszej pracy "na pełen etat" w tej branży. Lokalizacje którymi
+            jestem zainteresowany to Łódź / Warszawa, pod uwagę biorę również
+            pracę zdalną.
+          </p>
+
+          <p>
+            Na kolejnych slajdach znajdziesz projekty które do tej pory
+            tworzyłem, na różnych etapach mojej nauki.
+          </p>
+
+          <p>
+            Udzielam się także na CodeWars oraz na Githubie, i tam również Cię
+            zapraszam.
+          </p>
+
+          <section>
+            <a
+              href="https://github.com/Centmsn"
+              target="_blank"
+              rel="noreferrer"
+              title="Github"
+            >
+              Github
+            </a>
+
+            <a
+              href="https://www.codewars.com/users/Centmsn"
+              target="_blank"
+              rel="noreferrer"
+              title="CodeWars"
+            >
+              CodeWars
+            </a>
+          </section>
+
+          <a
+            href="https://www.codewars.com/users/Centmsn"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="https://www.codewars.com/users/Centmsn/badges/large"
+              alt="CodeWars"
+              title="CodeWars - poziom"
+            />
+          </a>
         </Summary>
       </StartSection>
 
@@ -156,6 +237,12 @@ const StartSection = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
+
+  color: white;
+
+  small {
+    color: ${({ theme }) => theme.colors.smokedWhite};
+  }
 `;
 
 const ListSection = styled.section`
@@ -167,7 +254,51 @@ const ListTitle = styled.h2``;
 const Summary = styled.section`
   flex-basis: 47%;
 
-  background-color: red;
+  section {
+    margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: space-around;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+
+    text-align: justify;
+    font-size: 1.25rem;
+  }
+
+  a {
+    display: block;
+
+    font-size: 1.75rem;
+    text-align: center;
+
+    color: white;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.yellow};
+    }
+  }
+`;
+
+const ProgressBar = styled.div`
+  width: 100%;
+  height: 10px;
+  background-color: ${({ theme }) => theme.colors.lightGray};
+`;
+
+const InnerBar = styled.div`
+  width: 100%;
+  height: 100%;
+  transform: scaleX(${({ width }) => width});
+  transform-origin: left;
+
+  background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
 const Arrow = styled.button`

@@ -18,7 +18,10 @@ const HobbiesWebDev = ({ children }) => {
     <Wrapper ref={wrapperRef}>
       {children}
       <StyledLink to="/">
-        <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+        <FontAwesomeIcon
+          icon={faArrowAltCircleLeft}
+          style={{ marginRight: "10px" }}
+        />
         Wróć
       </StyledLink>
     </Wrapper>
@@ -46,8 +49,14 @@ const StyledLink = styled(Link)`
   grid-area: 12/1/13/2;
 
   text-align: center;
+  text-decoration: none;
   font-size: 2.25rem;
+
   color: white;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.yellow};
+  }
 `;
 
 export default HobbiesWebDev;
