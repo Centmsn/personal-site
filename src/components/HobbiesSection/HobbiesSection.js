@@ -3,6 +3,7 @@ import sport_photo from "../../assets/hobbies_sport.jpg";
 import webdev_photo from "../../assets/hobbies_webdev.jpg";
 
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useRef, useEffect, useState } from "react";
@@ -38,6 +39,7 @@ const HobbiesSection = ({ isVisible = false }) => {
     źródeł, od książek po dokumentację poszczególnych technologii.`,
       ref: webDevRef,
       borderRef: webDevBorderRef,
+      link: "webDev",
       img: webdev_photo,
       area: "2/2/4/10",
     },
@@ -49,6 +51,7 @@ const HobbiesSection = ({ isVisible = false }) => {
       na nartach, a także na rowerze (w każdych warunkach).`,
       ref: sportRef,
       borderRef: sportBorderRef,
+      link: "sport",
       img: sport_photo,
       area: "5/4/7/12",
     },
@@ -61,6 +64,7 @@ const HobbiesSection = ({ isVisible = false }) => {
       - cenię naturalny efekt.`,
       ref: photographyRef,
       borderRef: photographyBorderRef,
+      link: "photography",
       img: photography_photo,
       area: "8/2/10/10",
     },
@@ -85,7 +89,7 @@ const HobbiesSection = ({ isVisible = false }) => {
         .add("split")
         .to(middleHolderRef.current, { scaleX: 1 }, "-=0.3")
         .to(borderSport[0], { scaleY: 1, transformOrigin: "center" }, "split")
-        .to(borderSport[1], { scaleX: 1 }, "-=0.2")
+        .to(borderSport[1], { scaleX: 1 })
         .to(borderSport[2], { scaleX: 1 }, "-=0.2")
         .to(borderSport[3], { scaleY: 1 }, "-=0.3")
         .to(webDevBorder[0], { scaleY: 1 }, "split")
@@ -139,11 +143,12 @@ const HobbiesSection = ({ isVisible = false }) => {
 
   const renderCards = () => {
     return cards.map((card) => (
-      <Card
+      <StyledLink
         ref={card.ref}
-        style={{ gridArea: card.area }}
         tabIndex="0"
         key={card.title}
+        area={card.area}
+        to={card.link}
       >
         <p>{card.desc}</p>
         <img src={card.img} alt={card.title} />
@@ -154,7 +159,7 @@ const HobbiesSection = ({ isVisible = false }) => {
           <BorderRight />
         </BorderContainer>
         <CardTitle>{card.title}</CardTitle>
-      </Card>
+      </StyledLink>
     ));
   };
 
@@ -179,8 +184,9 @@ HobbiesSection.propTypes = {
   isVisible: PropTypes.bool.isRequired,
 };
 
-const Card = styled.section`
+const StyledLink = styled(Link)`
   position: relative;
+  grid-area: ${({ area }) => area};
 
   display: flex;
   align-items: center;
@@ -189,6 +195,7 @@ const Card = styled.section`
 
   font-size: 1.25rem;
   text-align: justify;
+  text-decoration: none;
 
   background-color: ${({ theme }) => theme.colors.gray};
   color: white;

@@ -71,7 +71,7 @@ const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.colors.yellow}
     }
 
-    ul, ol {
+    ul {
         list-style: none;
     }
 

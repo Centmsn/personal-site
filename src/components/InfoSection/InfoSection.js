@@ -2,11 +2,13 @@ import round_self2 from "../../assets/round_self2.jpg";
 
 import gsap from "gsap";
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
 
 const InfoSection = ({ isVisible }) => {
+  const [firstRender, setFirstRender] = useState(true);
+  const skillListRef = useRef(null);
   const bars = [
     { title: "Angielski", percent: 75, desc: "Poziom B2/C1" },
     { title: "Javascript", percent: 70, desc: "70%" },
@@ -15,6 +17,40 @@ const InfoSection = ({ isVisible }) => {
     { title: "HTML", percent: 65, desc: "65%" },
   ];
 
+  useEffect(() => {
+    if (isVisible && firstRender) {
+      setFirstRender(false);
+
+      const listElement = skillListRef.current.children;
+      const tl = gsap.timeline({ defaults: { duration: 0.2 } });
+
+      tl.to(listElement[0].lastChild.children, {
+        stagger: 0.2,
+        autoAlpha: 1,
+      })
+        .to(
+          listElement[1].lastChild.children,
+          { stagger: 0.1, autoAlpha: 1 },
+          "-=0.5"
+        )
+        .to(
+          listElement[2].lastChild.children,
+          { stagger: 0.2, autoAlpha: 1 },
+          "-=2"
+        )
+        .to(
+          listElement[3].lastChild.children,
+          { stagger: 0.2, autoAlpha: 1 },
+          "-=3"
+        )
+        .to(
+          listElement[4].lastChild.children,
+          { stagger: 0.1, autoAlpha: 1 },
+          "-=2.5"
+        );
+    }
+  }, [isVisible, firstRender]);
+
   /**
    * Renders skills bars on the screen
    */
@@ -22,7 +58,7 @@ const InfoSection = ({ isVisible }) => {
     return bars.map((bar) => {
       const skillBarElements = [];
 
-      for (let i = 0; i < bar.percent / 5; i++) {
+      for (let i = 0; i < Math.floor(bar.percent / 5); i++) {
         skillBarElements.push(<InnerBar key={i} />);
       }
 
@@ -40,12 +76,71 @@ const InfoSection = ({ isVisible }) => {
       <Summary>
         <img src={round_self2} alt="Autor" />
         <h4>Co umiem?</h4>
-        <ul>{renderBars()}</ul>
+        <ul ref={skillListRef}>{renderBars()}</ul>
+
+        <small>Subiektywna ocena umiejętności</small>
       </Summary>
 
       <Description>
-        <Title>Krótko o mnie</Title>
-        <p></p>
+        <article>
+          <Title>Krótko o mnie</Title>
+
+          <p>
+            Informacje które znajdziesz poniżej dotyczą w większej części mojego
+            życia prywatnego niż zawodowego - jeżeli interesuje Cię tylko aspekt
+            zawodowy to odsyłam tutaj
+          </p>
+
+          <p>
+            Jak już zapewne wiesz jestem Wojtek i pochodzę z Prudnika, choć
+            aktualnie mieszkam w Łodzi. W życiu kieruję się zasadą by robić to,
+            co daje przyjemność - w moim przypadku jest to ścieżka front-end
+            developera, jeżeli mowa o pracy, oraz taternika / alpinisty jeśli
+            chodzi o czas wolny. Wiąże się to z tym, że często bywam w górach, a
+            co za tym idzie, równie często trafiam, na jakiś ładny widok, coś co
+            jest ciekawe i staram się to uwiecznić - tak doszło w moim życiu do
+            narodzenia kolejnego hobby czyli fotografii. Co prawda w tej
+            dziedzinie jestem totalnym amatorem, nie posiadam nawet
+            profesjonalnego aparatu, więc nie spodziewaj się, że moje zdjęcią są
+            jakości tych z National Geographic &#9786;. Prawdę mówiąc nie znam
+            się nawet na ich obróbce, a na zgłębianie tajników tej sztukii po
+            prostu brakuje mi czasu.
+          </p>
+
+          <p>
+            Uważam się za lokalnego patriotę. Tak, tak, wiem - nie mieszkam w
+            Prudniku, a się wymądrzam. Jednak ta decyzja jest podyktowana
+            wieloma czynnikami:
+          </p>
+
+          <ol>
+            <li>
+              Chęć rozwoju osobistego i zawodowego co znacznie łatwiejsze jest w
+              dużym mieście.
+            </li>
+
+            <li>
+              Bardzo trudno znaleźć w okolicy zatrudnienie które odpowiada mojej
+              pasji.
+            </li>
+
+            <li>
+              I na koniec - moja druga połówka jest z Łodzi... wiem, mało
+              obiektywny argument
+            </li>
+          </ol>
+
+          <p>
+            Wracając do mojego poczucia lokalnego patriotyzmu - dosyć często w
+            Prudniku bywam, uwielbiam jeździć na rowerze po okolicznych lasach i
+            górach, o każdej porze roku i w każdych warunkach. Zdjęcia z
+            niektórych przejażdżek znajdziesz <a>TUTAJ</a>. Będzie mi bardzo
+            miło jeśli rzucisz okiem, być może spodoba Ci się na tyle, że
+            zechesz Prudnik odwiedzić. Jeśli tak to koniecznie zajrzyj do sklepy
+            Google Play (Android) i pobierz aplikację Prudnik. Możesz także
+            napisać do mnie - chętnie odpowiem na Twoje pytania.
+          </p>
+        </article>
       </Description>
     </SectionContainer>
   );
@@ -126,6 +221,8 @@ const InnerBar = styled.div`
   transform-origin: left;
 
   background-color: ${({ theme }) => theme.colors.yellow};
+
+  opacity: 0;
 `;
 
 const Title = styled.h1`
@@ -135,6 +232,10 @@ const Title = styled.h1`
 
 const Description = styled.section`
   grid-area: 2/4/12/10;
+
+  text-align: justify;
+  font-size: 1.25rem;
+  padding: 1rem;
 `;
 
 export default InfoSection;

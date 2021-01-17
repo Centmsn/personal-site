@@ -1,3 +1,4 @@
+import { HashRouter as Router, Route } from "react-router-dom";
 import { useState } from "react";
 
 import Arrows from "./Elements/Arrows";
@@ -5,11 +6,13 @@ import ContactSection from "./ContactSection/ContactSection";
 import GlobalStyles from "../GlobalStyles";
 import HeaderSection from "./HeaderSection/HeaderSection";
 import HobbiesSection from "./HobbiesSection/HobbiesSection";
+import HobbiesPhotography from "./HobbiesSection/Photography/Photography";
+import HobbiesSport from "./HobbiesSection/Sport/Sport";
+import HobbiesWebDev from "./HobbiesSection/Webdev/WebDev";
 import InfoSection from "./InfoSection/InfoSection";
 import MainContainer from "./MainContainer/MainContainer";
 import Navigation from "./Navigation/Navigation";
 import ThemeProvider from "../context/ThemeContext";
-
 const sections = [
   {
     name: "header",
@@ -19,13 +22,13 @@ const sections = [
   },
   {
     name: "hobbies",
-    isVisible: true,
+    isVisible: false,
     desc: "Zainteresowania",
     component: <HobbiesSection />,
   },
   {
     name: "info",
-    isVisible: false,
+    isVisible: true,
     desc: "Omnie",
     component: <InfoSection />,
   },
@@ -62,21 +65,27 @@ const App = () => {
     <>
       <ThemeProvider>
         <GlobalStyles />
-        <MainContainer pageInfo={activeSection.desc}>
-          <HeaderSection isVisible={sectionVisibility[0].isVisible} />
-          <HobbiesSection isVisible={sectionVisibility[1].isVisible} />
-          <InfoSection isVisible={sectionVisibility[2].isVisible} />
-          <ContactSection isVisible={sectionVisibility[3].isVisible} />
+        <Router>
+          <MainContainer pageInfo={activeSection.desc}>
+            <HeaderSection isVisible={sectionVisibility[0].isVisible} />
+            <HobbiesSection isVisible={sectionVisibility[1].isVisible} />
+            <InfoSection isVisible={sectionVisibility[2].isVisible} />
+            <ContactSection isVisible={sectionVisibility[3].isVisible} />
 
-          <Navigation
-            changeSection={handleSlideChange}
-            sections={sectionVisibility}
-          />
-          <Arrows
-            changeSection={handleSlideChange}
-            sections={sectionVisibility}
-          />
-        </MainContainer>
+            <Route path="/webDev" component={HobbiesWebDev} />
+            <Route path="/sport" component={HobbiesSport} />
+            <Route path="/photography" component={HobbiesPhotography} />
+
+            <Navigation
+              changeSection={handleSlideChange}
+              sections={sectionVisibility}
+            />
+            <Arrows
+              changeSection={handleSlideChange}
+              sections={sectionVisibility}
+            />
+          </MainContainer>
+        </Router>
       </ThemeProvider>
     </>
   );
