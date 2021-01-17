@@ -5,7 +5,10 @@ import { useEffect, useRef } from "react";
 
 import { getRandomElement } from "../../utils";
 
-const SectionContainer = ({ children, isVisible = false, color = null }) => {
+/**
+ * Container for page sections
+ */
+const SectionContainer = ({ children, isVisible = false }) => {
   const wrapperRef = useRef(null);
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { duration: 0.5 } });

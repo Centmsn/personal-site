@@ -75,6 +75,10 @@ const GlobalStyles = createGlobalStyle`
         list-style: none;
     }
 
+    li {
+        margin-bottom: 1rem;
+    }
+
     img {
         height: 100%;
     }

@@ -9,6 +9,9 @@ import { useRef, useEffect, useState } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
 
+/**
+ * Renders HobbiesSection on screen
+ */
 const HobbiesSection = ({ isVisible = false }) => {
   const [firstRender, setFirstRender] = useState(true);
 
@@ -54,7 +57,7 @@ const HobbiesSection = ({ isVisible = false }) => {
       desc: `Stwierdzenie, że jestem pasjonatem fotografii to z pewnością duża
       przesada. Bardzo lubię fotografować, jednak nie mam w tym kierunku
       żadnych kwalifikacji, a większość zdjęc wykonuję tym co mam pod ręką -
-      zazwyczaj jest to po prostu telefon. Swoich zdjęc nie poddaję obróbce
+      zazwyczaj jest to po prostu telefon. Wykonane zdjęcia rzadko poddaję obróbce
       - cenię naturalny efekt.`,
       ref: photographyRef,
       borderRef: photographyBorderRef,
@@ -136,7 +139,12 @@ const HobbiesSection = ({ isVisible = false }) => {
 
   const renderCards = () => {
     return cards.map((card) => (
-      <Card ref={card.ref} style={{ gridArea: card.area }} tabIndex="0">
+      <Card
+        ref={card.ref}
+        style={{ gridArea: card.area }}
+        tabIndex="0"
+        key={card.title}
+      >
         <p>{card.desc}</p>
         <img src={card.img} alt={card.title} />
         <BorderContainer ref={card.borderRef}>

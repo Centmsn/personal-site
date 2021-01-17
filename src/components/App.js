@@ -19,7 +19,7 @@ const sections = [
   },
   {
     name: "hobbies",
-    isVisible: false,
+    isVisible: true,
     desc: "Zainteresowania",
     component: <HobbiesSection />,
   },
@@ -31,7 +31,7 @@ const sections = [
   },
   {
     name: "contact",
-    isVisible: true,
+    isVisible: false,
     desc: "Kontakt",
     component: <ContactSection />,
   },
@@ -42,8 +42,8 @@ const App = () => {
   const [activeSection, setActiveSection] = useState(sections[0]);
 
   /**
-   * handle section change
-   * @param slideName - section name
+   * handles section change
+   * @param {string} slideName - section name
    */
   const handleSlideChange = (slideName) => {
     const newState = [...sections];

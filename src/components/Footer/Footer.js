@@ -31,13 +31,16 @@ const contactList = [
   },
 ];
 
+/**
+ * Renders Footer component on screen
+ */
 const Footer = ({ isVisible }) => {
   const ulRef = useRef(null);
   const footerWrapperRef = useRef(null);
 
   useEffect(() => {
     if (isVisible) {
-      const listElements = ulRef.current.children;
+      //   const listElements = ulRef.current.children;
       const wrapper = footerWrapperRef.current;
 
       gsap.to(wrapper.children, {
@@ -50,8 +53,8 @@ const Footer = ({ isVisible }) => {
   }, [isVisible]);
 
   const renderList = () => {
-    return contactList.map((element) => (
-      <li>
+    return contactList.map((element, i) => (
+      <li key={i}>
         <span>{element.icon && <FontAwesomeIcon icon={element.icon} />}</span>
         {element.desc}{" "}
         {element.link && (
@@ -129,10 +132,6 @@ const FooterSection = styled.footer`
 
   p {
     text-align: justify;
-  }
-
-  li {
-    margin-bottom: 10px;
   }
 
   span {

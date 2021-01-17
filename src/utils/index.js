@@ -1,5 +1,6 @@
 /**
- * @param {*} arr - length must be > 1
+ * Function takes array and return random element from the given array
+ * @param {*} arr - length must be >1
  * @return - random element from array
  */
 export const getRandomElement = (arr) => {

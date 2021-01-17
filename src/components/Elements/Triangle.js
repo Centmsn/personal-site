@@ -10,7 +10,7 @@ const positionEnum = {
 };
 
 /**
- * Component renders triangle shape
+ * Renders triangle shape
  */
 const Triangle = forwardRef((props, ref) => {
   let style;
