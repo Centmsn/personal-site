@@ -10,8 +10,19 @@ import styled from "styled-components";
 const Arrows = ({ changeSection, sections }) => {
   const range = 15;
 
-  const handleSectionChange = (direction) => {
+  /**
+   * Calls changeSection callback
+   * @param {string} direction - "prev" or "next"
+   * @param {object} e - "Event object is required for keyEvents"
+   */
+  const handleSectionChange = (direction, e) => {
     const active = sections.findIndex((el) => el.isVisible);
+
+    if (e && typeof e.hasOwnProperty("keyCode")) {
+      if (e.keyCode !== 32 && e.keyCode !== 13) {
+        return;
+      }
+    }
 
     if (
       (active === 0 && direction === "prev") ||
@@ -26,15 +37,22 @@ const Arrows = ({ changeSection, sections }) => {
 
   return (
     <Wrapper>
-      <Icon move={-range} onClick={() => handleSectionChange("prev")}>
+      <Icon
+        move={-range}
+        onClick={() => handleSectionChange("prev")}
+        onKeyDown={(e) => handleSectionChange("prev", e)}
+        tabIndex="0"
+      >
         <FontAwesomeIcon icon={faCaretUp} />
       </Icon>
 
-      <Icon move={range}>
-        <FontAwesomeIcon
-          icon={faCaretDown}
-          onClick={() => handleSectionChange("next")}
-        />
+      <Icon
+        move={range}
+        onClick={() => handleSectionChange("next")}
+        onKeyDown={(e) => handleSectionChange("next", e)}
+        tabIndex="0"
+      >
+        <FontAwesomeIcon icon={faCaretDown} />
       </Icon>
     </Wrapper>
   );
@@ -76,6 +94,11 @@ const Icon = styled.div`
     color: white;
 
     transform: scale(1.2);
+  }
+
+  &:focus {
+    outline: none;
+    color: ${({ theme }) => theme.colors.lightGray};
   }
 `;
 

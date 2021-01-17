@@ -57,7 +57,7 @@ const App = () => {
     setSectionVisibility(newState);
     setActiveSection(active);
   };
-  console.log("rerender");
+
   return (
     <>
       <ThemeProvider>

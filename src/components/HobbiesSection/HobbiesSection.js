@@ -26,6 +26,43 @@ const HobbiesSection = ({ isVisible = false }) => {
   const middleHolderRef = useRef(null);
   const sectionInfoRef = useRef(null);
 
+  const cards = [
+    {
+      title: "Web development",
+      desc: ` Tworzenie stron i aplikacji internetowych to moja pasja - większość
+    dnia spędzam przed komputerem pisząc kod. Jestem samoukiem - nie
+    posiadam wykształcenia w tym kierunku. Wiedzę czerpię z różnych
+    źródeł, od książek po dokumentację poszczególnych technologii.`,
+      ref: webDevRef,
+      borderRef: webDevBorderRef,
+      img: webdev_photo,
+      area: "2/2/4/10",
+    },
+    {
+      title: "Sport",
+      desc: `Sport w moim życiu obecny jest od dawna. Nie jestem przywiązany do
+      jednej dyscypliny (choć najbliższa memu sercu jest wspinaczka), lubię
+      eksperymentować i poznawać nowe dyscypliny. Jeżdżę na rolkach, w zimie
+      na nartach, a także na rowerze (w każdych warunkach).`,
+      ref: sportRef,
+      borderRef: sportBorderRef,
+      img: sport_photo,
+      area: "5/4/7/12",
+    },
+    {
+      title: "Fotografia",
+      desc: `Stwierdzenie, że jestem pasjonatem fotografii to z pewnością duża
+      przesada. Bardzo lubię fotografować, jednak nie mam w tym kierunku
+      żadnych kwalifikacji, a większość zdjęc wykonuję tym co mam pod ręką -
+      zazwyczaj jest to po prostu telefon. Swoich zdjęc nie poddaję obróbce
+      - cenię naturalny efekt.`,
+      ref: photographyRef,
+      borderRef: photographyBorderRef,
+      img: photography_photo,
+      area: "8/2/10/10",
+    },
+  ];
+
   useEffect(() => {
     if (isVisible && firstRender) {
       setFirstRender(false);
@@ -97,57 +134,25 @@ const HobbiesSection = ({ isVisible = false }) => {
     }
   }, [isVisible, firstRender]);
 
-  return (
-    // TODO refactor to separate component
-    <SectionContainer isVisible={isVisible}>
-      <WebDev ref={webDevRef}>
-        <p>
-          Tworzenie stron i aplikacji internetowych to moja pasja - większość
-          dnia spędzam przed komputerem pisząc kod. Jestem samoukiem - nie
-          posiadam wykształcenia w tym kierunku. Wiedzę czerpię z różnych
-          źródeł, od książek po dokumentację poszczególnych technologii.
-        </p>
-        <img src={webdev_photo} alt="" />
-        <BorderContainer ref={webDevBorderRef}>
+  const renderCards = () => {
+    return cards.map((card) => (
+      <Card ref={card.ref} style={{ gridArea: card.area }} tabIndex="0">
+        <p>{card.desc}</p>
+        <img src={card.img} alt={card.title} />
+        <BorderContainer ref={card.borderRef}>
           <BorderLeft />
           <BorderBottom />
           <BorderTop />
           <BorderRight />
         </BorderContainer>
-        <CardTitle>Web development</CardTitle>
-      </WebDev>
-      <Sport content={"Sport"} ref={sportRef}>
-        Sport w moim życiu obecny jest od dawna. Nie jestem przywiązany do
-        jednej dyscypliny (choć najbliższa memu sercu jest wspinaczka), lubię
-        eksperymentować i poznawać nowe dyscypliny. Jeżdżę na rolkach, w zimie
-        na nartach, a także na rowerze (w każdych warunkach).
-        <img src={sport_photo} alt="" />
-        <BorderContainer ref={sportBorderRef}>
-          <BorderLeft />
-          <BorderBottom />
-          <BorderTop />
-          <BorderRight />
-        </BorderContainer>
-        <CardTitle>Sport</CardTitle>
-      </Sport>
-      <Photography content={"Fotografia"} ref={photographyRef}>
-        <p>
-          Stwierdzenie, że jestem pasjonatem fotografii to z pewnością duża
-          przesada. Bardzo lubię fotografować, jednak nie mam w tym kierunku
-          żadnych kwalifikacji, a większość zdjęc wykonuję tym co mam pod ręką -
-          zazwyczaj jest to po prostu telefon. Swoich zdjęc nie poddaję obróbce
-          - cenię naturalny efekt.
-        </p>
-        <img src={photography_photo} alt="" />
-        <BorderContainer ref={photographyBorderRef}>
-          <BorderLeft />
-          <BorderBottom />
-          <BorderTop />
-          <BorderRight />
-        </BorderContainer>
-        <CardTitle>Fotografia</CardTitle>
-      </Photography>
+        <CardTitle>{card.title}</CardTitle>
+      </Card>
+    ));
+  };
 
+  return (
+    <SectionContainer isVisible={isVisible}>
+      {renderCards()}
       <SectionInfo ref={sectionInfoRef}>
         Kliknij jedną z sekcji i dowiedz się więcej
       </SectionInfo>
@@ -182,6 +187,11 @@ const Card = styled.section`
 
   padding: 10px;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+    background-color: ${({ theme }) => theme.colors.lightGray};
+  }
 
   img {
     float: right;
@@ -308,18 +318,6 @@ const BorderRight = styled(Border)`
 
   width: 4px;
   background-color: ${({ theme }) => theme.colors.yellow};
-`;
-
-const WebDev = styled(Card)`
-  grid-area: 2/2/4/10;
-`;
-
-const Sport = styled(Card)`
-  grid-area: 5/4/7/12;
-`;
-
-const Photography = styled(Card)`
-  grid-area: 8/2/10/10;
 `;
 
 const CardHolder = styled.div`

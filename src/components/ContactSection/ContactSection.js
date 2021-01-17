@@ -58,7 +58,10 @@ const ContactSection = ({ isVisible }) => {
 
             const tl = gsap.timeline();
             const form = contactFormRef.current;
-            tl.to(form, { y: "100vh" }).to(form, { y: 0 }, "+=7");
+            tl.to(form, { y: "100vh" })
+              .to(form.lastChild, { autoAlpha: 1, duration: 0 }, "-=0.3")
+              .to(form, { y: 0 }, "+=7")
+              .to(form.lastChild, { autoAlpha: 0, duration: 0 });
 
             setTimeout(() => {
               setStatus(MESSAGE_STATUS.PENDING);
@@ -69,7 +72,10 @@ const ContactSection = ({ isVisible }) => {
 
             const tl = gsap.timeline();
             const form = contactFormRef.current;
-            tl.to(form, { y: "100vh" }).to(form, { y: 0 }, "+=7");
+            tl.to(form, { y: "100vh" })
+              .to(form.lastChild, { autoAlpha: 1, duration: 0 }, "-=0.3")
+              .to(form, { y: 0 }, "+=7")
+              .to(form.lastChild, { autoAlpha: 0, duration: 0 });
 
             setTimeout(() => {
               setStatus(MESSAGE_STATUS.PENDING);
@@ -218,6 +224,9 @@ const SendingFeedback = styled.div`
 
   font-size: 2rem;
   text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
 
   span {
     font-size: 10rem;
