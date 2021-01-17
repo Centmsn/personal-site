@@ -1,6 +1,10 @@
 import email_svg from "../../assets/email.svg";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "emailjs-com";
+import gsap from "gsap";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -12,9 +16,15 @@ import Footer from "../Footer/Footer";
 const SERVICE_ID = "service_r7i52mu";
 const TEMPLATE_ID = "template_oasdgmb";
 const USER_ID = "user_GfqNlxrr83xLpWWIrrG8x";
+const MESSAGE_STATUS = {
+  PENDING: 0,
+  SENDING: 1,
+  ERROR: 2,
+  OK: 3,
+};
 
 const ContactSection = ({ isVisible }) => {
-  const [status, setStatus] = useState(0);
+  const [status, setStatus] = useState(MESSAGE_STATUS.OK);
   const contactFormRef = useRef(null);
 
   const validationSchema = () =>
@@ -38,30 +48,51 @@ const ContactSection = ({ isVisible }) => {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
+      setStatus(MESSAGE_STATUS.SENDING);
       emailjs
         .sendForm(SERVICE_ID, TEMPLATE_ID, contactFormRef.current, USER_ID)
         .then(
           () => {
-            setStatus("Wiadomość wysłana. Odpiszę najszybciej jak mogę.");
+            setStatus(MESSAGE_STATUS.OK);
             resetForm({});
 
+            const tl = gsap.timeline();
+            const form = contactFormRef.current;
+            tl.to(form, { y: "100vh" }).to(form, { y: 0 }, "+=7");
+
             setTimeout(() => {
-              setStatus("");
+              setStatus(MESSAGE_STATUS.PENDING);
             }, 8000);
           },
           () => {
-            setStatus(
-              "Uups... coś poszło nie tak, spróbuj ponownie za chwilę lub skontaktuj się w inny sposób."
-            );
+            setStatus(MESSAGE_STATUS.ERROR);
 
-            if (status) return;
+            const tl = gsap.timeline();
+            const form = contactFormRef.current;
+            tl.to(form, { y: "100vh" }).to(form, { y: 0 }, "+=7");
+
             setTimeout(() => {
-              setStatus("");
+              setStatus(MESSAGE_STATUS.PENDING);
             }, 8000);
           }
         );
     },
   });
+
+  const buttonText =
+    status === MESSAGE_STATUS.SENDING && !Object.keys(formik.errors).length
+      ? "Wysyłanie..."
+      : "Wyślij";
+
+  let feedback;
+
+  if (status === MESSAGE_STATUS.ERROR) {
+    feedback =
+      "Uupsss... coś poszło nie tak. Spróbuj ponownie za chwilę, lub skorzystaj z innej formy kontaktu";
+  } else if (status === MESSAGE_STATUS.OK) {
+    feedback =
+      "Otrzymałem Twoją wiadomość i odpowiem najszybciej jak to możliwe.";
+  }
 
   return (
     <SectionContainer isVisible={isVisible}>
@@ -126,11 +157,31 @@ const ContactSection = ({ isVisible }) => {
         </FormSection>
 
         <FormSection>
-          <Button type="submit" id="button">
-            Wyślij
+          <Button
+            type="submit"
+            id="button"
+            disabled={
+              status === MESSAGE_STATUS.SENDING &&
+              !Object.keys(formik.errors).length
+            }
+          >
+            {buttonText}
             <img src={email_svg} alt="" />
           </Button>
         </FormSection>
+
+        <SendingFeedback error={status === MESSAGE_STATUS.ERROR}>
+          <span>
+            <FontAwesomeIcon
+              icon={
+                status === MESSAGE_STATUS.OK
+                  ? faCheckCircle
+                  : faExclamationTriangle
+              }
+            />
+          </span>
+          <p>{feedback}</p>
+        </SendingFeedback>
       </Form>
       <Footer isVisible={isVisible} />
     </SectionContainer>
@@ -138,6 +189,7 @@ const ContactSection = ({ isVisible }) => {
 };
 
 const Form = styled.form`
+  position: relative;
   grid-area: 2/3/11/6;
 
   display: flex;
@@ -153,6 +205,25 @@ const FormSection = styled.div`
 
   display: flex;
   justify-content: center;
+`;
+
+const SendingFeedback = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  transform: translateY(-100vh);
+
+  font-size: 2rem;
+  text-align: center;
+
+  span {
+    font-size: 10rem;
+    color: ${({ error, theme }) =>
+      error ? theme.colors.yellow : "rgb(98, 168, 116)"};
+  }
 `;
 
 const FormTooltip = styled.span`
@@ -219,6 +290,12 @@ const Button = styled.button`
   &:hover img {
     transform: translate(100px);
     opacity: 1;
+  }
+
+  &:disabled {
+    color: gray;
+
+    box-shadow: 0 0 0 4px white, 0 0 0 9px ${({ theme }) => theme.colors.gray};
   }
 
   img {

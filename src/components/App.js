@@ -25,13 +25,13 @@ const sections = [
   },
   {
     name: "info",
-    isVisible: true,
+    isVisible: false,
     desc: "Omnie",
     component: <InfoSection />,
   },
   {
     name: "contact",
-    isVisible: false,
+    isVisible: true,
     desc: "Kontakt",
     component: <ContactSection />,
   },
