@@ -16,6 +16,12 @@ import Footer from "../Footer/Footer";
 const SERVICE_ID = "service_r7i52mu";
 const TEMPLATE_ID = "template_oasdgmb";
 const USER_ID = "user_GfqNlxrr83xLpWWIrrG8x";
+
+/**
+ * Enum for contact form status
+ * @readonly
+ * @enum { number }
+ */
 const MESSAGE_STATUS = {
   PENDING: 0,
   SENDING: 1,

@@ -3,19 +3,22 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 
-const HobbiesWebDev = ({ children }) => {
+const SubSectionContainer = ({ children, preventLoadingEffect = false }) => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    const wrapper = wrapperRef.current;
+    if (!preventLoadingEffect) {
+      const wrapper = wrapperRef.current;
 
-    gsap.to(wrapper, { scale: 1, duration: 0.5 });
-  }, []);
+      gsap.to(wrapper, { scale: 1, duration: 0.5 });
+    }
+  }, [preventLoadingEffect]);
 
   return (
-    <Wrapper ref={wrapperRef}>
+    <Wrapper ref={wrapperRef} preventLoadingEffect={!!preventLoadingEffect}>
       {children}
       <StyledLink to="/">
         <FontAwesomeIcon
@@ -26,6 +29,13 @@ const HobbiesWebDev = ({ children }) => {
       </StyledLink>
     </Wrapper>
   );
+};
+
+SubSectionContainer.propTypes = {
+  /**
+   * Prevents loading animation
+   */
+  preventLoadingEffect: PropTypes.bool,
 };
 
 const Wrapper = styled.div`
@@ -42,15 +52,19 @@ const Wrapper = styled.div`
 
   background-color: rgba(60, 60, 60, 0.98);
 
-  transform: scale(0);
+  transform: scale(
+    ${({ preventLoadingEffect }) => (preventLoadingEffect ? 1 : 0)}
+  );
 `;
 
 const StyledLink = styled(Link)`
   grid-area: 12/1/13/2;
 
+  border-top: 2px solid ${({ theme }) => theme.colors.lightGray};
   text-align: center;
   text-decoration: none;
   font-size: 2.25rem;
+  line-height: 2.25rem;
 
   color: white;
 
@@ -59,4 +73,4 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default HobbiesWebDev;
+export default SubSectionContainer;

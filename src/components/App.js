@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { useState } from "react";
 
 import Arrows from "./Elements/Arrows";
@@ -13,6 +13,11 @@ import InfoSection from "./InfoSection/InfoSection";
 import MainContainer from "./MainContainer/MainContainer";
 import Navigation from "./Navigation/Navigation";
 import ThemeProvider from "../context/ThemeContext";
+
+import MountainsGallery from "./HobbiesSection/Photography/MountainsGallery";
+import PrudnikGallery from "./HobbiesSection/Photography/PrudnikGallery";
+import OthersGallery from "./HobbiesSection/Photography/OthersGallery";
+
 const sections = [
   {
     name: "header",
@@ -72,9 +77,17 @@ const App = () => {
             <InfoSection isVisible={sectionVisibility[2].isVisible} />
             <ContactSection isVisible={sectionVisibility[3].isVisible} />
 
-            <Route path="/webDev" component={HobbiesWebDev} />
-            <Route path="/sport" component={HobbiesSport} />
-            <Route path="/photography" component={HobbiesPhotography} />
+            <Switch>
+              <Route path="/webDev" component={HobbiesWebDev} />
+              <Route path="/sport" component={HobbiesSport} />
+              <Route
+                path="/photography/mountains"
+                component={MountainsGallery}
+              />
+              <Route path="/photography/prudnik" component={PrudnikGallery} />
+              <Route path="/photography/others" component={OthersGallery} />
+              <Route path="/photography" component={HobbiesPhotography} />
+            </Switch>
 
             <Navigation
               changeSection={handleSlideChange}

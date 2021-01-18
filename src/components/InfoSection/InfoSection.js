@@ -88,7 +88,7 @@ const InfoSection = ({ isVisible }) => {
           <p>
             Informacje które znajdziesz poniżej dotyczą w większej części mojego
             życia prywatnego niż zawodowego - jeżeli interesuje Cię tylko aspekt
-            zawodowy to odsyłam tutaj
+            zawodowy to odsyłam <a href="#/webdev">tutaj</a>
           </p>
 
           <p>
@@ -134,11 +134,11 @@ const InfoSection = ({ isVisible }) => {
             Wracając do mojego poczucia lokalnego patriotyzmu - dosyć często w
             Prudniku bywam, uwielbiam jeździć na rowerze po okolicznych lasach i
             górach, o każdej porze roku i w każdych warunkach. Zdjęcia z
-            niektórych przejażdżek znajdziesz <a>TUTAJ</a>. Będzie mi bardzo
-            miło jeśli rzucisz okiem, być może spodoba Ci się na tyle, że
-            zechesz Prudnik odwiedzić. Jeśli tak to koniecznie zajrzyj do sklepy
-            Google Play (Android) i pobierz aplikację Prudnik. Możesz także
-            napisać do mnie - chętnie odpowiem na Twoje pytania.
+            niektórych przejażdżek znajdziesz <a href="#/photography">TUTAJ</a>.
+            Będzie mi bardzo miło jeśli rzucisz okiem, być może spodoba Ci się
+            na tyle, że zechesz Prudnik odwiedzić. Jeśli tak to koniecznie
+            zajrzyj do sklepy Google Play (Android) i pobierz aplikację Prudnik.
+            Możesz także napisać do mnie - chętnie odpowiem na Twoje pytania.
           </p>
         </article>
       </Description>
@@ -236,6 +236,8 @@ const Description = styled.section`
   text-align: justify;
   font-size: 1.25rem;
   padding: 1rem;
+
+  overflow: auto;
 `;
 
 export default InfoSection;

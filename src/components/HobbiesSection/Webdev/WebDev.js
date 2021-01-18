@@ -6,20 +6,29 @@ import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 
 import SubSectionContainer from "../SubSectionContainer";
+import WebDevSlide from "./WebDevSlide";
+
+/**
+ * Enum for slide changing
+ * @readonly
+ * @enum { number }
+ */
+const SLIDE_CHANGE = {
+  NEXT: 0,
+  PREV: 1,
+};
 
 const slides = [
   {
-    id: 0,
     imgLink: "boxshadowGenerator",
     imgDesc: "BoxShadow - generator",
     projectTitle: "BoxShadow - generator",
-    desc:
+    projectDesc:
       "Generator właściwości box-shadow dający nam gotowy kod do wklejenia w arkuszu styli. Przy tworzeniu oprócz React i Redux użyłem także Styled components. Projekt ten ciągle znajduje się w fazie developmentu, dlatego niektóre funkcje mogą działać niepoprawnie, lub być niedostępne.",
     demoLink: "http://www.boxshadowgenerator.online/",
     codeLink: "https://github.com/Centmsn/BoxShadow-generator",
   },
   {
-    id: 1,
     imgLink: "renowork",
     imgDesc: "RenoWork",
     projectTitle: "Reno|Work",
@@ -29,7 +38,6 @@ const slides = [
     codeLink: "https://github.com/Centmsn/Reno-work",
   },
   {
-    id: 2,
     imgLink: "todoapp",
     imgDesc: "ToDo App",
     projectTitle: "ToDo App",
@@ -39,8 +47,6 @@ const slides = [
     codeLink: "https://github.com/Centmsn/ToDo-App",
   },
   {
-    id: 3,
-    technologies: ["react", "javascript", "sass"],
     imgLink: "weatherapp",
     imgDesc: "Aplikacja pogoda",
     projectTitle: "Aplikacja pogodowa",
@@ -50,7 +56,6 @@ const slides = [
     codeLink: "https://github.com/Centmsn/weatherApp",
   },
   {
-    id: 4,
     imgLink: "snake",
     imgDesc: "gra - snake",
     projectTitle: "Snake - gra",
@@ -60,7 +65,6 @@ const slides = [
     codeLink: "https://github.com/Centmsn/snake-JS",
   },
   {
-    id: 5,
     imgLink: "checkers",
     imgDesc: "gra - warcaby",
     projectTitle: "Warcaby - gra",
@@ -70,7 +74,6 @@ const slides = [
     codeLink: "https://github.com/Centmsn/checkers-JS",
   },
   {
-    id: 6,
     imgLink: "minesweeper",
     imgDesc: "gra - saper",
     projectTitle: "Saper - gra",
@@ -80,7 +83,6 @@ const slides = [
     codeLink: "https://github.com/Centmsn/minesweeper-JS",
   },
   {
-    id: 7,
     imgLink: "gradientGenerator",
     imgDesc: "generator gradientu",
     projectTitle: "Generator gradientu CSS",
@@ -111,6 +113,38 @@ const learning = [
 
 const HobbiesWebDev = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const listLearnedRef = useRef(null);
+  const listLearningRef = useRef(null);
+
+  useEffect(() => {
+    const learned = listLearnedRef.current.children;
+    const learning = listLearningRef.current.children;
+
+    const tl = gsap.timeline({ defaults: { duration: 0.5 } });
+
+    tl.to(learned[0].lastChild.lastChild, { scaleX: 1, delay: 1 });
+    tl.add("triggerLists");
+    tl.to(learned[2].lastChild.lastChild, { scaleX: 1 });
+    tl.to(learned[5].lastChild.lastChild, { scaleX: 1 });
+    tl.to(learned[6].lastChild.lastChild, { scaleX: 1 }, "-=1");
+    tl.to(learned[4].lastChild.lastChild, { scaleX: 1 }, "-=0.5");
+    tl.to(learned[7].lastChild.lastChild, { scaleX: 1 }, "-=0.1");
+    tl.to(learned[8].lastChild.lastChild, { scaleX: 1 }, "-=0.7");
+    tl.to(learned[3].lastChild.lastChild, { scaleX: 1 }, "-=0.3");
+    tl.to(learned[1].lastChild.lastChild, { scaleX: 1 }, "-=0.2");
+    tl.to(learning[0].lastChild.lastChild, { scaleX: 1 }, "triggerLists");
+    tl.to(learning[2].lastChild.lastChild, { scaleX: 1 }, "-=0.1");
+    tl.to(learning[1].lastChild.lastChild, { scaleX: 1 });
+  }, []);
+
+  const handleSlideChange = (direction) => {
+    if (direction === SLIDE_CHANGE.NEXT && currentSlide < slides.length) {
+      setCurrentSlide((prev) => prev + 1);
+    } else if (direction === SLIDE_CHANGE.PREV && currentSlide > 0) {
+      setCurrentSlide((prev) => prev - 1);
+    }
+  };
+
   const renderSlides = () => {};
 
   /**
@@ -124,18 +158,19 @@ const HobbiesWebDev = () => {
     return arr.map((el, i) => (
       <li key={i}>
         {el.title}
-        <ProgressBar>
-          <InnerBar width={el.percent / 100} />
+        <ProgressBar content={el.percent}>
+          <InnerBar width={el.percent} />
         </ProgressBar>
       </li>
     ));
   };
+
   return (
     <SubSectionContainer>
-      <StartSection>
+      <StartSection isVisible={currentSlide === 0}>
         <ListSection>
           <ListTitle>Co umiem?</ListTitle>
-          <ul>{renderList(learned)}</ul>
+          <ul ref={listLearnedRef}>{renderList(learned)} </ul>
           <small>
             Do powyższej listy dopisać można jeszcze kilka mniejszych bibliotek:{" "}
             React-router, Lodash - podstawy.
@@ -144,7 +179,7 @@ const HobbiesWebDev = () => {
 
         <ListSection>
           <ListTitle>Czego się uczę?</ListTitle>
-          <ul>{renderList(learning)}</ul>
+          <ul ref={listLearningRef}>{renderList(learning)}</ul>
           <small>
             Aktualnie uczę się także Web components - choć nie jest to mój
             priorytet, interesuję się także Node.js (zupełne podstawy).
@@ -220,10 +255,27 @@ const HobbiesWebDev = () => {
         </Summary>
       </StartSection>
 
-      <LeftArrow>
+      <WebDevSlide
+        isVisible={!(currentSlide === 0)}
+        title={slides[currentSlide - 1]?.projectTitle}
+        description={slides[currentSlide - 1]?.projectDesc}
+        imgLink={slides[currentSlide - 1]?.imgLink}
+        codeLink={slides[currentSlide - 1]?.codeLink}
+        demoLink={slides[currentSlide - 1]?.demoLink}
+        imgDesc={slides[currentSlide - 1]?.imgDesc}
+      />
+
+      <LeftArrow
+        onClick={() => handleSlideChange(SLIDE_CHANGE.PREV)}
+        disabled={currentSlide === 0}
+      >
         <FontAwesomeIcon icon={faCaretLeft} />
       </LeftArrow>
-      <RightArrow>
+
+      <RightArrow
+        onClick={() => handleSlideChange(SLIDE_CHANGE.NEXT)}
+        disabled={currentSlide > slides.length - 1}
+      >
         <FontAwesomeIcon icon={faCaretRight} />
       </RightArrow>
     </SubSectionContainer>
@@ -239,6 +291,8 @@ const StartSection = styled.section`
   align-items: stretch;
 
   color: white;
+
+  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
 
   small {
     color: ${({ theme }) => theme.colors.smokedWhite};
@@ -287,15 +341,19 @@ const Summary = styled.section`
 `;
 
 const ProgressBar = styled.div`
+  position: relative;
   width: 100%;
   height: 10px;
+
   background-color: ${({ theme }) => theme.colors.lightGray};
+
+  overflow: hidden;
 `;
 
 const InnerBar = styled.div`
-  width: 100%;
+  width: ${({ width }) => width}%;
   height: 100%;
-  transform: scaleX(${({ width }) => width});
+  transform: scaleX(5);
   transform-origin: left;
 
   background-color: ${({ theme }) => theme.colors.yellow};
@@ -304,14 +362,16 @@ const InnerBar = styled.div`
 const Arrow = styled.button`
   font-size: 7rem;
 
-  color: white;
+  color: ${({ disabled, theme }) =>
+    disabled ? theme.colors.lightGray : theme.colors.yellow};
 
   background: none;
   transition: 300ms;
 
   &:hover {
     transform: scale(1.2);
-    color: ${({ theme }) => theme.colors.yellow};
+    color: ${({ disabled, theme }) =>
+      disabled ? theme.colors.lightGray : theme.colors.yellow};
   }
 `;
 
