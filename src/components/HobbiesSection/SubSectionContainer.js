@@ -66,6 +66,8 @@ const ContainerFooter = styled.div`
   align-items: center;
 
   border-top: 2px solid ${({ theme }) => theme.colors.lightGray};
+
+  background-color: ${({ theme }) => theme.colors.gray};
 `;
 
 const StyledLink = styled(Link)`

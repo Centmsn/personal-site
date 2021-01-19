@@ -1,25 +1,89 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
+import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const Gallery = ({ imgList }) => {
+/**
+ * Enum for slide changing
+ * @enum {number}
+ * @readonly
+ */
+const SLIDE_CHANGE_ENUM = {
+  PREVIOUS: -1,
+  NEXT: 1,
+};
+
+/**
+ * Renders gallery on the screen, requires 12x12 grid to be displayed correctly
+ */
+const Gallery = ({ imgList = [] }) => {
+  // TODO add buttons to change slide without closing
   const [fullscreenVisible, setFullscreenVisible] = useState(false);
   const [currentImg, setCurrentImg] = useState(null);
 
-  const handleFullScreen = (img, desc) => {
-    setFullscreenVisible(true);
-    setCurrentImg(img);
+  /**
+   * Triggers fullscreen mode and updates active image
+   * @param {string} [img] - img link
+   * @param {number} [id] - clicked image id
+   * @return {undefined}
+   */
+  const handleFullScreen = (img, id) => {
+    if (typeof img === "string" && typeof id === "number") {
+      setFullscreenVisible(true);
+      setCurrentImg({ img, id });
+    } else {
+      setFullscreenVisible(false);
+    }
   };
 
+  /**
+   * Changes image which is displayed in fullscreen mode
+   * @param {number} direction - (-1) previous / 1 next
+   * @param {number} current - current id
+   * @param {Object[]} arr - array of images to iterate over
+   * @param {string} arr[].img - img link
+   * @param {number} arr[].id - img id
+   * @return {undefined}
+   */
+  const handleSlideChange = (direction, current, arr) => {
+    if (arr.length < 1 || !Array.isArray(arr)) {
+      console.warn(
+        `Incorrect type of argument. Expected Array instead got ${typeof arr}`
+      );
+      return;
+    }
+    if (
+      direction !== SLIDE_CHANGE_ENUM.PREVIOUS &&
+      direction !== SLIDE_CHANGE_ENUM.NEXT
+    ) {
+      console.warn(
+        `Incorrect type of argument. Expected number instead got ${typeof direction}`
+      );
+      return;
+    } else {
+      const nextSlideId = current + direction;
+      if (nextSlideId < 0 || nextSlideId >= arr.length) return;
+      const { img } = arr[nextSlideId];
+
+      setCurrentImg({ img, id: nextSlideId });
+    }
+  };
+
+  /**
+   * Renders images on the screen
+   * @param {Object[]} imgList
+   * @return {Array} - react components
+   */
   const renderImages = (imgList) => {
-    return imgList.map((el) => (
+    return imgList.map((el, index) => (
       <GalleryImg content={el.desc}>
         <img
           src={el.img}
           alt={el.desc}
-          onClick={() => handleFullScreen(el.img, el.desc)}
+          onClick={() => handleFullScreen(el.img, index)}
         />
       </GalleryImg>
     ));
@@ -27,26 +91,50 @@ const Gallery = ({ imgList }) => {
   return (
     <Wrapper>
       {renderImages(imgList)}
-      <FullScreenImg
-        isVisible={fullscreenVisible}
-        onClick={() => setFullscreenVisible(false)}
-      >
-        <CloseButton>
+      <FullScreenImg isVisible={fullscreenVisible}>
+        <img src={currentImg && currentImg.img} alt="fullscreenImg" />
+
+        <LeftArrowButton
+          onClick={() =>
+            handleSlideChange(
+              SLIDE_CHANGE_ENUM.PREVIOUS,
+              currentImg.id,
+              imgList
+            )
+          }
+        >
+          <FontAwesomeIcon icon={faCaretLeft} />
+        </LeftArrowButton>
+        <RightArrowButton
+          onClick={() =>
+            handleSlideChange(SLIDE_CHANGE_ENUM.NEXT, currentImg.id, imgList)
+          }
+        >
+          <FontAwesomeIcon icon={faCaretRight} />
+        </RightArrowButton>
+
+        <CloseButton onClick={handleFullScreen}>
           <FontAwesomeIcon icon={faTimes} />
         </CloseButton>
-        <img src={currentImg} alt="fullscreenImg" />
       </FullScreenImg>
     </Wrapper>
   );
 };
 
 Gallery.propTypes = {
+  /**
+   * list of images to display in gallery
+   */
   imgList: PropTypes.arrayOf(
     PropTypes.shape({
       img: PropTypes.object,
       desc: PropTypes.string,
     })
-  ).isRequired,
+  ),
+};
+
+Gallery.defaultProps = {
+  imgList: [],
 };
 
 const Wrapper = styled.div`
@@ -56,16 +144,20 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
 
   overflow-y: auto;
   overflow-x: hidden;
 
   img {
     margin: 1rem;
-    height: 150px;
+
+    height: 300px;
     width: auto;
 
     border-radius: 10px;
+
+    user-select: none;
 
     cursor: pointer;
 
@@ -113,6 +205,8 @@ const FullScreenImg = styled.div`
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
 
   img {
+    max-width: 1600px;
+    max-height: 1200px;
     height: calc(90%);
     width: auto;
 
@@ -120,20 +214,37 @@ const FullScreenImg = styled.div`
   }
 `;
 
-const CloseButton = styled.button`
+const Button = styled.button`
   position: absolute;
-  top: 0;
-  left: 1rem;
 
   border: none;
-  color: ${({ theme }) => theme.colors.yellow};
+  font-size: 4rem;
+
+  color: ${({ theme }) => theme.colors.gray};
   background: none;
 
-  font-size: 3rem;
-
   &:focus {
-    color: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.yellow};
   }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.yellow};
+  }
+`;
+
+const CloseButton = styled(Button)`
+  top: 0;
+  left: 1rem;
+`;
+
+const LeftArrowButton = styled(Button)`
+  left: 1rem;
+  top: 50%;
+`;
+
+const RightArrowButton = styled(Button)`
+  right: 1rem;
+  top: 50%;
 `;
 
 export default Gallery;

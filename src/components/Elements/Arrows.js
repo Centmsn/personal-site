@@ -8,8 +8,6 @@ import styled from "styled-components";
  * Renders arrows in the bottom right corner
  */
 const Arrows = ({ changeSection, sections }) => {
-  const range = 15;
-
   /**
    * Calls changeSection callback
    * @param {string} direction - "prev" or "next"
@@ -38,7 +36,6 @@ const Arrows = ({ changeSection, sections }) => {
   return (
     <Wrapper>
       <Icon
-        move={-range}
         onClick={() => handleSectionChange("prev")}
         onKeyDown={(e) => handleSectionChange("prev", e)}
         tabIndex="0"
@@ -47,7 +44,6 @@ const Arrows = ({ changeSection, sections }) => {
       </Icon>
 
       <Icon
-        move={range}
         onClick={() => handleSectionChange("next")}
         onKeyDown={(e) => handleSectionChange("next", e)}
         tabIndex="0"
