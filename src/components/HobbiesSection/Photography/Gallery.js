@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -6,18 +8,20 @@ const Gallery = ({ imgList }) => {
   const [fullscreenVisible, setFullscreenVisible] = useState(false);
   const [currentImg, setCurrentImg] = useState(null);
 
-  const handleFullScreen = (img) => {
+  const handleFullScreen = (img, desc) => {
     setFullscreenVisible(true);
     setCurrentImg(img);
   };
 
   const renderImages = (imgList) => {
     return imgList.map((el) => (
-      <img
-        src={el.img}
-        alt={el.desc}
-        onClick={() => handleFullScreen(el.img)}
-      />
+      <GalleryImg content={el.desc}>
+        <img
+          src={el.img}
+          alt={el.desc}
+          onClick={() => handleFullScreen(el.img, el.desc)}
+        />
+      </GalleryImg>
     ));
   };
   return (
@@ -27,7 +31,10 @@ const Gallery = ({ imgList }) => {
         isVisible={fullscreenVisible}
         onClick={() => setFullscreenVisible(false)}
       >
-        <img src={currentImg} alt="" />
+        <CloseButton>
+          <FontAwesomeIcon icon={faTimes} />
+        </CloseButton>
+        <img src={currentImg} alt="fullscreenImg" />
       </FullScreenImg>
     </Wrapper>
   );
@@ -68,9 +75,30 @@ const Wrapper = styled.div`
   }
 `;
 
+const GalleryImg = styled.div`
+  position: relative;
+
+  &:after {
+    content: "${({ content }) => content}";
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+    color: white;
+
+    visibility: hidden;
+  }
+
+  &:hover::after {
+    visibility: visible;
+  }
+`;
+
 const FullScreenImg = styled.div`
   z-index: 999;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -80,13 +108,31 @@ const FullScreenImg = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(150, 150, 150, 0.5);
+  background-color: rgba(150, 150, 150, 0.75);
 
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
 
   img {
     height: calc(90%);
     width: auto;
+
+    box-shadow: 0 0 0 4px white;
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 0;
+  left: 1rem;
+
+  border: none;
+  color: ${({ theme }) => theme.colors.yellow};
+  background: none;
+
+  font-size: 3rem;
+
+  &:focus {
+    color: ${({ theme }) => theme.colors.gray};
   }
 `;
 

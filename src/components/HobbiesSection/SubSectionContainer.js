@@ -20,13 +20,15 @@ const SubSectionContainer = ({ children, preventLoadingEffect = false }) => {
   return (
     <Wrapper ref={wrapperRef} preventLoadingEffect={!!preventLoadingEffect}>
       {children}
-      <StyledLink to="/">
-        <FontAwesomeIcon
-          icon={faArrowAltCircleLeft}
-          style={{ marginRight: "10px" }}
-        />
-        Wróć
-      </StyledLink>
+      <ContainerFooter>
+        <StyledLink to="/">
+          <FontAwesomeIcon
+            icon={faArrowAltCircleLeft}
+            style={{ marginRight: "10px" }}
+          />
+          Wróć
+        </StyledLink>
+      </ContainerFooter>
     </Wrapper>
   );
 };
@@ -57,14 +59,19 @@ const Wrapper = styled.div`
   );
 `;
 
-const StyledLink = styled(Link)`
-  grid-area: 12/1/13/2;
+const ContainerFooter = styled.div`
+  grid-area: 12/1/13/-1;
+
+  display: flex;
+  align-items: center;
 
   border-top: 2px solid ${({ theme }) => theme.colors.lightGray};
-  text-align: center;
-  text-decoration: none;
+`;
+
+const StyledLink = styled(Link)`
+  margin-left: 1rem;
   font-size: 2.25rem;
-  line-height: 2.25rem;
+  text-decoration: none;
 
   color: white;
 
