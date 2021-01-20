@@ -2,6 +2,12 @@ import { forwardRef } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+import { device } from "../../GlobalStyles";
+
+/**
+ * @enum {string}
+ * @readonly
+ */
 const positionEnum = {
   1: "bottom-right",
   2: "bottom-left",
@@ -69,6 +75,10 @@ const Shape = styled.div`
 
   width: 0;
   height: 0;
+
+  @media ${device.laptop} {
+    display: none;
+  }
 `;
 
 export default Triangle;

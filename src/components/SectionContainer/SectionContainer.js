@@ -4,12 +4,14 @@ import styled from "styled-components";
 import { useEffect, useRef } from "react";
 
 import { getRandomElement } from "../../utils";
+import { device } from "../../GlobalStyles";
 
 /**
  * Container for page sections
  */
 const SectionContainer = ({ children, isVisible = false }) => {
   const wrapperRef = useRef(null);
+
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { duration: 0.5 } });
     const wrapper = wrapperRef.current;
@@ -50,6 +52,14 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
+
+  @media ${device.laptop} {
+    grid-auto-flow: row;
+
+    padding: 2rem;
+
+    overflow-y: auto;
+  }
 `;
 
 export default SectionContainer;

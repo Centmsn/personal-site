@@ -6,15 +6,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-/**
- * Enum for slide changing
- * @enum {number}
- * @readonly
- */
-const SLIDE_CHANGE_ENUM = {
-  PREVIOUS: -1,
-  NEXT: 1,
-};
+import { SLIDE_CHANGE_ENUM } from "../../../consts";
 
 /**
  * Renders gallery on the screen, requires 12x12 grid to be displayed correctly
@@ -49,16 +41,13 @@ const Gallery = ({ imgList = [] }) => {
    * @return {undefined}
    */
   const handleSlideChange = (direction, current, arr) => {
-    if (arr.length < 1 || !Array.isArray(arr)) {
+    if (!Array.isArray(arr)) {
       console.warn(
         `Incorrect type of argument. Expected Array instead got ${typeof arr}`
       );
       return;
     }
-    if (
-      direction !== SLIDE_CHANGE_ENUM.PREVIOUS &&
-      direction !== SLIDE_CHANGE_ENUM.NEXT
-    ) {
+    if (typeof direction !== "number" || typeof current !== "number") {
       console.warn(
         `Incorrect type of argument. Expected number instead got ${typeof direction}`
       );
@@ -78,8 +67,25 @@ const Gallery = ({ imgList = [] }) => {
    * @return {Array} - react components
    */
   const renderImages = (imgList) => {
+    if (!Array.isArray(imgList)) {
+      console.error(
+        `Incorrect type of argument. Expected array instead got ${typeof imgList}. Function execution stopped.`
+      );
+      return;
+    }
+
+    if (
+      imgList.length < 1 ||
+      !imgList[0].hasOwnProperty("img") ||
+      !imgList[0].hasOwnProperty("desc")
+    ) {
+      console.error(
+        `Incorrect object shape. Properites {img: string} & {desc: string} are required`
+      );
+    }
+
     return imgList.map((el, index) => (
-      <GalleryImg content={el.desc}>
+      <GalleryImg content={el.desc} key={index}>
         <img
           src={el.img}
           alt={el.desc}
@@ -91,16 +97,13 @@ const Gallery = ({ imgList = [] }) => {
   return (
     <Wrapper>
       {renderImages(imgList)}
+
       <FullScreenImg isVisible={fullscreenVisible}>
         <img src={currentImg && currentImg.img} alt="fullscreenImg" />
 
         <LeftArrowButton
           onClick={() =>
-            handleSlideChange(
-              SLIDE_CHANGE_ENUM.PREVIOUS,
-              currentImg.id,
-              imgList
-            )
+            handleSlideChange(SLIDE_CHANGE_ENUM.PREV, currentImg.id, imgList)
           }
         >
           <FontAwesomeIcon icon={faCaretLeft} />
@@ -127,7 +130,7 @@ Gallery.propTypes = {
    */
   imgList: PropTypes.arrayOf(
     PropTypes.shape({
-      img: PropTypes.object,
+      img: PropTypes.string,
       desc: PropTypes.string,
     })
   ),

@@ -11,8 +11,8 @@ const InfoSection = ({ isVisible }) => {
   const skillListRef = useRef(null);
   const bars = [
     { title: "Angielski", percent: 75, desc: "Poziom B2/C1" },
-    { title: "Javascript", percent: 70, desc: "70%" },
-    { title: "Typescript", percent: 40, desc: "40%" },
+    { title: "Javascript", percent: 65, desc: "65%" },
+    { title: "Typescript", percent: 30, desc: "30%" },
     { title: "CSS", percent: 80, desc: "80%" },
     { title: "HTML", percent: 65, desc: "65%" },
   ];
@@ -191,7 +191,7 @@ const SkillBar = styled.div`
 
   display: flex;
 
-  border: 3px solid black;
+  border: 2px solid black;
   padding: 2px 0;
 
   &::after {
@@ -219,6 +219,8 @@ const InnerBar = styled.div`
   height: 100%;
 
   transform-origin: left;
+
+  border: 1px solid ${({ theme }) => theme.colors.gray};
 
   background-color: ${({ theme }) => theme.colors.yellow};
 

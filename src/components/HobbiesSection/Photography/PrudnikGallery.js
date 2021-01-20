@@ -14,29 +14,26 @@ import img13 from "../../../assets/prudnik_gal_13.jpg";
 import img14 from "../../../assets/prudnik_gal_14.jpg";
 import img15 from "../../../assets/prudnik_gal_15.jpg";
 
-import styled from "styled-components";
-
 import SubSectionContainer from "../SubSectionContainer";
 import Gallery from "./Gallery";
 
 const PrudnikGallery = () => {
-  // TODO change descriptions
   const list = [
-    { img: img01, desc: "Olsztyn" },
-    { img: img02, desc: "Olsztyn - zachód słońca" },
-    { img: img03, desc: "Bobolice - skały" },
-    { img: img04, desc: "Zamek w Bobolicach" },
-    { img: img05, desc: "Zamek w Bobolicach" },
-    { img: img06, desc: "Zamek w Bobolicach" },
-    { img: img07, desc: "Mirów / Bobolice" },
-    { img: img08, desc: "Trojak" },
-    { img: img09, desc: "Trojak - zachód" },
-    { img: img10, desc: "Trojak - zachód" },
-    { img: img11, desc: "Tatry zachodnie" },
-    { img: img12, desc: "Tatry zachodnie - zima" },
-    { img: img13, desc: "Tatry wysokie - zima" },
-    { img: img14, desc: "Drogowskaz" },
-    { img: img15, desc: "Giewont" },
+    { img: img01, desc: "Góry Opawskie" },
+    { img: img02, desc: "Las koło Prudnika" },
+    { img: img03, desc: "Las koło Prudnika" },
+    { img: img04, desc: "Las koło Prudnika" },
+    { img: img05, desc: "Dzięcioły w Wieszczynie" },
+    { img: img06, desc: "Maki w polu" },
+    { img: img07, desc: "Dożynki w Łące Prudnickiej" },
+    { img: img08, desc: "Prudnickie Lasy" },
+    { img: img09, desc: "Las we mgle" },
+    { img: img10, desc: "Wieczór w zamglonym lesie" },
+    { img: img11, desc: "Widok z Kopy Biskupiej" },
+    { img: img12, desc: "Kwiaty na Kopie Biskupiej" },
+    { img: img13, desc: "Albrechtice - koło Prudnika" },
+    { img: img14, desc: "Zachód koło klasztoru" },
+    { img: img15, desc: "Park w Prudniku" },
   ];
 
   return (
@@ -45,7 +42,5 @@ const PrudnikGallery = () => {
     </SubSectionContainer>
   );
 };
-
-const Wrapper = styled.div``;
 
 export default PrudnikGallery;

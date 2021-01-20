@@ -4,6 +4,8 @@ import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import { device } from "../../GlobalStyles";
+
 /**
  * Renders arrows in the bottom right corner
  */
@@ -12,6 +14,7 @@ const Arrows = ({ changeSection, sections }) => {
    * Calls changeSection callback
    * @param {string} direction - "prev" or "next"
    * @param {object} e - "Event object is required for keyEvents"
+   * @return {undefined}
    */
   const handleSectionChange = (direction, e) => {
     const active = sections.findIndex((el) => el.isVisible);

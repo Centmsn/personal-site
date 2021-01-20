@@ -8,6 +8,8 @@ import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
+import { device } from "../../GlobalStyles";
+
 const contactList = [
   { icon: faMapMarkedAlt, desc: "Łódź / Warszawa" },
   { icon: faPhone, desc: "+48 794-364-458" },
@@ -40,7 +42,6 @@ const Footer = ({ isVisible }) => {
 
   useEffect(() => {
     if (isVisible) {
-      //   const listElements = ulRef.current.children;
       const wrapper = footerWrapperRef.current;
 
       gsap.to(wrapper.children, {
@@ -52,6 +53,10 @@ const Footer = ({ isVisible }) => {
     }
   }, [isVisible]);
 
+  /**
+   * Renders Footer list on the screen
+   * @return {Object[]}
+   */
   const renderList = () => {
     return contactList.map((element, i) => (
       <li key={i}>
@@ -122,6 +127,14 @@ Footer.propTypes = {
 
 const FooterWrapper = styled.footer`
   grid-area: 2/7/11/10;
+
+  @media ${device.laptop} {
+    grid-area: 2/7/11/-1;
+  }
+
+  @media ${device.tablet} {
+    grid-area: 11/1/-1/-1;
+  }
 `;
 
 const FooterSection = styled.footer`

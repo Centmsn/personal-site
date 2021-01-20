@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { useRef, useEffect, useState } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
+import { device } from "../../GlobalStyles";
 
 /**
  * Renders HobbiesSection on screen

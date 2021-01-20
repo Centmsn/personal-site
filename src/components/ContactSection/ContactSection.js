@@ -10,8 +10,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useState, useRef } from "react";
 
-import SectionContainer from "../SectionContainer/SectionContainer";
+import { device } from "../../GlobalStyles";
 import Footer from "../Footer/Footer";
+import SectionContainer from "../SectionContainer/SectionContainer";
 
 const SERVICE_ID = "service_r7i52mu";
 const TEMPLATE_ID = "template_oasdgmb";
@@ -208,6 +209,14 @@ const Form = styled.form`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
+  @media ${device.laptop} {
+    grid-area: 2/1/11/6;
+  }
+
+  @media ${device.tablet} {
+    grid-area: 1/1/10/13;
+  }
 `;
 
 const FormSection = styled.div`

@@ -11,12 +11,12 @@ const size = {
 };
 
 export const device = {
-  mobilesS: `(min-width: ${size.mobilesS})`,
-  mobilesL: `(min-width: ${size.mobilesL})`,
-  tablet: `(min-width: ${size.tablet})`,
-  laptop: `(min-width: ${size.laptop})`,
-  laptopL: `(min-width: ${size.laptopL})`,
-  desktop: `(min-width: ${size.desktop})`,
+  mobilesS: `(max-width: ${size.mobilesS})`,
+  mobilesL: `(max-width: ${size.mobilesL})`,
+  tablet: `(max-width: ${size.tablet})`,
+  laptop: `(max-width: ${size.laptop})`,
+  laptopL: `(max-width: ${size.laptopL})`,
+  desktop: `(max-width: ${size.desktop})`,
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -29,26 +29,25 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
-        font-size: 8px;
 
-        @media ${device.mobilesL} {
-            font-size: 9px;
-        }
-
-        @media ${device.tablet} {
-            font-size: 11px;
-        }
-
-        @media ${device.laptop} {
-            font-size: 12px;
+        @media ${device.desktop} {
+            font-size: 16px;
         }
 
         @media ${device.laptopL} {
             font-size: 13px;
         }
 
-        @media ${device.desktop} {
-            font-size: 16px;
+        @media ${device.laptop} {
+            font-size: 12px;
+        }
+
+        @media ${device.tablet} {
+            font-size: 10px;
+        }
+
+        @media ${device.mobilesL} {
+            font-size: 9px;
         }
     }
 
@@ -66,9 +65,9 @@ const GlobalStyles = createGlobalStyle`
 
     h1, h2, h3, h4, h5, h6 {
         font-family: ${({ theme }) => theme.fonts.title};
-        text-shadow: 10px 10px 0 ${({ theme }) => theme.colors.gray};
+        text-shadow: 0.6rem 0.6rem 0 ${({ theme }) => theme.colors.gray};
 
-        color: ${({ theme }) => theme.colors.yellow}
+        color: ${({ theme }) => theme.colors.yellow};
     }
 
     ul {
