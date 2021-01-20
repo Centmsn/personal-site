@@ -83,6 +83,10 @@ const Wrapper = styled.div`
   font-size: 6rem;
 
   color: ${({ theme }) => theme.colors.gray};
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 const Icon = styled.div`

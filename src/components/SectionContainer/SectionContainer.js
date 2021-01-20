@@ -56,7 +56,7 @@ const Wrapper = styled.div`
   @media ${device.laptop} {
     grid-auto-flow: row;
 
-    padding: 2rem;
+    padding: 1rem;
 
     overflow-y: auto;
   }

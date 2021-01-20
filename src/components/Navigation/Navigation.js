@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+import { device } from "../../GlobalStyles";
+
 /**
  * Navigation dots - renders navigation dots on the bottom of the screen
  */

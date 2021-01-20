@@ -126,14 +126,17 @@ Footer.propTypes = {
 };
 
 const FooterWrapper = styled.footer`
+  position: relative;
   grid-area: 2/7/11/10;
 
   @media ${device.laptop} {
-    grid-area: 2/7/11/-1;
+    grid-area: 2/7/10/-1;
   }
 
   @media ${device.tablet} {
-    grid-area: 11/1/-1/-1;
+    grid-area: 8/1/-2/-1;
+
+    overflow-y: auto;
   }
 `;
 
@@ -141,7 +144,7 @@ const FooterSection = styled.footer`
   position: relative;
   transform: translateY(100vh);
 
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 
   p {
     text-align: justify;

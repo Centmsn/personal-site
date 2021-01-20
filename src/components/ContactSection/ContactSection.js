@@ -160,7 +160,7 @@ const ContactSection = ({ isVisible }) => {
             value={formik.values.message}
             placeholder="wiadomość..."
             as="textarea"
-            style={{ height: "250px" }}
+            style={{ height: "15rem" }}
           ></Input>
           <FormTooltip
             active={!!(formik.errors.message && formik.touched.message)}
@@ -203,7 +203,7 @@ const ContactSection = ({ isVisible }) => {
 
 const Form = styled.form`
   position: relative;
-  grid-area: 2/3/11/6;
+  grid-area: 2/2/11/6;
 
   display: flex;
   flex-wrap: wrap;
@@ -215,7 +215,7 @@ const Form = styled.form`
   }
 
   @media ${device.tablet} {
-    grid-area: 1/1/10/13;
+    grid-area: 1/1/8/13;
   }
 `;
 
@@ -260,15 +260,19 @@ const FormTooltip = styled.span`
   font-size: 1.25rem;
   text-align: center;
 
-  background-color: ${({ theme }) => theme.colors.gray};
-  color: white;
+  background-color: ${({ theme }) => theme.colors.yellow};
+  color: ${({ theme }) => theme.colors.gray};
 
   opacity: ${({ active }) => (active ? 1 : 0)};
   transition: 300ms;
+
+  @media ${device.tablet} {
+    font-size: 1.5rem;
+  }
 `;
 
 const FormTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
   text-shadow: 4px 4px 0 ${({ theme }) => theme.colors.yellow};
 
@@ -277,7 +281,7 @@ const FormTitle = styled.h1`
 
 const Input = styled.input`
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 1.75rem;
 
   border: 4px solid ${({ theme }) => theme.colors.gray};
 

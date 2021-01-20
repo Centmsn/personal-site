@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
+import { device } from "../../GlobalStyles";
 
 const InfoSection = ({ isVisible }) => {
   const [firstRender, setFirstRender] = useState(true);
@@ -154,6 +155,18 @@ const Summary = styled.section`
   text-align: center;
   padding: 20px;
 
+  overflow-y: auto;
+
+  @media ${device.laptop} {
+    grid-area: 1/1/-1/5;
+  }
+
+  @media ${device.tablet} {
+    grid-area: 1/1/-3/-1;
+
+    border: none;
+  }
+
   img {
     margin: 0 auto;
     width: 60%;
@@ -193,6 +206,10 @@ const SkillBar = styled.div`
 
   border: 2px solid black;
   padding: 2px 0;
+
+  @media ${device.laptop} {
+    width: 100%;
+  }
 
   &::after {
     content: "${({ content }) => content}";
@@ -240,6 +257,16 @@ const Description = styled.section`
   padding: 1rem;
 
   overflow: auto;
+
+  @media ${device.laptop} {
+    grid-area: 1/5/-1/-1;
+  }
+
+  @media ${device.tablet} {
+    grid-area: 8/1/-1/-1;
+
+    visibility: hidden;
+  }
 `;
 
 export default InfoSection;

@@ -2,21 +2,53 @@ import RightArrow from "../../assets/right-arrow.svg";
 
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
 import { device } from "../../GlobalStyles";
+
+const MOBILE_TEXT = "Użyj kropek do nawigacji po witrynie.";
+const DESKTOP_TEXT = "Użyj strzałek lub kropek do nawigacji po witrynie.";
 
 /**
  * Header component - renders aplication header
  */
 const HeaderSection = ({ isVisible }) => {
+  const [infoContent, setInfoContent] = useState("");
+
+  /**
+   * Sets proper state for mobile and desktop devices
+   *
+   * @return {undefined}
+   */
+  const handleInfoContent = () => {
+    const currentWidth = window.innerWidth;
+    if (currentWidth > 768) {
+      setInfoContent(DESKTOP_TEXT);
+    } else {
+      setInfoContent(MOBILE_TEXT);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleInfoContent);
+
+    return () => {
+      window.removeEventListener("resize", handleInfoContent);
+    };
+  }, []);
+
+  useEffect(() => {
+    handleInfoContent();
+  }, []);
+
   return (
     <SectionContainer isVisible={isVisible}>
       <Title>Wojciech Rygorowicz</Title>
       <SubTitle>deweloper z Prudnika</SubTitle>
       <Welcome>Cześć! Nazywam się</Welcome>
       <NavInfo>
-        Użyj strzałek lub kropek do nawigacji po witrynie
+        {infoContent}
         <img src={RightArrow} alt="" />
       </NavInfo>
     </SectionContainer>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 
 import Triangle from "../Elements/Triangle";
+import { device } from "../../GlobalStyles";
 
 const COLORS = ["rgb(255, 219, 74)", "rgb(60, 60, 60)"];
 /**
