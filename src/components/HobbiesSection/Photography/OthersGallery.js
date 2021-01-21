@@ -18,6 +18,12 @@ import styled from "styled-components";
 import SubSectionContainer from "../SubSectionContainer";
 import Gallery from "./Gallery";
 
+/**
+ * functional React component - renders gallery of images
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const OthersGallery = () => {
   const list = [
     { img: img01, desc: "Góry Opawskie" },

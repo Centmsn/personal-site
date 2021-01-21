@@ -16,7 +16,10 @@ const positionEnum = {
 };
 
 /**
- * Renders triangle shape
+ * functional React component - renders triangle shape
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const Triangle = forwardRef((props, ref) => {
   let style;

@@ -11,6 +11,12 @@ import { device } from "../../../GlobalStyles";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+/**
+ * functional React component - a container for slides of WebDev
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const WebDevSlide = ({
   isVisible,
   title,

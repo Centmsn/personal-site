@@ -151,14 +151,17 @@ const InfoSection = ({ isVisible }) => {
 };
 
 const Wrapper = styled.div`
-  grid-area: 2/2/12/12;
+  grid-area: 1/1/12/11;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 
-  overflow-y: auto;
+  @media ${device.laptop} {
+    grid-area: 1/1/-1/-1;
+    overflow-y: auto;
+  }
 
   @media ${device.tablet} {
     grid-area: 1/1/-2/-1;
@@ -166,21 +169,16 @@ const Wrapper = styled.div`
 `;
 
 const Summary = styled.section`
-  grid-area: 2/1/12/4;
-
-  border-right: 4px solid ${({ theme }) => theme.colors.gray};
+  flex-basis: 30%;
 
   text-align: center;
   padding: 20px;
 
-  overflow-y: auto;
-
   @media ${device.laptop} {
-    grid-area: 1/1/-1/5;
   }
 
   @media ${device.tablet} {
-    grid-area: 1/1/-3/-1;
+    flex-basis: 100%;
 
     border: none;
   }
@@ -268,7 +266,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.section`
-  grid-area: 2/4/12/10;
+  flex-basis: 70%;
 
   text-align: justify;
   font-size: 1.25rem;
@@ -276,12 +274,8 @@ const Description = styled.section`
 
   overflow: auto;
 
-  @media ${device.laptop} {
-    grid-area: 1/5/-1/-1;
-  }
-
   @media ${device.tablet} {
-    grid-area: 8/1/-1/-1;
+    flex-basis: 100%;
   }
 `;
 

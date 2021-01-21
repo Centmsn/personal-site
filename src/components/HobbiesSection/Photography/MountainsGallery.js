@@ -34,6 +34,12 @@ import img30 from "../../../assets/mountains_gal_30.jpg";
 import Gallery from "./Gallery";
 import SubSectionContainer from "../SubSectionContainer";
 
+/**
+ * functional React component - renders gallery of images
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const MountainsGallery = () => {
   const images = [
     { img: img01, desc: "Olsztyn" },

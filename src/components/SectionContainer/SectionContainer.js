@@ -7,7 +7,10 @@ import { getRandomElement } from "../../utils";
 import { device } from "../../GlobalStyles";
 
 /**
- * Container for page sections
+ * functional React component - a container for page sections
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const SectionContainer = ({ children, isVisible = false }) => {
   const wrapperRef = useRef(null);

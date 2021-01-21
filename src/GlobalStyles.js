@@ -52,8 +52,11 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        max-width: 100vw;
-        max-height: 100vh;
+        width: 100vw;
+        max-width: 1920px;
+
+        height: 100vh;
+        max-height: 1080px;
 
         overflow: hidden;
     }

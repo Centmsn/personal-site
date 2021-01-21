@@ -11,7 +11,10 @@ import SubSectionContainer from "../SubSectionContainer";
 import WebDevSlide from "./WebDevSlide";
 
 /**
- * Renders WebDev section in Hobbies
+ * functional React component - renders webDev section
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const HobbiesWebDev = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,6 +40,7 @@ const HobbiesWebDev = () => {
     tl.to(learning[0].lastChild.lastChild, { scaleX: 1 }, "triggerLists");
     tl.to(learning[2].lastChild.lastChild, { scaleX: 1 }, "-=0.1");
     tl.to(learning[1].lastChild.lastChild, { scaleX: 1 });
+    tl.to(learning[3].lastChild.lastChild, { scaleX: 1 });
   }, []);
 
   const handleSlideChange = (direction) => {
@@ -85,6 +89,7 @@ const HobbiesWebDev = () => {
             Aktualnie uczę się także Web components - choć nie jest to mój
             priorytet, interesuję się także Node.js (zupełne podstawy).
           </small>
+          <small>Zacząłem także dokumentować kod za pomoca JSDoc.</small>
         </ListSection>
 
         <Summary>

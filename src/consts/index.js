@@ -124,4 +124,5 @@ export const LEARNING = [
   { title: "Jest", percent: 35 },
   { title: "Webpack", percent: 50 },
   { title: "Typescript", percent: 30 },
+  { title: "Pisanie czystego kodu :)", percent: 40 },
 ];

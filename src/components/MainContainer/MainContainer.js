@@ -7,8 +7,12 @@ import Triangle from "../Elements/Triangle";
 import { device } from "../../GlobalStyles";
 
 const COLORS = ["rgb(255, 219, 74)", "rgb(60, 60, 60)"];
+
 /**
- * A container for Section Components
+ * functional React component - main app container
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const MainContainer = ({ children, pageInfo }) => {
   const [currentColor, setCurrentColor] = useState(COLORS[0]);

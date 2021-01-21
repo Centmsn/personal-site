@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import { device } from "../../GlobalStyles";
 
 /**
- * Navigation dots - renders navigation dots on the bottom of the screen
+ * functional React component - naviation dots
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const Navigation = ({ sections, changeSection }) => {
   /**

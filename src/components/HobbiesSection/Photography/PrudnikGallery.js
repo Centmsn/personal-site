@@ -17,6 +17,12 @@ import img15 from "../../../assets/prudnik_gal_15.jpg";
 import SubSectionContainer from "../SubSectionContainer";
 import Gallery from "./Gallery";
 
+/**
+ * functional React component - renders gallery of images
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const PrudnikGallery = () => {
   const list = [
     { img: img01, desc: "Góry Opawskie" },

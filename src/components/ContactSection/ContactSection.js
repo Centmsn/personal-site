@@ -30,6 +30,12 @@ const MESSAGE_STATUS = {
   OK: 3,
 };
 
+/**
+ * functional React component - renders contant section on the screen
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const ContactSection = ({ isVisible }) => {
   const [status, setStatus] = useState(MESSAGE_STATUS.OK);
   const contactFormRef = useRef(null);
@@ -54,7 +60,7 @@ const ContactSection = ({ isVisible }) => {
       message: "",
     },
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (_, { resetForm }) => {
       setStatus(MESSAGE_STATUS.SENDING);
       emailjs
         .sendForm(SERVICE_ID, TEMPLATE_ID, contactFormRef.current, USER_ID)
@@ -204,14 +210,16 @@ const ContactSection = ({ isVisible }) => {
 };
 
 const Wrapper = styled.div`
-  grid-area: 2/2/12/12;
+  grid-area: 1/1/12/11;
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
-  overflow-y: auto;
+  @media ${device.laptop} {
+    overflow-y: auto;
+  }
 
   @media ${device.tablet} {
     grid-area: 1/1/-2/-1;

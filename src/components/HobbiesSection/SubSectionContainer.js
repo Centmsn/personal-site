@@ -6,6 +6,12 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 
+/**
+ * functional React component - a container for hobbies subSections
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const SubSectionContainer = ({ children, preventLoadingEffect = false }) => {
   const wrapperRef = useRef(null);
 

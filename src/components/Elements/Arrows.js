@@ -7,7 +7,10 @@ import styled from "styled-components";
 import { device } from "../../GlobalStyles";
 
 /**
- * Renders arrows in the bottom right corner
+ * functional React component - renders navigation arrows
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const Arrows = ({ changeSection, sections }) => {
   /**

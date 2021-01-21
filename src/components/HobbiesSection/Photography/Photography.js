@@ -7,6 +7,12 @@ import { Link } from "react-router-dom";
 
 import SubSectionContainer from "../SubSectionContainer";
 
+/**
+ * functional React component - renders gallery of images
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const HobbiesPhotography = () => {
   return (
     <SubSectionContainer>

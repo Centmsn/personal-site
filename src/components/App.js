@@ -45,6 +45,12 @@ const sections = [
   },
 ];
 
+/**
+ * functional React component - main app component, brings together all other components
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
+ */
 const App = () => {
   const [sectionVisibility, setSectionVisibility] = useState(sections);
   const [activeSection, setActiveSection] = useState(sections[0]);

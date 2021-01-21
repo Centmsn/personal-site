@@ -9,7 +9,12 @@ import { useState } from "react";
 import { SLIDE_CHANGE_ENUM } from "../../../consts";
 
 /**
- * Renders gallery on the screen, requires 12x12 grid to be displayed correctly
+ * functional React component - a container for gallery components - requires 12x12 grid
+ * be displayed properly
+ *
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const Gallery = ({ imgList = [] }) => {
   // TODO add buttons to change slide without closing

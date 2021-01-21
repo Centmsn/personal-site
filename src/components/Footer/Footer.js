@@ -34,7 +34,10 @@ const contactList = [
 ];
 
 /**
- * Renders Footer component on screen
+ * functional React component - renders footer section on the screen
+ * @function
+ * @param {Object} props - React props
+ * @returns {JSX.Element}
  */
 const Footer = ({ isVisible }) => {
   const ulRef = useRef(null);
@@ -43,13 +46,14 @@ const Footer = ({ isVisible }) => {
   useEffect(() => {
     if (isVisible) {
       const wrapper = footerWrapperRef.current;
+      const tl = gsap.timeline({ defaults: { duration: 0.4 } });
+      gsap.set(wrapper, { overflow: "hidden" });
 
-      gsap.to(wrapper.children, {
+      tl.to(wrapper.children, {
         stagger: 0.4,
-        duration: 0.4,
         delay: 1,
         y: 0,
-      });
+      }).to(wrapper, { overflow: "auto" });
     }
   }, [isVisible]);
 
