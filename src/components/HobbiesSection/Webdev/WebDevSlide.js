@@ -7,6 +7,7 @@ import snake from "../../../assets/snake.jpg";
 import todoapp from "../../../assets/todoapp.jpg";
 import weatherapp from "../../../assets/weatherapp.jpg";
 
+import { device } from "../../../GlobalStyles";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -121,6 +122,10 @@ const SlideSection = styled.section`
       0 0 0 8px ${({ theme }) => theme.colors.yellow};
 
     transition: 300ms;
+
+    @media ${device.laptop} {
+      width: 90%;
+    }
 
     &:hover {
       box-shadow: 0 0 0 2px rgba(60, 60, 60, 0.98),

@@ -109,113 +109,126 @@ const ContactSection = ({ isVisible }) => {
 
   return (
     <SectionContainer isVisible={isVisible}>
-      <Form
-        id="form"
-        onSubmit={formik.handleSubmit}
-        ref={contactFormRef}
-        onBlur={formik.handleBlur}
-      >
-        <FormSection>
-          <FormTitle>Napisz do mnie wiadomość</FormTitle>
-        </FormSection>
+      <Wrapper>
+        <Form
+          id="form"
+          onSubmit={formik.handleSubmit}
+          ref={contactFormRef}
+          onBlur={formik.handleBlur}
+        >
+          <FormSection>
+            <FormTitle>Napisz do mnie wiadomość</FormTitle>
+          </FormSection>
 
-        <FormSection>
-          <Input
-            type="text"
-            name="from_name"
-            id="from_name"
-            onChange={formik.handleChange}
-            value={formik.values.from_name}
-            placeholder="Jak Cię zwą?"
-          />
-          <FormTooltip
-            active={!!(formik.errors.from_name && formik.touched.from_name)}
-          >
-            {formik.errors.from_name}
-          </FormTooltip>
-        </FormSection>
-
-        <FormSection>
-          <Input
-            type="email"
-            name="reply_to"
-            id="reply_to"
-            onChange={formik.handleChange}
-            value={formik.values.reply_to}
-            placeholder="adres@email.com"
-          />
-          <FormTooltip
-            active={!!(formik.errors.reply_to && formik.touched.reply_to)}
-          >
-            {formik.errors.reply_to}
-          </FormTooltip>
-        </FormSection>
-
-        <FormSection>
-          <Input
-            type="text"
-            name="message"
-            id="message"
-            onChange={formik.handleChange}
-            value={formik.values.message}
-            placeholder="wiadomość..."
-            as="textarea"
-            style={{ height: "15rem" }}
-          ></Input>
-          <FormTooltip
-            active={!!(formik.errors.message && formik.touched.message)}
-          >
-            {formik.errors.message}
-          </FormTooltip>
-        </FormSection>
-
-        <FormSection>
-          <Button
-            type="submit"
-            id="button"
-            disabled={
-              status === MESSAGE_STATUS.SENDING &&
-              !Object.keys(formik.errors).length
-            }
-          >
-            {buttonText}
-            <img src={email_svg} alt="" />
-          </Button>
-        </FormSection>
-
-        <SendingFeedback error={status === MESSAGE_STATUS.ERROR}>
-          <span>
-            <FontAwesomeIcon
-              icon={
-                status === MESSAGE_STATUS.OK
-                  ? faCheckCircle
-                  : faExclamationTriangle
-              }
+          <FormSection>
+            <Input
+              type="text"
+              name="from_name"
+              id="from_name"
+              onChange={formik.handleChange}
+              value={formik.values.from_name}
+              placeholder="Jak Cię zwą?"
             />
-          </span>
-          <p>{feedback}</p>
-        </SendingFeedback>
-      </Form>
-      <Footer isVisible={isVisible} />
+            <FormTooltip
+              active={!!(formik.errors.from_name && formik.touched.from_name)}
+            >
+              {formik.errors.from_name}
+            </FormTooltip>
+          </FormSection>
+
+          <FormSection>
+            <Input
+              type="email"
+              name="reply_to"
+              id="reply_to"
+              onChange={formik.handleChange}
+              value={formik.values.reply_to}
+              placeholder="adres@email.com"
+            />
+            <FormTooltip
+              active={!!(formik.errors.reply_to && formik.touched.reply_to)}
+            >
+              {formik.errors.reply_to}
+            </FormTooltip>
+          </FormSection>
+
+          <FormSection>
+            <Input
+              type="text"
+              name="message"
+              id="message"
+              onChange={formik.handleChange}
+              value={formik.values.message}
+              placeholder="wiadomość..."
+              as="textarea"
+              style={{ height: "15rem" }}
+            ></Input>
+            <FormTooltip
+              active={!!(formik.errors.message && formik.touched.message)}
+            >
+              {formik.errors.message}
+            </FormTooltip>
+          </FormSection>
+
+          <FormSection>
+            <Button
+              type="submit"
+              id="button"
+              disabled={
+                status === MESSAGE_STATUS.SENDING &&
+                !Object.keys(formik.errors).length
+              }
+            >
+              {buttonText}
+              <img src={email_svg} alt="" />
+            </Button>
+          </FormSection>
+
+          <SendingFeedback error={status === MESSAGE_STATUS.ERROR}>
+            <span>
+              <FontAwesomeIcon
+                icon={
+                  status === MESSAGE_STATUS.OK
+                    ? faCheckCircle
+                    : faExclamationTriangle
+                }
+              />
+            </span>
+            <p>{feedback}</p>
+          </SendingFeedback>
+        </Form>
+        <Footer isVisible={isVisible} />
+      </Wrapper>
     </SectionContainer>
   );
 };
 
+const Wrapper = styled.div`
+  grid-area: 2/2/12/12;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow-y: auto;
+
+  @media ${device.tablet} {
+    grid-area: 1/1/-2/-1;
+  }
+`;
+
 const Form = styled.form`
+  flex-basis: 45%;
   position: relative;
-  grid-area: 2/2/11/6;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 
-  @media ${device.laptop} {
-    grid-area: 2/1/11/6;
-  }
-
   @media ${device.tablet} {
-    grid-area: 1/1/8/13;
+    flex-basis: 100%;
   }
 `;
 

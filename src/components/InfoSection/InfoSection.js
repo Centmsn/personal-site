@@ -74,78 +74,96 @@ const InfoSection = ({ isVisible }) => {
 
   return (
     <SectionContainer isVisible={isVisible}>
-      <Summary>
-        <img src={round_self2} alt="Autor" />
-        <h4>Co umiem?</h4>
-        <ul ref={skillListRef}>{renderBars()}</ul>
+      <Wrapper>
+        <Summary>
+          <img src={round_self2} alt="Autor" />
+          <h4>Co umiem?</h4>
+          <ul ref={skillListRef}>{renderBars()}</ul>
 
-        <small>Subiektywna ocena umiejętności</small>
-      </Summary>
+          <small>Subiektywna ocena umiejętności</small>
+        </Summary>
 
-      <Description>
-        <article>
-          <Title>Krótko o mnie</Title>
+        <Description>
+          <article>
+            <Title>Krótko o mnie</Title>
 
-          <p>
-            Informacje które znajdziesz poniżej dotyczą w większej części mojego
-            życia prywatnego niż zawodowego - jeżeli interesuje Cię tylko aspekt
-            zawodowy to odsyłam <a href="#/webdev">tutaj</a>
-          </p>
+            <p>
+              Informacje które znajdziesz poniżej dotyczą w większej części
+              mojego życia prywatnego niż zawodowego - jeżeli interesuje Cię
+              tylko aspekt zawodowy to odsyłam <a href="#/webdev">tutaj</a>
+            </p>
 
-          <p>
-            Jak już zapewne wiesz jestem Wojtek i pochodzę z Prudnika, choć
-            aktualnie mieszkam w Łodzi. W życiu kieruję się zasadą by robić to,
-            co daje przyjemność - w moim przypadku jest to ścieżka front-end
-            developera, jeżeli mowa o pracy, oraz taternika / alpinisty jeśli
-            chodzi o czas wolny. Wiąże się to z tym, że często bywam w górach, a
-            co za tym idzie, równie często trafiam, na jakiś ładny widok, coś co
-            jest ciekawe i staram się to uwiecznić - tak doszło w moim życiu do
-            narodzenia kolejnego hobby czyli fotografii. Co prawda w tej
-            dziedzinie jestem totalnym amatorem, nie posiadam nawet
-            profesjonalnego aparatu, więc nie spodziewaj się, że moje zdjęcią są
-            jakości tych z National Geographic &#9786;. Prawdę mówiąc nie znam
-            się nawet na ich obróbce, a na zgłębianie tajników tej sztukii po
-            prostu brakuje mi czasu.
-          </p>
+            <p>
+              Jak już zapewne wiesz jestem Wojtek i pochodzę z Prudnika, choć
+              aktualnie mieszkam w Łodzi. W życiu kieruję się zasadą by robić
+              to, co daje przyjemność - w moim przypadku jest to ścieżka
+              front-end developera, jeżeli mowa o pracy, oraz taternika /
+              alpinisty jeśli chodzi o czas wolny. Wiąże się to z tym, że często
+              bywam w górach, a co za tym idzie, równie często trafiam, na jakiś
+              ładny widok, coś co jest ciekawe i staram się to uwiecznić - tak
+              doszło w moim życiu do narodzenia kolejnego hobby czyli
+              fotografii. Co prawda w tej dziedzinie jestem totalnym amatorem,
+              nie posiadam nawet profesjonalnego aparatu, więc nie spodziewaj
+              się, że moje zdjęcią są jakości tych z National Geographic
+              &#9786;. Prawdę mówiąc nie znam się nawet na ich obróbce, a na
+              zgłębianie tajników tej sztukii po prostu brakuje mi czasu.
+            </p>
 
-          <p>
-            Uważam się za lokalnego patriotę. Tak, tak, wiem - nie mieszkam w
-            Prudniku, a się wymądrzam. Jednak ta decyzja jest podyktowana
-            wieloma czynnikami:
-          </p>
+            <p>
+              Uważam się za lokalnego patriotę. Tak, tak, wiem - nie mieszkam w
+              Prudniku, a się wymądrzam. Jednak ta decyzja jest podyktowana
+              wieloma czynnikami:
+            </p>
 
-          <ol>
-            <li>
-              Chęć rozwoju osobistego i zawodowego co znacznie łatwiejsze jest w
-              dużym mieście.
-            </li>
+            <ol>
+              <li>
+                Chęć rozwoju osobistego i zawodowego co znacznie łatwiejsze jest
+                w dużym mieście.
+              </li>
 
-            <li>
-              Bardzo trudno znaleźć w okolicy zatrudnienie które odpowiada mojej
-              pasji.
-            </li>
+              <li>
+                Bardzo trudno znaleźć w okolicy zatrudnienie które odpowiada
+                mojej pasji.
+              </li>
 
-            <li>
-              I na koniec - moja druga połówka jest z Łodzi... wiem, mało
-              obiektywny argument
-            </li>
-          </ol>
+              <li>
+                I na koniec - moja druga połówka jest z Łodzi... wiem, mało
+                obiektywny argument
+              </li>
+            </ol>
 
-          <p>
-            Wracając do mojego poczucia lokalnego patriotyzmu - dosyć często w
-            Prudniku bywam, uwielbiam jeździć na rowerze po okolicznych lasach i
-            górach, o każdej porze roku i w każdych warunkach. Zdjęcia z
-            niektórych przejażdżek znajdziesz <a href="#/photography">TUTAJ</a>.
-            Będzie mi bardzo miło jeśli rzucisz okiem, być może spodoba Ci się
-            na tyle, że zechesz Prudnik odwiedzić. Jeśli tak to koniecznie
-            zajrzyj do sklepy Google Play (Android) i pobierz aplikację Prudnik.
-            Możesz także napisać do mnie - chętnie odpowiem na Twoje pytania.
-          </p>
-        </article>
-      </Description>
+            <p>
+              Wracając do mojego poczucia lokalnego patriotyzmu - dosyć często w
+              Prudniku bywam, uwielbiam jeździć na rowerze po okolicznych lasach
+              i górach, o każdej porze roku i w każdych warunkach. Zdjęcia z
+              niektórych przejażdżek znajdziesz{" "}
+              <a href="#/photography">TUTAJ</a>. Będzie mi bardzo miło jeśli
+              rzucisz okiem, być może spodoba Ci się na tyle, że zechesz Prudnik
+              odwiedzić. Jeśli tak to koniecznie zajrzyj do sklepy Google Play
+              (Android) i pobierz aplikację Prudnik. Możesz także napisać do
+              mnie - chętnie odpowiem na Twoje pytania.
+            </p>
+          </article>
+        </Description>
+      </Wrapper>
     </SectionContainer>
   );
 };
+
+const Wrapper = styled.div`
+  grid-area: 2/2/12/12;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow-y: auto;
+
+  @media ${device.tablet} {
+    grid-area: 1/1/-2/-1;
+  }
+`;
 
 const Summary = styled.section`
   grid-area: 2/1/12/4;
@@ -264,8 +282,6 @@ const Description = styled.section`
 
   @media ${device.tablet} {
     grid-area: 8/1/-1/-1;
-
-    visibility: hidden;
   }
 `;
 

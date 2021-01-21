@@ -127,16 +127,10 @@ Footer.propTypes = {
 
 const FooterWrapper = styled.footer`
   position: relative;
-  grid-area: 2/7/11/10;
-
-  @media ${device.laptop} {
-    grid-area: 2/7/10/-1;
-  }
+  flex-basis: 45%;
 
   @media ${device.tablet} {
-    grid-area: 8/1/-2/-1;
-
-    overflow-y: auto;
+    flex-basis: 100%;
   }
 `;
 

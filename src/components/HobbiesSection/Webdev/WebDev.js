@@ -5,6 +5,7 @@ import gsap from "gsap";
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 
+import { device } from "../../../GlobalStyles";
 import { SLIDE_CHANGE_ENUM, SLIDES, LEARNED, LEARNING } from "../../../consts";
 import SubSectionContainer from "../SubSectionContainer";
 import WebDevSlide from "./WebDevSlide";
@@ -69,7 +70,7 @@ const HobbiesWebDev = () => {
     <SubSectionContainer>
       <StartSection isVisible={currentSlide === 0}>
         <ListSection>
-          <ListTitle>Co umiem?</ListTitle>
+          <h2>Co umiem?</h2>
           <ul ref={listLearnedRef}>{renderList(LEARNED)} </ul>
           <small>
             Do powyższej listy dopisać można jeszcze kilka mniejszych bibliotek:{" "}
@@ -78,7 +79,7 @@ const HobbiesWebDev = () => {
         </ListSection>
 
         <ListSection>
-          <ListTitle>Czego się uczę?</ListTitle>
+          <h2>Czego się uczę?</h2>
           <ul ref={listLearningRef}>{renderList(LEARNING)}</ul>
           <small>
             Aktualnie uczę się także Web components - choć nie jest to mój
@@ -194,6 +195,13 @@ const StartSection = styled.section`
 
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
 
+  @media ${device.laptop} {
+    margin-bottom: calc(100vh / 12);
+    grid-area: 1/2/-1/12;
+
+    overflow-y: scroll;
+  }
+
   small {
     color: ${({ theme }) => theme.colors.smokedWhite};
   }
@@ -201,18 +209,29 @@ const StartSection = styled.section`
 
 const ListSection = styled.section`
   flex-basis: 20%;
-`;
 
-const ListTitle = styled.h2``;
+  @media ${device.laptop} {
+    flex-basis: 100%;
+  }
+`;
 
 const Summary = styled.section`
   flex-basis: 47%;
+
+  @media ${device.laptop} {
+    flex-basis: 100%;
+  }
 
   section {
     margin-bottom: 1rem;
 
     display: flex;
     justify-content: space-around;
+  }
+
+  img {
+    width: 75%;
+    max-width: 500px;
   }
 
   h1 {

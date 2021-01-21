@@ -13,6 +13,9 @@ import { device } from "../../GlobalStyles";
 
 /**
  * Renders HobbiesSection on screen
+ *
+ * @param {object} props - React props
+ * @returns {JSX.Element}
  */
 const HobbiesSection = ({ isVisible = false }) => {
   const [firstRender, setFirstRender] = useState(true);
@@ -239,6 +242,18 @@ const StyledLink = styled(Link)`
     transform: translateX(0);
     opacity: 1;
   }
+`;
+
+const WebDev = styled(StyledLink)`
+  grid-area: "2/2/4/10";
+`;
+
+const Sport = styled(StyledLink)`
+  grid-area: "5/4/7/12";
+`;
+
+const Photography = styled(StyledLink)`
+  grid-area: "8/2/10/10";
 `;
 
 const CardTitle = styled.div`
