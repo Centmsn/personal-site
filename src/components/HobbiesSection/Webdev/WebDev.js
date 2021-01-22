@@ -89,7 +89,7 @@ const HobbiesWebDev = () => {
             Aktualnie uczę się także Web components - choć nie jest to mój
             priorytet, interesuję się także Node.js (zupełne podstawy).
           </small>
-          <small>Zacząłem także dokumentować kod za pomoca JSDoc.</small>
+          <small>Zacząłem także dokumentować kod za pomocą JSDoc.</small>
         </ListSection>
 
         <Summary>

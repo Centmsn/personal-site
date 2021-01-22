@@ -27,13 +27,13 @@ const sections = [
   },
   {
     name: "hobbies",
-    isVisible: false,
+    isVisible: true,
     desc: "Zainteresowania",
     component: <HobbiesSection />,
   },
   {
     name: "info",
-    isVisible: true,
+    isVisible: false,
     desc: "Omnie",
     component: <InfoSection />,
   },

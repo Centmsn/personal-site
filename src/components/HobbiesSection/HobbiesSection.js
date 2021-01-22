@@ -10,6 +10,7 @@ import { useRef, useEffect, useState } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
 import { device } from "../../GlobalStyles";
+import useWindowSize from "../../hooks/useWindowSize";
 
 /**
  * Renders HobbiesSection on screen
@@ -19,6 +20,7 @@ import { device } from "../../GlobalStyles";
  */
 const HobbiesSection = ({ isVisible = false }) => {
   const [firstRender, setFirstRender] = useState(true);
+  const { width } = useWindowSize();
 
   const webDevRef = useRef(null);
   const webDevBorderRef = useRef(null);
@@ -45,7 +47,7 @@ const HobbiesSection = ({ isVisible = false }) => {
       borderRef: webDevBorderRef,
       link: "webDev",
       img: webdev_photo,
-      area: "2/2/4/10",
+      area: width < 768 ? "1/1/4/-1" : "2/2/4/10",
     },
     {
       title: "Sport",
@@ -57,7 +59,7 @@ const HobbiesSection = ({ isVisible = false }) => {
       borderRef: sportBorderRef,
       link: "sport",
       img: sport_photo,
-      area: "5/4/7/12",
+      area: width < 768 ? "5/1/8/-1" : "5/4/7/12",
     },
     {
       title: "Fotografia",
@@ -70,7 +72,7 @@ const HobbiesSection = ({ isVisible = false }) => {
       borderRef: photographyBorderRef,
       link: "photography",
       img: photography_photo,
-      area: "8/2/10/10",
+      area: width < 768 ? "9/1/-2/-1" : "8/2/10/10",
     },
   ];
 
@@ -145,8 +147,8 @@ const HobbiesSection = ({ isVisible = false }) => {
     }
   }, [isVisible, firstRender]);
 
-  const renderCards = () => {
-    return cards.map((card) => (
+  const renderCards = () =>
+    cards.map((card) => (
       <StyledLink
         ref={card.ref}
         tabIndex="0"
@@ -165,7 +167,6 @@ const HobbiesSection = ({ isVisible = false }) => {
         <CardTitle>{card.title}</CardTitle>
       </StyledLink>
     ));
-  };
 
   return (
     <SectionContainer isVisible={isVisible}>
@@ -244,18 +245,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const WebDev = styled(StyledLink)`
-  grid-area: "2/2/4/10";
-`;
-
-const Sport = styled(StyledLink)`
-  grid-area: "5/4/7/12";
-`;
-
-const Photography = styled(StyledLink)`
-  grid-area: "8/2/10/10";
-`;
-
 const CardTitle = styled.div`
   position: absolute;
   bottom: calc(-2rem - 25px);
@@ -294,6 +283,10 @@ const SectionInfo = styled.aside`
 
   opacity: 0;
   padding: 0 5px;
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 const BorderContainer = styled.div`
@@ -357,6 +350,10 @@ const CardHolder = styled.div`
 
   transform: scaleY(0);
   transform-origin: bottom;
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 const CardHolder2 = styled.div`
@@ -365,6 +362,10 @@ const CardHolder2 = styled.div`
 
   transform: scaleX(0);
   transform-origin: left;
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 const CardHolder3 = styled.div`
@@ -373,6 +374,10 @@ const CardHolder3 = styled.div`
 
   transform: scaleY(0);
   transform-origin: bottom;
+
+  @media ${device.tablet} {
+    grid-area: 1/1/14/1;
+  }
 `;
 
 export default HobbiesSection;

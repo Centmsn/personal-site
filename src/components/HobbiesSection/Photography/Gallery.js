@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 import { SLIDE_CHANGE_ENUM } from "../../../consts";
+import { device } from "../../../GlobalStyles";
 
 /**
  * functional React component - a container for gallery components - requires 12x12 grid
@@ -17,7 +18,6 @@ import { SLIDE_CHANGE_ENUM } from "../../../consts";
  * @returns {JSX.Element}
  */
 const Gallery = ({ imgList = [] }) => {
-  // TODO add buttons to change slide without closing
   const [fullscreenVisible, setFullscreenVisible] = useState(false);
   const [currentImg, setCurrentImg] = useState(null);
 
@@ -219,6 +219,11 @@ const FullScreenImg = styled.div`
     width: auto;
 
     box-shadow: 0 0 0 4px white;
+
+    @media ${device.laptop} {
+      height: auto;
+      width: 90%;
+    }
   }
 `;
 

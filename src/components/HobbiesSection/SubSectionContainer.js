@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 
+import { device } from "../../GlobalStyles";
+
 /**
  * functional React component - a container for hobbies subSections
  * @function
@@ -63,6 +65,11 @@ const Wrapper = styled.div`
   transform: scale(
     ${({ preventLoadingEffect }) => (preventLoadingEffect ? 1 : 0)}
   );
+
+  @media ${device.tablet} {
+    overflow-y: auto;
+    padding: 1rem;
+  }
 `;
 
 const ContainerFooter = styled.div`
