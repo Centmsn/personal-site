@@ -1,11 +1,10 @@
 import RightArrow from "../../assets/right-arrow.svg";
 
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { useEffect, useState } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
-import { device } from "../../GlobalStyles";
+import { Title, SubTitle, NavInfo, Welcome } from "./styled";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const MOBILE_TEXT = "Użyj kropek do nawigacji po witrynie.";
 const DESKTOP_TEXT = "Użyj strzałek lub kropek do nawigacji po witrynie.";
@@ -14,41 +13,24 @@ const DESKTOP_TEXT = "Użyj strzałek lub kropek do nawigacji po witrynie.";
  * Header component - renders aplication header
  */
 const HeaderSection = ({ isVisible }) => {
-  const [infoContent, setInfoContent] = useState("");
+  const { width } = useWindowSize();
 
-  /**
-   * Sets proper state for mobile and desktop devices
-   *
-   * @return {undefined}
-   */
-  const handleInfoContent = () => {
-    const currentWidth = window.innerWidth;
-    if (currentWidth > 768) {
-      setInfoContent(DESKTOP_TEXT);
-    } else {
-      setInfoContent(MOBILE_TEXT);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleInfoContent);
-
-    return () => {
-      window.removeEventListener("resize", handleInfoContent);
-    };
-  }, []);
-
-  useEffect(() => {
-    handleInfoContent();
-  }, []);
+  const content = width > 768 ? DESKTOP_TEXT : MOBILE_TEXT;
 
   return (
     <SectionContainer isVisible={isVisible}>
       <Title>Wojciech Rygorowicz</Title>
-      <SubTitle>deweloper z Prudnika</SubTitle>
-      <Welcome>Cześć! Nazywam się</Welcome>
+
+      <SubTitle as="h2" offsetX={0.3} offsetY={0.5}>
+        deweloper z Prudnika
+      </SubTitle>
+
+      <Welcome as="h3" offsetX={0.3} offsetY={0.5}>
+        Cześć! Nazywam się
+      </Welcome>
+
       <NavInfo>
-        {infoContent}
+        {content}
         <img src={RightArrow} alt="" />
       </NavInfo>
     </SectionContainer>
@@ -61,76 +43,5 @@ HeaderSection.propTypes = {
    */
   isVisible: PropTypes.bool.isRequired,
 };
-
-const Title = styled.h1`
-  grid-area: 1/3/3/11;
-
-  font-size: 7rem;
-  text-align: center;
-
-  @media ${device.tablet} {
-    grid-area: 2/1/5/-2;
-  }
-
-  @media ${device.mobileL} {
-    grid-area: 2/1/5/-1;
-    line-height: 6rem;
-  }
-`;
-
-const SubTitle = styled.h2`
-  grid-area: 5/1/13/5;
-
-  font-size: 6rem;
-  writing-mode: vertical-rl;
-  text-decoration: underline;
-
-  color: ${({ theme }) => theme.colors.gray};
-  text-shadow: 0.3rem -0.6rem 0 ${({ theme }) => theme.colors.yellow};
-
-  @media ${device.mobileL} {
-    grid-area: 4/1/13/4;
-    font-size: 5rem;
-  }
-`;
-
-const Welcome = styled(SubTitle)`
-  grid-area: 1/1/3/3;
-
-  font-size: 2rem;
-  writing-mode: horizontal-tb;
-
-  padding: 15px;
-
-  @media ${device.mobileL} {
-    grid-area: 1/1/1/-1;
-    font-size: 3rem;
-  }
-`;
-
-const NavInfo = styled.section`
-  grid-area: 6/6/10/10;
-
-  font-size: 2.25rem;
-
-  @media ${device.tablet} {
-    grid-area: 6/4/10/12;
-    text-align: center;
-  }
-
-  img {
-    margin: 0 auto;
-    display: block;
-    height: 70%;
-
-    @media ${device.laptop} {
-      height: 85%;
-    }
-
-    @media ${device.mobilesL} {
-      height: 70%;
-    }
-  }
-`;
 
 export default HeaderSection;

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { device } from "../../GlobalStyles";
-
 /**
  * functional React component - naviation dots
  * @function

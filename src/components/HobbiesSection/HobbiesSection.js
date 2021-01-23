@@ -237,6 +237,10 @@ const StyledLink = styled(Link)`
 
     opacity: 0;
     transition: 300ms;
+
+    @media ${device.tablet} {
+      display: none;
+    }
   }
 
   &:hover&::after {

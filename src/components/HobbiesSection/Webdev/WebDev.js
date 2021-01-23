@@ -122,6 +122,7 @@ const HobbiesWebDev = () => {
             tworzyłem, na różnych etapach mojej nauki.
           </p>
 
+          <hr />
           <p>
             Udzielam się także na CodeWars oraz na Githubie, i tam również Cię
             zapraszam.
@@ -189,7 +190,7 @@ const HobbiesWebDev = () => {
 };
 
 const StartSection = styled.section`
-  grid-area: 2/2/12/12;
+  grid-area: 2/2/11/12;
 
   display: flex;
   flex-wrap: wrap;
@@ -199,6 +200,7 @@ const StartSection = styled.section`
   color: white;
 
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
+  overflow-y: auto;
 
   @media ${device.laptop} {
     margin-bottom: calc(100vh / 12);
@@ -213,7 +215,9 @@ const StartSection = styled.section`
 `;
 
 const ListSection = styled.section`
-  flex-basis: 20%;
+  flex-basis: 21%;
+
+  padding: 10px;
 
   @media ${device.laptop} {
     flex-basis: 100%;
@@ -222,6 +226,8 @@ const ListSection = styled.section`
 
 const Summary = styled.section`
   flex-basis: 47%;
+
+  padding: 10px;
 
   @media ${device.laptop} {
     flex-basis: 100%;

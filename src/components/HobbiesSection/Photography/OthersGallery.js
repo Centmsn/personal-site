@@ -26,20 +26,20 @@ import Gallery from "./Gallery";
  */
 const OthersGallery = () => {
   const list = [
-    { img: img01, desc: "Góry Opawskie" },
-    { img: img02, desc: "Las koło Prudnika" },
-    { img: img03, desc: "Las koło Prudnika" },
-    { img: img04, desc: "Las koło Prudnika" },
-    { img: img05, desc: "Dzięcioły w Wieszczynie" },
-    { img: img06, desc: "Maki w polu" },
-    { img: img07, desc: "Dożynki w Łące Prudnickiej" },
-    { img: img08, desc: "Prudnickie Lasy" },
-    { img: img09, desc: "Las we mgle" },
-    { img: img10, desc: "Wieczór w zamglonym lesie" },
-    { img: img11, desc: "Widok z Kopy Biskupiej" },
-    { img: img12, desc: "Kwiaty na Kopie Biskupiej" },
-    { img: img13, desc: "Albrechtice - koło Prudnika" },
-    { img: img14, desc: "Zachód koło klasztoru" },
+    { img: img01, desc: "Devin" },
+    { img: img02, desc: "Panorama Bratysławy" },
+    { img: img03, desc: "Parlament w Budapeszcie" },
+    { img: img04, desc: "Panorama Budapesztu" },
+    { img: img05, desc: "Praga - zachód słońca" },
+    { img: img06, desc: "Tihany - Węgry" },
+    { img: img07, desc: "Wiedeń - jarmarki świąteczne" },
+    { img: img08, desc: "Wilno - kościół św. Anny" },
+    { img: img09, desc: "Troki - Litwa" },
+    { img: img10, desc: "Skalne miasto - Czechy" },
+    { img: img11, desc: "Skalne miasto - Czechy" },
+    { img: img12, desc: "Skalne miasto - Czechy" },
+    { img: img13, desc: "Paryż" },
+    { img: img14, desc: "Polskie morze" },
   ];
 
   return (

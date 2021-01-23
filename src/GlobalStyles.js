@@ -10,7 +10,7 @@ const size = {
   desktop: "1600px",
 };
 
-export const device = {
+const device = {
   mobilesS: `(max-width: ${size.mobilesS})`,
   mobilesL: `(max-width: ${size.mobilesL})`,
   tablet: `(max-width: ${size.tablet})`,
@@ -19,7 +19,7 @@ export const device = {
   desktop: `(max-width: ${size.desktop})`,
 };
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
     * {
         margin: 0;
         padding: 0;
@@ -59,6 +59,21 @@ const GlobalStyles = createGlobalStyle`
         max-height: 1080px;
 
         overflow: hidden;
+
+
+    }
+
+    ::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.colors.yellow};
+        outline: 1px solid ${({ theme }) => theme.colors.lightGray};
     }
 
     a {
@@ -109,6 +124,12 @@ const GlobalStyles = createGlobalStyle`
             outline: none;
         }
     }
+
+    hr {
+        border: 1px solid ${({ theme }) => theme.colors.lightGray};
+        background-color: ${({ theme }) => theme.colors.gray}
+    }
 `;
 
+export { device };
 export default GlobalStyles;

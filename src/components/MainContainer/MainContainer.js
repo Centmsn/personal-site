@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 
 import Triangle from "../Elements/Triangle";
+import { COLORS } from "../../consts";
 import { device } from "../../GlobalStyles";
-
-const COLORS = ["rgb(255, 219, 74)", "rgb(60, 60, 60)"];
 
 /**
  * functional React component - main app container
@@ -38,7 +37,7 @@ const MainContainer = ({ children, pageInfo }) => {
   return (
     <Wrapper>
       {children}
-      <Triangle color={"rgb(255, 219, 74)"} position="bottom-right" />
+      <Triangle color={COLORS[0]} position="bottom-right" />
       <Triangle
         color={currentColor}
         position="top-right"
@@ -73,6 +72,10 @@ const PageInfo = styled.div`
   font-size: 2rem;
   writing-mode: vertical-rl;
   color: transparent;
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 export default MainContainer;

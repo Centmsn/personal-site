@@ -3,10 +3,16 @@
  * @readonly
  * @enum { number }
  */
-export const SLIDE_CHANGE_ENUM = {
+const SLIDE_CHANGE_ENUM = {
   NEXT: 1,
   PREV: -1,
 };
+
+/**
+ * main page theme
+ * @readonly
+ */
+const COLORS = ["rgb(255, 219, 74)", "rgb(60, 60, 60)"];
 
 /**
  * WebDev slides content
@@ -21,7 +27,7 @@ export const SLIDE_CHANGE_ENUM = {
  * }}
  * @readonly
  */
-export const SLIDES = [
+const SLIDES = [
   {
     imgLink: "boxshadowGenerator",
     imgDesc: "BoxShadow - generator",
@@ -102,7 +108,7 @@ export const SLIDES = [
  * @type {{title: string, percent: number}}
  * @readonly
  */
-export const LEARNED = [
+const LEARNED = [
   { title: "Javascript", percent: 65 },
   { title: "HTML", percent: 60 },
   { title: "CSS/SASS", percent: 80 },
@@ -120,9 +126,11 @@ export const LEARNED = [
  * @type {{title: string, percent: number}}
  * @readonly
  */
-export const LEARNING = [
+const LEARNING = [
   { title: "Jest", percent: 35 },
   { title: "Webpack", percent: 50 },
   { title: "Typescript", percent: 30 },
   { title: "Pisanie czystego kodu :)", percent: 40 },
 ];
+
+export { COLORS, LEARNING, LEARNED, SLIDES, SLIDE_CHANGE_ENUM };

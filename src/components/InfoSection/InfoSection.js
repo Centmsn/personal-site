@@ -86,63 +86,58 @@ const InfoSection = ({ isVisible }) => {
         <Description>
           <article>
             <Title>Krótko o mnie</Title>
-
             <p>
               Informacje które znajdziesz poniżej dotyczą w większej części
               mojego życia prywatnego niż zawodowego - jeżeli interesuje Cię
               tylko aspekt zawodowy to odsyłam <a href="#/webdev">tutaj</a>
             </p>
-
+            <br />
+            <hr />
+            <br />
             <p>
               Jak już zapewne wiesz jestem Wojtek i pochodzę z Prudnika, choć
               aktualnie mieszkam w Łodzi. W życiu kieruję się zasadą by robić
-              to, co daje przyjemność - w moim przypadku jest to ścieżka
-              front-end developera, jeżeli mowa o pracy, oraz taternika /
-              alpinisty jeśli chodzi o czas wolny. Wiąże się to z tym, że często
-              bywam w górach, a co za tym idzie, równie często trafiam, na jakiś
-              ładny widok, coś co jest ciekawe i staram się to uwiecznić - tak
-              doszło w moim życiu do narodzenia kolejnego hobby czyli
-              fotografii. Co prawda w tej dziedzinie jestem totalnym amatorem,
-              nie posiadam nawet profesjonalnego aparatu, więc nie spodziewaj
-              się, że moje zdjęcią są jakości tych z National Geographic
-              &#9786;. Prawdę mówiąc nie znam się nawet na ich obróbce, a na
-              zgłębianie tajników tej sztukii po prostu brakuje mi czasu.
+              to, co się kocha i co sprawa nam przyjemność - w moim przypadku
+              jest to ścieżka front-end developera (choć do tej pory nie
+              pracowałem w tej branży "na pełen etat"), jeżeli mowa o pracy,
+              oraz taternika / alpinisty jeśli chodzi o czas wolny. Wiąże się to
+              z tym, że często bywam w górach, a co za tym idzie, równie często
+              trafiam, na piękne widoki, lub po prostu coś co jest ciekawe i
+              staram się to uwiecznić - tak doszło w moim życiu do narodzenia
+              kolejnego hobby czyli fotografii. Co prawda w tej dziedzinie
+              jestem totalnym amatorem, nie posiadam nawet profesjonalnego
+              aparatu, więc nie spodziewaj się, że moje zdjęcią są jakości tych
+              z National Geographic &#9786;. Prawdę mówiąc nie znam się nawet na
+              ich obróbce, a na zgłębianie tajników tej sztukii po prostu
+              brakuje mi czasu.
             </p>
+
+            <br />
 
             <p>
-              Uważam się za lokalnego patriotę. Tak, tak, wiem - nie mieszkam w
-              Prudniku, a się wymądrzam. Jednak ta decyzja jest podyktowana
-              wieloma czynnikami:
+              Większość dnia spędzam przy komputerze - pisząc kod lub ucząc się
+              czegoś nowego, a kiedy tylko mam czas dla siebie wyjeżdżam z
+              miasta (zazwyczaj w góry, lub inny skalisty teren).
             </p>
 
-            <ol>
-              <li>
-                Chęć rozwoju osobistego i zawodowego co znacznie łatwiejsze jest
-                w dużym mieście.
-              </li>
-
-              <li>
-                Bardzo trudno znaleźć w okolicy zatrudnienie które odpowiada
-                mojej pasji.
-              </li>
-
-              <li>
-                I na koniec - moja druga połówka jest z Łodzi... wiem, mało
-                obiektywny argument
-              </li>
-            </ol>
+            <br />
 
             <p>
-              Wracając do mojego poczucia lokalnego patriotyzmu - dosyć często w
-              Prudniku bywam, uwielbiam jeździć na rowerze po okolicznych lasach
-              i górach, o każdej porze roku i w każdych warunkach. Zdjęcia z
-              niektórych przejażdżek znajdziesz{" "}
-              <a href="#/photography">TUTAJ</a>. Będzie mi bardzo miło jeśli
-              rzucisz okiem, być może spodoba Ci się na tyle, że zechesz Prudnik
-              odwiedzić. Jeśli tak to koniecznie zajrzyj do sklepy Google Play
-              (Android) i pobierz aplikację Prudnik. Możesz także napisać do
-              mnie - chętnie odpowiem na Twoje pytania.
+              Jestem lokalnym patriotą (choć aktulnie mieszkam poza swoją małą
+              ojczyzną). Zawsze przyjeżdżam do Prunika z uśmiechem na twarzy, a
+              będąc na miejscu, długie godziny spędzam jeżdżąc po okolicznych
+              lasach na rowerze.
             </p>
+
+            <br />
+
+            <p>
+              Jeżeli nie widziałeś / nie widziałaś jeszcze moich zdjęc to
+              zapraszam do ich obejrzenia. Znajdziesz je{" "}
+              <a href="#/photography">tutaj</a>.
+            </p>
+
+            <small>Sekcja niepełna, opis będzie rozwijany / modyfikowany</small>
           </article>
         </Description>
       </Wrapper>
@@ -158,6 +153,8 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: stretch;
 
+  overflow-y: auto;
+
   @media ${device.laptop} {
     grid-area: 1/1/-1/-1;
     overflow-y: auto;
@@ -172,10 +169,7 @@ const Summary = styled.section`
   flex-basis: 30%;
 
   text-align: center;
-  padding: 20px;
-
-  @media ${device.laptop} {
-  }
+  padding: 1rem;
 
   @media ${device.tablet} {
     flex-basis: 100%;
@@ -263,6 +257,9 @@ const InnerBar = styled.div`
 const Title = styled.h1`
   text-align: center;
   font-size: 5rem;
+
+  color: ${({ theme }) => theme.colors.gray};
+  text-shadow: 4px 4px 0 ${({ theme }) => theme.colors.yellow};
 `;
 
 const Description = styled.section`
@@ -272,7 +269,7 @@ const Description = styled.section`
   font-size: 1.25rem;
   padding: 1rem;
 
-  overflow: auto;
+  overflow-y: auto;
 
   @media ${device.tablet} {
     flex-basis: 100%;
