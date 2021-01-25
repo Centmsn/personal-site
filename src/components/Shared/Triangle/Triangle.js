@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { device } from "../../GlobalStyles";
+import { Shape } from "./styled";
 
 /**
  * @enum {string}
@@ -72,16 +71,5 @@ Triangle.propTypes = {
     "top-left",
   ]).isRequired,
 };
-
-const Shape = styled.div`
-  position: absolute;
-
-  width: 0;
-  height: 0;
-
-  @media ${device.laptop} {
-    display: none;
-  }
-`;
 
 export default Triangle;

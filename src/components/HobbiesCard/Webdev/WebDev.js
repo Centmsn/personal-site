@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { device } from "../../../GlobalStyles";
 import { SLIDE_CHANGE_ENUM, SLIDES, LEARNED, LEARNING } from "../../../consts";
-import SubSectionContainer from "../SubSectionContainer";
+import SubContainer from "../../Shared/SubContainer/SubContainer";
 import WebDevSlide from "./WebDevSlide";
 
 /**
@@ -71,7 +71,7 @@ const HobbiesWebDev = () => {
   };
 
   return (
-    <SubSectionContainer>
+    <SubContainer>
       <StartSection isVisible={currentSlide === 0}>
         <ListSection>
           <h2>Co umiem?</h2>
@@ -185,7 +185,7 @@ const HobbiesWebDev = () => {
       >
         <FontAwesomeIcon icon={faCaretRight} />
       </RightArrow>
-    </SubSectionContainer>
+    </SubContainer>
   );
 };
 

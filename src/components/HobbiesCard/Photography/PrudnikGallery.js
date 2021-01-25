@@ -14,8 +14,8 @@ import img13 from "../../../assets/prudnik_gal_13.jpg";
 import img14 from "../../../assets/prudnik_gal_14.jpg";
 import img15 from "../../../assets/prudnik_gal_15.jpg";
 
-import SubSectionContainer from "../SubSectionContainer";
-import Gallery from "./Gallery";
+import SubContainer from "../../Shared/SubContainer/SubContainer";
+import Gallery from "../../Shared/Gallery/Gallery";
 
 /**
  * functional React component - renders gallery of images
@@ -43,9 +43,9 @@ const PrudnikGallery = () => {
   ];
 
   return (
-    <SubSectionContainer preventLoadingEffect={true}>
+    <SubContainer preventLoadingEffect={true}>
       <Gallery imgList={list} />
-    </SubSectionContainer>
+    </SubContainer>
   );
 };
 

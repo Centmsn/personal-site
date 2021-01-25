@@ -1,10 +1,9 @@
 import gsap from "gsap";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { useEffect, useRef } from "react";
 
 import { getRandomElement } from "../../utils";
-import { device } from "../../GlobalStyles";
+import { Wrapper } from "./styled";
 
 /**
  * functional React component - a container for page sections
@@ -46,23 +45,5 @@ SectionContainer.propTypes = {
    */
   isVisible: PropTypes.bool.isRequired,
 };
-
-const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-
-  @media ${device.laptop} {
-    grid-auto-flow: row;
-
-    padding: 1rem;
-
-    overflow-y: auto;
-  }
-`;
 
 export default SectionContainer;

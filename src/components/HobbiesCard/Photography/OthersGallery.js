@@ -13,10 +13,8 @@ import img12 from "../../../assets/others_gal_12.jpg";
 import img13 from "../../../assets/others_gal_13.JPG";
 import img14 from "../../../assets/others_gal_14.jpg";
 
-import styled from "styled-components";
-
-import SubSectionContainer from "../SubSectionContainer";
-import Gallery from "./Gallery";
+import SubContainer from "../../Shared/SubContainer/SubContainer";
+import Gallery from "../../Shared/Gallery/Gallery";
 
 /**
  * functional React component - renders gallery of images
@@ -43,9 +41,9 @@ const OthersGallery = () => {
   ];
 
   return (
-    <SubSectionContainer preventLoadingEffect={true}>
+    <SubContainer preventLoadingEffect={true}>
       <Gallery imgList={list} />
-    </SubSectionContainer>
+    </SubContainer>
   );
 };
 

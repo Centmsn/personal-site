@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
 
-import SubSectionContainer from "../SubSectionContainer";
+import SubContainer from "../../Shared/SubContainer/SubContainer";
 
 const HobbiesSport = () => {
-  return <SubSectionContainer></SubSectionContainer>;
+  return <SubContainer></SubContainer>;
 };
 
 export default HobbiesSport;

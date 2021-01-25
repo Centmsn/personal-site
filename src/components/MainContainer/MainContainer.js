@@ -1,11 +1,10 @@
 import gsap from "gsap";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 
-import Triangle from "../Elements/Triangle";
+import Triangle from "../Shared/Triangle/Triangle";
+import { Wrapper, PageInfo } from "./styled";
 import { COLORS } from "../../consts";
-import { device } from "../../GlobalStyles";
 
 /**
  * functional React component - main app container
@@ -54,28 +53,5 @@ MainContainer.propTypes = {
    */
   pageInfo: PropTypes.string,
 };
-
-const Wrapper = styled.div`
-  position: relative;
-
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
-`;
-
-const PageInfo = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 0;
-
-  font-size: 2rem;
-  writing-mode: vertical-rl;
-  color: transparent;
-
-  @media ${device.tablet} {
-    display: none;
-  }
-`;
 
 export default MainContainer;

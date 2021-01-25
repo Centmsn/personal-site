@@ -10,7 +10,8 @@ const MOBILE_TEXT = "Użyj kropek do nawigacji po witrynie.";
 const DESKTOP_TEXT = "Użyj strzałek lub kropek do nawigacji po witrynie.";
 
 /**
- * Header component - renders aplication header
+ * React functional component - renders header section on the screen
+ * @returns {JSX.Element}
  */
 const HeaderSection = ({ isVisible }) => {
   const { width } = useWindowSize();

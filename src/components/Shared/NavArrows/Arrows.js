@@ -2,9 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
-import { device } from "../../GlobalStyles";
+import { Wrapper, Icon } from "./styled";
 
 /**
  * functional React component - renders navigation arrows
@@ -73,39 +72,5 @@ Arrows.propTypes = {
     PropTypes.shape({ name: PropTypes.string, isVisible: PropTypes.bool })
   ).isRequired,
 };
-
-const Wrapper = styled.div`
-  z-index: 999;
-  position: absolute;
-  bottom: 0;
-  right: 10px;
-  width: 6rem;
-
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 6rem;
-
-  color: ${({ theme }) => theme.colors.gray};
-
-  @media ${device.tablet} {
-    display: none;
-  }
-`;
-
-const Icon = styled.div`
-  cursor: pointer;
-  transition: 300ms;
-
-  &:hover {
-    color: white;
-
-    transform: scale(1.2);
-  }
-
-  &:focus {
-    outline: none;
-    color: ${({ theme }) => theme.colors.lightGray};
-  }
-`;
 
 export default Arrows;

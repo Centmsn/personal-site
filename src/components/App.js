@@ -1,22 +1,22 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { useState } from "react";
 
-import Arrows from "./Elements/Arrows";
+import Arrows from "./Shared/NavArrows/Arrows";
 import ContactSection from "./ContactSection/ContactSection";
 import GlobalStyles from "../GlobalStyles";
 import HeaderSection from "./HeaderSection/HeaderSection";
 import HobbiesSection from "./HobbiesSection/HobbiesSection";
-import HobbiesPhotography from "./HobbiesSection/Photography/Photography";
-import HobbiesSport from "./HobbiesSection/Sport/Sport";
-import HobbiesWebDev from "./HobbiesSection/Webdev/WebDev";
+import HobbiesPhotography from "./HobbiesCard/Photography/Photography";
+import HobbiesSport from "./HobbiesCard/Sport/Sport";
+import HobbiesWebDev from "./HobbiesCard/Webdev/WebDev";
 import InfoSection from "./InfoSection/InfoSection";
 import MainContainer from "./MainContainer/MainContainer";
 import Navigation from "./Navigation/Navigation";
 import ThemeProvider from "../context/ThemeContext";
 
-import MountainsGallery from "./HobbiesSection/Photography/MountainsGallery";
-import PrudnikGallery from "./HobbiesSection/Photography/PrudnikGallery";
-import OthersGallery from "./HobbiesSection/Photography/OthersGallery";
+import MountainsGallery from "./HobbiesCard/Photography/MountainsGallery";
+import PrudnikGallery from "./HobbiesCard/Photography/PrudnikGallery";
+import OthersGallery from "./HobbiesCard/Photography/OthersGallery";
 
 const sections = [
   {

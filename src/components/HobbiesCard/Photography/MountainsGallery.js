@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 import img01 from "../../../assets/mountains_gal_01.jpg";
 import img02 from "../../../assets/mountains_gal_02.jpg";
 import img03 from "../../../assets/mountains_gal_03.jpg";
@@ -31,8 +29,8 @@ import img28 from "../../../assets/mountains_gal_28.JPG";
 import img29 from "../../../assets/mountains_gal_29.JPG";
 import img30 from "../../../assets/mountains_gal_30.jpg";
 
-import Gallery from "./Gallery";
-import SubSectionContainer from "../SubSectionContainer";
+import Gallery from "../../Shared/Gallery/Gallery";
+import SubContainer from "../../Shared/SubContainer/SubContainer";
 
 /**
  * functional React component - renders gallery of images
@@ -74,9 +72,9 @@ const MountainsGallery = () => {
     { img: img30, desc: "szczyt" },
   ];
   return (
-    <SubSectionContainer preventLoadingEffect={true}>
+    <SubContainer preventLoadingEffect={true}>
       <Gallery imgList={images}></Gallery>
-    </SubSectionContainer>
+    </SubContainer>
   );
 };
 

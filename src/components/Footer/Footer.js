@@ -4,11 +4,10 @@ import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
-import { device } from "../../GlobalStyles";
+import { FooterSection, FooterWrapper, SectionTitle } from "./styled";
 
 const contactList = [
   { icon: faMapMarkedAlt, desc: "Łódź / Warszawa" },
@@ -128,41 +127,5 @@ Footer.propTypes = {
    */
   isVisible: PropTypes.bool.isRequired,
 };
-
-const FooterWrapper = styled.footer`
-  position: relative;
-  flex-basis: 45%;
-
-  @media ${device.tablet} {
-    flex-basis: 100%;
-  }
-`;
-
-const FooterSection = styled.footer`
-  position: relative;
-  transform: translateY(100vh);
-
-  font-size: 1.25rem;
-
-  p {
-    text-align: justify;
-  }
-
-  span {
-    margin-right: 5px;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  margin: 15px 0;
-
-  border-right: 4px solid ${({ theme }) => theme.colors.yellow};
-
-  text-align: center;
-  text-shadow: none;
-
-  color: white;
-  background-color: ${({ theme }) => theme.colors.gray};
-`;
 
 export default Footer;

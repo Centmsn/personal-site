@@ -5,7 +5,7 @@ import others_card from "../../../assets/others_card.jpg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import SubSectionContainer from "../SubSectionContainer";
+import SubContainer from "../../Shared/SubContainer/SubContainer";
 import { device } from "../../../GlobalStyles";
 
 /**
@@ -16,7 +16,7 @@ import { device } from "../../../GlobalStyles";
  */
 const HobbiesPhotography = () => {
   return (
-    <SubSectionContainer>
+    <SubContainer preventLoadingEffect={true}>
       <MountainsCard content="Góry">
         <img src={mountains_card} alt="" />
         <StyledLink to="/photography/mountains">Góry</StyledLink>
@@ -41,7 +41,7 @@ const HobbiesPhotography = () => {
           wahaj się ze mną skontaktować.
         </p>
       </Info>
-    </SubSectionContainer>
+    </SubContainer>
   );
 };
 
