@@ -65,15 +65,6 @@ const SLIDES = [
     codeLink: "https://github.com/Centmsn/weatherApp",
   },
   {
-    imgLink: "snake",
-    imgDesc: "gra - snake",
-    projectTitle: "Snake - gra",
-    projectDesc:
-      "znany wszystkim (głównie z telefonów Nokii) snake. Jest to typowy grid-game z możliwością dostosowania do własnych preferencji",
-    demoLink: "https://centmsn.github.io/snake-JS/",
-    codeLink: "https://github.com/Centmsn/snake-JS",
-  },
-  {
     imgLink: "checkers",
     imgDesc: "gra - warcaby",
     projectTitle: "Warcaby - gra",

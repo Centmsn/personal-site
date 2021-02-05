@@ -9,10 +9,11 @@ const InvertedTitle = styled.h1`
 `;
 
 const Title = styled.h1`
-  grid-area: 1/3/3/11;
+  /* grid-area: 1/3/3/11; */
+  grid-area: 3/2/3/11;
 
   font-size: 7rem;
-  text-align: center;
+  /* text-align: center; */
 
   @media ${device.tablet} {
     grid-area: 2/1/5/-2;
@@ -25,23 +26,25 @@ const Title = styled.h1`
 `;
 
 const SubTitle = styled(InvertedTitle)`
-  grid-area: 5/1/13/5;
+  /* grid-area: 5/1/13/5; */
+  grid-area: 4/2/5/11;
 
   font-size: 6rem;
-  writing-mode: vertical-rl;
-  text-decoration: underline;
+  /* writing-mode: vertical-rl; */
+  /* text-decoration: underline; */
 
   @media ${device.mobileL} {
-    grid-area: 4/1/13/4;
+    /* grid-area: 4/1/13/4; */
     font-size: 5rem;
   }
 `;
 
 const Welcome = styled(InvertedTitle)`
-  grid-area: 1/1/3/3;
+  grid-area: 1/2/3/11;
 
-  font-size: 2rem;
+  font-size: 5rem;
   writing-mode: horizontal-tb;
+  /* text-align: center; */
 
   padding: 15px;
 
@@ -52,13 +55,14 @@ const Welcome = styled(InvertedTitle)`
 `;
 
 const NavInfo = styled.section`
-  grid-area: 6/6/10/10;
-
+  /* grid-area: 6/2/10/10; */
+  grid-area: 1/1/-1/-1;
+  /* display: none; */
   font-size: 2.25rem;
 
   @media ${device.tablet} {
-    grid-area: 6/4/10/12;
-    text-align: center;
+    /* grid-area: 6/1/9/13; */
+    /* text-align: center; */
   }
 
   img {
@@ -70,7 +74,7 @@ const NavInfo = styled.section`
       height: 85%;
     }
 
-    @media ${device.mobilesL} {
+    @media ${device.mobileL} {
       height: 70%;
     }
   }

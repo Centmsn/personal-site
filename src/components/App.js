@@ -1,5 +1,5 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Arrows from "./Shared/NavArrows/Arrows";
 import ContactSection from "./ContactSection/ContactSection";
@@ -21,13 +21,13 @@ import OthersGallery from "./HobbiesCard/Photography/OthersGallery";
 const sections = [
   {
     name: "header",
-    isVisible: false,
+    isVisible: true,
     desc: "Home",
     component: <HeaderSection />,
   },
   {
     name: "hobbies",
-    isVisible: true,
+    isVisible: false,
     desc: "Zainteresowania",
     component: <HobbiesSection />,
   },
@@ -59,13 +59,13 @@ const App = () => {
    * handles section change
    * @param {string} slideName - section name
    */
-  const handleSlideChange = (slideName) => {
+  const handleSlideChange = slideName => {
     const newState = [...sections];
 
     for (let i = 0; i < sections.length; i++) {
       newState[i].isVisible = false;
     }
-    const active = newState.find((el) => el.name === slideName);
+    const active = newState.find(el => el.name === slideName);
     active.isVisible = true;
 
     setSectionVisibility(newState);

@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 // size for media queries
 const size = {
-  mobilesS: "320px",
-  mobilesL: "400px",
+  mobileS: "320px",
+  mobileL: "400px",
   tablet: "768px",
   laptop: "1024px",
   laptopL: "1440px",
@@ -11,8 +11,8 @@ const size = {
 };
 
 const device = {
-  mobilesS: `(max-width: ${size.mobilesS})`,
-  mobilesL: `(max-width: ${size.mobilesL})`,
+  mobileS: `(max-width: ${size.mobileS})`,
+  mobileL: `(max-width: ${size.mobileL})`,
   tablet: `(max-width: ${size.tablet})`,
   laptop: `(max-width: ${size.laptop})`,
   laptopL: `(max-width: ${size.laptopL})`,
@@ -46,7 +46,7 @@ export const GlobalStyles = createGlobalStyle`
             font-size: 10px;
         }
 
-        @media ${device.mobilesL} {
+        @media ${device.mobileL} {
             font-size: 9px;
         }
     }

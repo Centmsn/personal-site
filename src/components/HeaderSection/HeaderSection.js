@@ -1,38 +1,35 @@
-import RightArrow from "../../assets/right-arrow.svg";
-
 import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
 
 import SectionContainer from "../SectionContainer/SectionContainer";
+import Editor from "../Editor/Editor";
 import { Title, SubTitle, NavInfo, Welcome } from "./styled";
-import useWindowSize from "../../hooks/useWindowSize";
-
-const MOBILE_TEXT = "Użyj kropek do nawigacji po witrynie.";
-const DESKTOP_TEXT = "Użyj strzałek lub kropek do nawigacji po witrynie.";
 
 /**
  * React functional component - renders header section on the screen
  * @returns {JSX.Element}
  */
 const HeaderSection = ({ isVisible }) => {
-  const { width } = useWindowSize();
+  const titleRef = useRef(null);
 
-  const content = width > 768 ? DESKTOP_TEXT : MOBILE_TEXT;
+  useEffect(() => {
+    const title = titleRef.current;
+  }, []);
 
   return (
-    <SectionContainer isVisible={isVisible}>
-      <Title>Wojciech Rygorowicz</Title>
+    <SectionContainer isVisible={isVisible} paddingSize="0px">
+      {/* <Title ref={titleRef}>Wojciech Rygorowicz</Title>
 
-      <SubTitle as="h2" offsetX={0.3} offsetY={0.5}>
+      <SubTitle as="h2" offsetX={0} offsetY={0}>
         deweloper z Prudnika
       </SubTitle>
 
-      <Welcome as="h3" offsetX={0.3} offsetY={0.5}>
-        Cześć! Nazywam się
-      </Welcome>
+      <Welcome as="h3" offsetX={0} offsetY={0}>
+        Cześć! Jestem
+      </Welcome> */}
 
       <NavInfo>
-        {content}
-        <img src={RightArrow} alt="" />
+        <Editor />
       </NavInfo>
     </SectionContainer>
   );

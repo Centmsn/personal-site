@@ -43,11 +43,11 @@ const HobbiesWebDev = () => {
     tl.to(learning[3].lastChild.lastChild, { scaleX: 1 });
   }, []);
 
-  const handleSlideChange = (direction) => {
+  const handleSlideChange = direction => {
     if (direction === SLIDE_CHANGE_ENUM.NEXT && currentSlide < SLIDES.length) {
-      setCurrentSlide((prev) => prev + 1);
+      setCurrentSlide(prev => prev + 1);
     } else if (direction === SLIDE_CHANGE_ENUM.PREV && currentSlide > 0) {
-      setCurrentSlide((prev) => prev - 1);
+      setCurrentSlide(prev => prev - 1);
     }
   };
 
@@ -59,7 +59,7 @@ const HobbiesWebDev = () => {
    * @param {number} listElement[].percent - progress bar width
    * @return {Array}
    */
-  const renderList = (arr) => {
+  const renderList = arr => {
     return arr.map((el, i) => (
       <li key={i}>
         {el.title}
@@ -86,10 +86,10 @@ const HobbiesWebDev = () => {
           <h2>Czego się uczę?</h2>
           <ul ref={listLearningRef}>{renderList(LEARNING)}</ul>
           <small>
-            Aktualnie uczę się także Web components - choć nie jest to mój
-            priorytet, interesuję się także Node.js (zupełne podstawy).
+            Moim priorytetem jest aktualnie Jest, Webpack oraz ciągły rozwój w
+            React i czystym JS. Uczę się także Node, choć na ten moment są to
+            zupełne podstawy.
           </small>
-          <small>Zacząłem także dokumentować kod za pomocą JSDoc.</small>
         </ListSection>
 
         <Summary>
@@ -123,10 +123,7 @@ const HobbiesWebDev = () => {
           </p>
 
           <hr />
-          <p>
-            Udzielam się także na CodeWars oraz na Githubie, i tam również Cię
-            zapraszam.
-          </p>
+          <p>Więcej kodu mojego autorstwa znajdziesz w linkach poniżej.</p>
 
           <section>
             <a

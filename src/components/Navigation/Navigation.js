@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { Wrapper, NavDot } from "./styled";
+import { Wrapper, NavDot, Tooltip } from "./styled";
 
 /**
  * functional React component - naviation dots
@@ -37,7 +37,7 @@ const Navigation = ({ sections, changeSection }) => {
       return;
     }
 
-    return arr.map((section) => (
+    return arr.map(section => (
       <NavDot
         onClick={() => callback(section.name)}
         key={section.name}

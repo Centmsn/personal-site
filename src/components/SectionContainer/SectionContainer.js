@@ -11,7 +11,11 @@ import { Wrapper } from "./styled";
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const SectionContainer = ({ children, isVisible = false }) => {
+const SectionContainer = ({
+  children,
+  isVisible = false,
+  paddingSize = null,
+}) => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -36,7 +40,11 @@ const SectionContainer = ({ children, isVisible = false }) => {
     }
   }, [isVisible]);
 
-  return <Wrapper ref={wrapperRef}>{children}</Wrapper>;
+  return (
+    <Wrapper ref={wrapperRef} paddingSize={paddingSize || "1rem"}>
+      {children}
+    </Wrapper>
+  );
 };
 
 SectionContainer.propTypes = {
@@ -44,6 +52,7 @@ SectionContainer.propTypes = {
    * switches component visibility
    */
   isVisible: PropTypes.bool.isRequired,
+  paddingSize: PropTypes.number,
 };
 
 export default SectionContainer;

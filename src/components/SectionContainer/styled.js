@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 
+  transform: translate(-100vw);
+
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -16,7 +18,7 @@ const Wrapper = styled.div`
   @media ${device.laptop} {
     grid-auto-flow: row;
 
-    padding: 1rem;
+    padding: ${({ paddingSize }) => paddingSize};
 
     overflow-y: auto;
   }
