@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/personal-site/static/js/main.edf1f814.chunk.js",
-    "main.js.map": "/personal-site/static/js/main.edf1f814.chunk.js.map",
+    "main.js": "/personal-site/static/js/main.ca294ce9.chunk.js",
+    "main.js.map": "/personal-site/static/js/main.ca294ce9.chunk.js.map",
     "runtime-main.js": "/personal-site/static/js/runtime-main.2a7dfa4b.js",
     "runtime-main.js.map": "/personal-site/static/js/runtime-main.2a7dfa4b.js.map",
-    "static/js/2.3201b963.chunk.js": "/personal-site/static/js/2.3201b963.chunk.js",
-    "static/js/2.3201b963.chunk.js.map": "/personal-site/static/js/2.3201b963.chunk.js.map",
+    "static/js/2.35806e32.chunk.js": "/personal-site/static/js/2.35806e32.chunk.js",
+    "static/js/2.35806e32.chunk.js.map": "/personal-site/static/js/2.35806e32.chunk.js.map",
     "index.html": "/personal-site/index.html",
-    "static/js/2.3201b963.chunk.js.LICENSE.txt": "/personal-site/static/js/2.3201b963.chunk.js.LICENSE.txt",
+    "static/js/2.35806e32.chunk.js.LICENSE.txt": "/personal-site/static/js/2.35806e32.chunk.js.LICENSE.txt",
     "static/media/boxshadowGenerator.83900d76.jpg": "/personal-site/static/media/boxshadowGenerator.83900d76.jpg",
     "static/media/checkers.80e842a3.jpg": "/personal-site/static/media/checkers.80e842a3.jpg",
     "static/media/email.a7c36532.svg": "/personal-site/static/media/email.a7c36532.svg",
@@ -79,7 +79,6 @@
     "static/media/prudnik_gal_14.66426f64.jpg": "/personal-site/static/media/prudnik_gal_14.66426f64.jpg",
     "static/media/prudnik_gal_15.a14fb5df.jpg": "/personal-site/static/media/prudnik_gal_15.a14fb5df.jpg",
     "static/media/renowork.178f3e16.jpg": "/personal-site/static/media/renowork.178f3e16.jpg",
-    "static/media/right-arrow.fd16b5bc.svg": "/personal-site/static/media/right-arrow.fd16b5bc.svg",
     "static/media/round_self2.354595cc.jpg": "/personal-site/static/media/round_self2.354595cc.jpg",
     "static/media/snake.293834fc.jpg": "/personal-site/static/media/snake.293834fc.jpg",
     "static/media/todoapp.0d79cdf3.jpg": "/personal-site/static/media/todoapp.0d79cdf3.jpg",
@@ -87,7 +86,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.2a7dfa4b.js",
-    "static/js/2.3201b963.chunk.js",
-    "static/js/main.edf1f814.chunk.js"
+    "static/js/2.35806e32.chunk.js",
+    "static/js/main.ca294ce9.chunk.js"
   ]
 }
