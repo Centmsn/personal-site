@@ -122,7 +122,7 @@ const ContactSection = ({ isVisible }) => {
   }
 
   return (
-    <SectionContainer isVisible={isVisible}>
+    <SectionContainer isVisible={isVisible} paddingSize="0px">
       <Wrapper>
         <Form
           id="form"

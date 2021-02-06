@@ -78,7 +78,10 @@ const App = () => {
         <GlobalStyles />
         <Router>
           <MainContainer pageInfo={activeSection.desc}>
-            <HeaderSection isVisible={sectionVisibility[0].isVisible} />
+            <HeaderSection
+              isVisible={sectionVisibility[0].isVisible}
+              slideChange={handleSlideChange}
+            />
             <HobbiesSection isVisible={sectionVisibility[1].isVisible} />
             <InfoSection isVisible={sectionVisibility[2].isVisible} />
             <ContactSection isVisible={sectionVisibility[3].isVisible} />

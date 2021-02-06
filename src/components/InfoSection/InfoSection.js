@@ -62,7 +62,7 @@ const InfoSection = ({ isVisible }) => {
    * Renders skills bars on the screen
    */
   const renderBars = () => {
-    return bars.map((bar) => {
+    return bars.map(bar => {
       const skillBarElements = [];
 
       for (let i = 0; i < Math.floor(bar.percent / 5); i++) {
@@ -79,7 +79,7 @@ const InfoSection = ({ isVisible }) => {
   };
 
   return (
-    <SectionContainer isVisible={isVisible}>
+    <SectionContainer isVisible={isVisible} paddingSize="0px">
       <Wrapper>
         <Summary>
           <img src={round_self2} alt="Autor" />
@@ -135,15 +135,9 @@ const InfoSection = ({ isVisible }) => {
               lasach na rowerze.
             </p>
 
-            <br />
+            {/* <br />
 
-            <p>
-              Jeżeli nie widziałeś / nie widziałaś jeszcze moich zdjęc to
-              zapraszam do ich obejrzenia. Znajdziesz je{" "}
-              <a href="#/photography">tutaj</a>.
-            </p>
-
-            <small>Sekcja niepełna, opis będzie rozwijany / modyfikowany</small>
+            <small>Sekcja niepełna, opis będzie rozwijany / modyfikowany</small> */}
           </article>
         </Description>
       </Wrapper>

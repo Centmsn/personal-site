@@ -33,8 +33,8 @@ const Triangle = forwardRef((props, ref) => {
     style = {
       top: 0,
       right: 0,
-      borderTop: `18vw solid ${props.color}`,
-      borderLeft: `27vw solid transparent`,
+      borderTop: `12vw solid ${props.color}`,
+      borderLeft: `20vw solid transparent`,
     };
   } else if (props.position === positionEnum[4]) {
     style = {

@@ -13,11 +13,9 @@ const Wrapper = styled.div`
 
 const PageInfo = styled.div`
   position: absolute;
-  top: 10px;
-  right: 0;
+  right: 5px;
 
   font-size: 2rem;
-  writing-mode: vertical-rl;
   color: transparent;
 
   @media ${device.tablet} {

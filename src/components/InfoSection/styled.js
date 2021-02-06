@@ -10,15 +10,13 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: stretch;
 
-  overflow-y: auto;
-
   @media ${device.laptop} {
     grid-area: 1/1/-1/-1;
-    overflow-y: auto;
   }
 
   @media ${device.tablet} {
     grid-area: 1/1/-2/-1;
+    overflow-y: auto;
   }
 `;
 
@@ -127,6 +125,11 @@ const Description = styled.section`
   padding: 1rem;
 
   overflow-y: auto;
+
+  h1 {
+    line-height: 3rem;
+    margin-bottom: 2rem;
+  }
 
   @media ${device.tablet} {
     flex-basis: 100%;
