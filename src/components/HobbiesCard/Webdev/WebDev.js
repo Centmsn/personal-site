@@ -3,7 +3,7 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 import { device } from "../../../GlobalStyles";
 import { SLIDE_CHANGE_ENUM, SLIDES, LEARNED, LEARNING } from "../../../consts";
@@ -41,15 +41,38 @@ const HobbiesWebDev = () => {
     tl.to(learning[2].lastChild.lastChild, { scaleX: 1 }, "-=0.1");
     tl.to(learning[1].lastChild.lastChild, { scaleX: 1 });
     tl.to(learning[3].lastChild.lastChild, { scaleX: 1 });
+    tl.to(learning[4].lastChild.lastChild, { scaleX: 1 }, "-=0.3");
   }, []);
 
-  const handleSlideChange = direction => {
-    if (direction === SLIDE_CHANGE_ENUM.NEXT && currentSlide < SLIDES.length) {
-      setCurrentSlide(prev => prev + 1);
-    } else if (direction === SLIDE_CHANGE_ENUM.PREV && currentSlide > 0) {
-      setCurrentSlide(prev => prev - 1);
-    }
-  };
+  const handleSlideChange = useCallback(
+    direction => {
+      if (
+        direction === SLIDE_CHANGE_ENUM.NEXT &&
+        currentSlide < SLIDES.length
+      ) {
+        setCurrentSlide(prev => prev + 1);
+      } else if (direction === SLIDE_CHANGE_ENUM.PREV && currentSlide > 0) {
+        setCurrentSlide(prev => prev - 1);
+      }
+    },
+    [currentSlide]
+  );
+
+  useEffect(() => {
+    const listener = e => {
+      if (e.keyCode === 37) {
+        handleSlideChange(SLIDE_CHANGE_ENUM.PREV);
+      } else if (e.keyCode === 39) {
+        handleSlideChange(SLIDE_CHANGE_ENUM.NEXT);
+      }
+    };
+
+    document.addEventListener("keydown", listener);
+
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [handleSlideChange]);
 
   /**
    * Renders list elements on the screen

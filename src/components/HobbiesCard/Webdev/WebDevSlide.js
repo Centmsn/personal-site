@@ -149,26 +149,34 @@ const SectionLink = styled.a`
   font-size: 2rem;
   text-decoration: none;
 
-  color: ${({ theme }) => theme.colors.yellow};
+  border: 2px solid ${({ theme }) => theme.colors.yellow};
+  color: white;
+
+  padding: 5px;
+  transition: color 400ms;
 
   &::after {
     content: "";
     position: absolute;
-    right: 0;
-    bottom: 0;
+    z-index: -1;
     left: 0;
+    top: 0;
 
-    height: 2px;
-    transform: scaleX(0);
-    transform-origin: left;
+    width: 100%;
+    height: 100%;
 
     background-color: ${({ theme }) => theme.colors.yellow};
+    clip-path: circle(0 at bottom center);
 
-    transition: 300ms;
+    transition: clip-path 300ms linear;
   }
 
   &:hover::after {
-    transform: scale(1);
+    clip-path: circle(100% at bottom center);
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.gray};
   }
 `;
 

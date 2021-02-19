@@ -2,83 +2,238 @@ import styled from "styled-components";
 
 import { device } from "../../GlobalStyles";
 
-const InvertedTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.gray};
-  text-shadow: ${({ offsetX }) => offsetX + "rem"}
-    ${({ offsetY }) => offsetY + "rem"} 0 ${({ theme }) => theme.colors.yellow};
-`;
+export const Title = styled.div`
+  z-index: 3;
+  grid-area: 2/2/5/5;
 
-const Title = styled.h1`
-  /* grid-area: 1/3/3/11; */
-  grid-area: 1/2/3/11;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 
-  font-size: 7rem;
-  /* text-align: center; */
+  border-right: 4px solid ${({ theme }) => theme.colors.yellow};
+  border-bottom: 4px solid ${({ theme }) => theme.colors.yellow};
+
+  background-color: ${({ theme }) => theme.colors.gray};
+
+  padding: 0.5rem;
+
+  opacity: 0;
+
+  @media ${device.laptop} {
+    grid-area: 1/1/5/5;
+  }
 
   @media ${device.tablet} {
-    grid-area: 2/1/5/-2;
+    grid-area: 1/1/2/-1;
   }
 
-  @media ${device.mobileL} {
-    grid-area: 2/1/5/-1;
-    line-height: 6rem;
+  h1 {
+    font-size: 2rem;
+    display: inline;
   }
-`;
 
-const SubTitle = styled(InvertedTitle)`
-  /* grid-area: 5/1/13/5; */
-  grid-area: 2/1/-1/2;
+  h2 {
+    color: white;
+    font-size: 2rem;
+  }
 
-  font-size: 4rem;
-  writing-mode: vertical-rl;
-  /* text-decoration: underline; */
-
-  @media ${device.mobileL} {
-    /* grid-area: 4/1/13/4; */
-    font-size: 5rem;
+  span {
+    margin-right: 5px;
+    color: white;
   }
 `;
 
-const Welcome = styled(InvertedTitle)`
-  grid-area: 1/2/3/11;
+export const Map = styled.div`
+  z-index: 2;
+  grid-area: 4/4/8/7;
 
-  font-size: 5rem;
-  writing-mode: horizontal-tb;
-  /* text-align: center; */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
 
-  padding: 15px;
+  background-color: ${({ theme }) => theme.colors.yellow};
 
-  @media ${device.mobileL} {
-    grid-area: 1/1/1/-1;
-    font-size: 3rem;
+  padding: 0 1rem;
+
+  @media ${device.laptop} {
+    grid-area: 4/4/9/8;
+  }
+
+  @media ${device.tablet} {
+    grid-area: 4/1/8/-1;
+  }
+
+  h3 {
+    grid-area: 1/6/3/-1;
+    text-align: right;
+    color: ${({ theme }) => theme.colors.gray};
+    text-shadow: none;
+  }
+
+  button {
+    position: relative;
+    text-align: center;
+    border: 2px solid ${({ theme }) => theme.colors.gray};
+    background-color: ${({ theme }) => theme.colors.gray};
+    color: white;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: ${({ theme }) => theme.colors.yellow};
+      color: ${({ theme }) => theme.colors.gray};
+    }
+  }
+
+  button:nth-child(2) {
+    grid-area: 3/10/4/-1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: calc(-100% - 6px);
+      height: calc(100% + 4px);
+
+      border-left: 2px solid ${({ theme }) => theme.colors.gray};
+    }
+  }
+
+  button:nth-child(3) {
+    grid-area: 5/6/6/-1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 15%;
+      bottom: calc(-100% - 6px);
+      height: calc(100% + 4px);
+
+      border-left: 2px solid ${({ theme }) => theme.colors.gray};
+    }
+  }
+
+  button:nth-child(4) {
+    grid-area: 7/2/8/8;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 60%;
+      bottom: calc(-200% - 10px);
+      height: calc(200% + 8px);
+
+      border-left: 2px solid ${({ theme }) => theme.colors.gray};
+    }
+  }
+
+  button:nth-child(5) {
+    grid-area: 10/3/11/9;
   }
 `;
 
-const NavInfo = styled.section`
-  /* grid-area: 6/2/10/10; */
-  /* grid-area: 4/3/9/9; */
+export const Description = styled.div`
+  z-index: 4;
+  grid-area: 7/6/10/10;
 
-  /* display: none; */
+  font-size: 1.5rem;
+
+  border-left: 4px solid ${({ theme }) => theme.colors.yellow};
+  border-top: 4px solid ${({ theme }) => theme.colors.yellow};
+
+  color: white;
+  background-color: ${({ theme }) => theme.colors.gray};
+
+  padding: 0.5rem;
+
+  opacity: 0;
+
+  @media ${device.laptop} {
+    grid-area: 8/7/11/12;
+  }
+
+  @media ${device.tablet} {
+    grid-area: 8/1/-1/-1;
+
+    border-bottom: 4px solid ${({ theme }) => theme.colors.yellow};
+  }
+
+  p {
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+
+  span {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
+`;
+
+export const Info = styled.div`
+  position: relative;
+  grid-area: 2/6/5/11;
+
   font-size: 2.25rem;
 
-  @media ${device.tablet} {
-    /* grid-area: 6/1/9/13; */
-    /* text-align: center; */
+  border-left: 4px solid ${({ theme }) => theme.colors.yellow};
+  border-bottom: 4px solid ${({ theme }) => theme.colors.yellow};
+
+  background-color: ${({ theme }) => theme.colors.gray};
+  color: white;
+  padding: 1rem;
+
+  opacity: 0;
+
+  @media ${device.laptop} {
+    grid-area: 1/6/5/12;
   }
 
-  img {
-    margin: 0 auto;
-    display: block;
-    height: 70%;
+  @media ${device.tablet} {
+    grid-area: 2/1/4/-1;
+  }
 
-    @media ${device.laptop} {
-      height: 85%;
-    }
+  small {
+    position: absolute;
 
-    @media ${device.mobileL} {
-      height: 70%;
+    bottom: 0;
+    right: 0;
+    left: 30%;
+
+    font-size: 1rem;
+    text-align: center;
+
+    background-color: ${({ theme }) => theme.colors.yellow};
+
+    padding: 3px;
+
+    @media ${device.tablet} {
+      left: 0;
     }
+  }
+
+  a {
+    color: white;
   }
 `;
 
-export { InvertedTitle, SubTitle, Title, NavInfo, Welcome };
+export const Feedback = styled.div`
+  grid-area: 13/1/-1/3;
+
+  border-right: 4px solid ${({ theme }) => theme.colors.yellow};
+  background-color: ${({ theme }) => theme.colors.gray};
+
+  cursor: pointer;
+  transition: 300ms;
+
+  @media ${device.tablet} {
+    display: none;
+  }
+
+  &:hover {
+  }
+
+  small {
+    padding: 3px;
+    color: white;
+  }
+`;

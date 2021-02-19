@@ -1,5 +1,5 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Arrows from "./Shared/NavArrows/Arrows";
 import ContactSection from "./ContactSection/ContactSection";

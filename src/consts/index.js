@@ -51,7 +51,7 @@ const SLIDES = [
     imgDesc: "ToDo App",
     projectTitle: "ToDo App",
     projectDesc:
-      "klasyczna aplikacja toDo w nieco odświeżonym wydaniu z wykorzystaniem LocalStorage. Przy tworzeniu oprócz React użyłem także Redux, oraz Redux-form.",
+      "Nie mogło zabraknąc klasycznej aplikacji toDo w nieco odświeżonym wydaniu, z wykorzystaniem LocalStorage. Przy tworzeniu oprócz React użyłem także Redux, oraz Redux-form.",
     demoLink: "https://centmsn.github.io/ToDo-App/",
     codeLink: "https://github.com/Centmsn/ToDo-App",
   },
@@ -121,6 +121,7 @@ const LEARNING = [
   { title: "Jest", percent: 35 },
   { title: "Webpack", percent: 50 },
   { title: "Typescript", percent: 30 },
+  { title: "Node", percent: 20 },
   { title: "Pisanie czystego kodu :)", percent: 40 },
 ];
 
