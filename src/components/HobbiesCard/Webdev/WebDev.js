@@ -190,6 +190,7 @@ const HobbiesWebDev = () => {
         codeLink={SLIDES[currentSlide - 1]?.codeLink}
         demoLink={SLIDES[currentSlide - 1]?.demoLink}
         imgDesc={SLIDES[currentSlide - 1]?.imgDesc}
+        backendLink={SLIDES[currentSlide - 1]?.backendLink}
       />
 
       <LeftArrow

@@ -38,6 +38,16 @@ const SLIDES = [
     codeLink: "https://github.com/Centmsn/BoxShadow-generator",
   },
   {
+    imgLink: "todomern",
+    imgDesc: "Aplikacja ToDo",
+    projectTitle: "ToDo - MERN stack",
+    projectDesc:
+      "Klasyczna aplikacja ToDo, stworzona z użyciem MERN. Posiada możliwość zalogowania (z użyciem JWT), a zapisane notatki przechowuje w bazie danych. Weź proszę pod uwagę, że backend, jest hostowany na darmowej wersji Heroku, w związku z tym logowanie może chwilę potrwać. Proszę o cierpliwość :)",
+    demoLink: "https://centmsn.github.io/ToDo-mern/",
+    codeLink: "https://github.com/Centmsn/ToDo-mern",
+    backendLink: "https://github.com/Centmsn/ToDo-mern-backend",
+  },
+  {
     imgLink: "renowork",
     imgDesc: "RenoWork",
     projectTitle: "Reno|Work",

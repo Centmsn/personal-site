@@ -6,6 +6,7 @@ import renowork from "../../../assets/renowork.jpg";
 import snake from "../../../assets/snake.jpg";
 import todoapp from "../../../assets/todoapp.jpg";
 import weatherapp from "../../../assets/weatherapp.jpg";
+import todomern from "../../../assets/todomern.jpg";
 
 import { device } from "../../../GlobalStyles";
 import styled from "styled-components";
@@ -23,6 +24,7 @@ const WebDevSlide = ({
   description,
   imgLink,
   codeLink,
+  backendLink,
   demoLink,
   imgDesc,
 }) => {
@@ -35,6 +37,7 @@ const WebDevSlide = ({
     todoapp,
     weatherapp,
     renowork,
+    todomern,
   };
 
   return (
@@ -51,9 +54,16 @@ const WebDevSlide = ({
         <SectionLink href={demoLink} target="_blank" rel="noreferrer">
           Wersja demo
         </SectionLink>
+
         <SectionLink href={codeLink} target="_blank" rel="noreferrer">
           Pokaż kod
         </SectionLink>
+
+        {backendLink && (
+          <SectionLink href={backendLink} target="_blank" rel="noreferrer">
+            Kod - backend
+          </SectionLink>
+        )}
       </SlideSection>
     </Wrapper>
   );
