@@ -52,7 +52,7 @@ const SLIDES = [
     imgDesc: "RenoWork",
     projectTitle: "Reno|Work",
     projectDesc:
-      "Komercyjna strona internetowa wykonana dla firmy Reno|Work, przy użyciu HTML, SASS oraz czystego JavaScripta - przy tworzeniu strony wykorzystałem także Webpack oraz GSAP.",
+      "Komercyjna (statyczna) strona internetowa wykonana dla firmy Reno|Work, przy użyciu HTML, SASS oraz czystego JavaScripta - przy tworzeniu strony wykorzystałem także Webpack oraz GSAP.",
     demoLink: "http://www.renowork.pl/",
     codeLink: "https://github.com/Centmsn/Reno-work",
   },
@@ -114,10 +114,11 @@ const LEARNED = [
   { title: "HTML", percent: 60 },
   { title: "CSS/SASS", percent: 80 },
   { title: "React", percent: 65 },
+  { title: "Next.js", percent: 75 },
   { title: "Redux", percent: 60 },
   { title: "GSAP", percent: 70 },
   { title: "Formik i Yup", percent: 60 },
-  { title: "Styled-components", percent: 65 },
+  { title: "Styled-components", percent: 80 },
   { title: "Git i Github", percent: 50 },
 ];
 
@@ -128,11 +129,12 @@ const LEARNED = [
  * @readonly
  */
 const LEARNING = [
-  { title: "Jest", percent: 35 },
+  { title: "Jest", percent: 25 },
   { title: "Webpack", percent: 50 },
-  { title: "Typescript", percent: 30 },
-  { title: "Node", percent: 20 },
-  { title: "Pisanie czystego kodu :)", percent: 40 },
+  { title: "Typescript", percent: 25 },
+  { title: "Node", percent: 30 },
+  { title: "Express", percent: 40 },
+  { title: "Pisanie czystego kodu :)", percent: 45 },
 ];
 
 export { COLORS, LEARNING, LEARNED, SLIDES, SLIDE_CHANGE_ENUM };

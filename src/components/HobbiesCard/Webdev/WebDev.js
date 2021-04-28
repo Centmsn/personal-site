@@ -27,21 +27,23 @@ const HobbiesWebDev = () => {
 
     const tl = gsap.timeline({ defaults: { duration: 0.5 } });
 
-    tl.to(learned[0].lastChild.lastChild, { scaleX: 1, delay: 1 });
-    tl.add("triggerLists");
-    tl.to(learned[2].lastChild.lastChild, { scaleX: 1 });
-    tl.to(learned[5].lastChild.lastChild, { scaleX: 1 });
-    tl.to(learned[6].lastChild.lastChild, { scaleX: 1 }, "-=1");
-    tl.to(learned[4].lastChild.lastChild, { scaleX: 1 }, "-=0.5");
-    tl.to(learned[7].lastChild.lastChild, { scaleX: 1 }, "-=0.1");
-    tl.to(learned[8].lastChild.lastChild, { scaleX: 1 }, "-=0.7");
-    tl.to(learned[3].lastChild.lastChild, { scaleX: 1 }, "-=0.3");
-    tl.to(learned[1].lastChild.lastChild, { scaleX: 1 }, "-=0.2");
-    tl.to(learning[0].lastChild.lastChild, { scaleX: 1 }, "triggerLists");
-    tl.to(learning[2].lastChild.lastChild, { scaleX: 1 }, "-=0.1");
-    tl.to(learning[1].lastChild.lastChild, { scaleX: 1 });
-    tl.to(learning[3].lastChild.lastChild, { scaleX: 1 });
-    tl.to(learning[4].lastChild.lastChild, { scaleX: 1 }, "-=0.3");
+    tl.to(learned[0].lastChild.lastChild, { scaleX: 1, delay: 1 })
+      .add("triggerLists")
+      .to(learned[2].lastChild.lastChild, { scaleX: 1 })
+      .to(learned[5].lastChild.lastChild, { scaleX: 1 })
+      .to(learned[6].lastChild.lastChild, { scaleX: 1 }, "-=1")
+      .to(learned[4].lastChild.lastChild, { scaleX: 1 }, "-=0.5")
+      .to(learned[7].lastChild.lastChild, { scaleX: 1 }, "-=0.1")
+      .to(learned[8].lastChild.lastChild, { scaleX: 1 }, "-=0.7")
+      .to(learned[3].lastChild.lastChild, { scaleX: 1 }, "-=0.3")
+      .to(learned[1].lastChild.lastChild, { scaleX: 1 }, "-=0.2")
+      .to(learned[9].lastChild.lastChild, { scaleX: 1 }, "-=0.2")
+      .to(learning[0].lastChild.lastChild, { scaleX: 1 }, "triggerLists")
+      .to(learning[2].lastChild.lastChild, { scaleX: 1 }, "-=0.1")
+      .to(learning[1].lastChild.lastChild, { scaleX: 1 })
+      .to(learning[3].lastChild.lastChild, { scaleX: 1 })
+      .to(learning[4].lastChild.lastChild, { scaleX: 1 }, "-=0.3")
+      .to(learning[5].lastChild.lastChild, { scaleX: 1 }, "-=0.3");
   }, []);
 
   const handleSlideChange = useCallback(
