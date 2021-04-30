@@ -48,6 +48,15 @@ const SLIDES = [
     backendLink: "https://github.com/Centmsn/ToDo-mern-backend",
   },
   {
+    imgLink: "quizgenerator",
+    imgDesc: "Generator quizów",
+    projectTitle: "Aplikacja - generator quziów",
+    projectDesc:
+      "Stworzona z wykorzystaniem NextJS aplikacja, która pozwala na zalogowanie za pomocą OAuth lub własnych danych (email oraz hasło). Główną funkcją aplikacji jest możliwość stworzenia quizu, a następnie udostępnienia go, za pomocą linku dowolnej osobie. Projekt ciągle rozwijany, dlatego część funkcji może nie działać, lub mogą pojawiać się nowe możliwości. Konto testowe - email: t@t.com, hasło: abc123",
+    demoLink: "https://quiz-generator-chi.vercel.app/",
+    codeLink: "https://github.com/Centmsn/quiz-generator",
+  },
+  {
     imgLink: "renowork",
     imgDesc: "RenoWork",
     projectTitle: "Reno|Work",

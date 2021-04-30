@@ -7,6 +7,7 @@ import snake from "../../../assets/snake.jpg";
 import todoapp from "../../../assets/todoapp.jpg";
 import weatherapp from "../../../assets/weatherapp.jpg";
 import todomern from "../../../assets/todomern.jpg";
+import quizgenerator from "../../../assets/quizgenerator.jpg";
 
 import { device } from "../../../GlobalStyles";
 import styled from "styled-components";
@@ -38,6 +39,7 @@ const WebDevSlide = ({
     weatherapp,
     renowork,
     todomern,
+    quizgenerator,
   };
 
   return (
