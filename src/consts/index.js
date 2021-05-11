@@ -52,7 +52,7 @@ const SLIDES = [
     imgDesc: "Generator quizów",
     projectTitle: "Aplikacja - generator quziów",
     projectDesc:
-      "Stworzona z wykorzystaniem NextJS aplikacja, która pozwala na zalogowanie za pomocą OAuth lub własnych danych (email oraz hasło). Główną funkcją aplikacji jest możliwość stworzenia quizu, a następnie udostępnienia go, za pomocą linku dowolnej osobie. Projekt ciągle rozwijany, dlatego część funkcji może nie działać, lub mogą pojawiać się nowe możliwości. Konto testowe - email: t@t.com, hasło: abc123",
+      "Stworzona z wykorzystanie NextJS aplikacja. Projekt dość rozbudowany - pozwala na logowanie z pomocą OAuth lub tradycyjnie, głównym celem aplikacji jest możliwość stworzenia quziu, a następnie udostępnienia go innym użytkownikom - można to zrobić z pomocą publicznej listy quizów lub wysłać link jedynie wybranym osobom. Po rozwiązaniu quizu twórca otrzymuje wiadomość zawierającą osiągniety wynik oraz nick gracza. Cały czas dodaję kolejne funkcje (ustawienia, edycja quizu), oraz usprawniam istniejące. Konto testowe - email: t@t.com, hasło: abc123",
     demoLink: "https://quiz-generator-chi.vercel.app/",
     codeLink: "https://github.com/Centmsn/quiz-generator",
   },
