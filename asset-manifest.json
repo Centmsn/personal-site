@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/personal-site/static/js/main.2b691941.chunk.js",
-    "main.js.map": "/personal-site/static/js/main.2b691941.chunk.js.map",
+    "main.js": "/personal-site/static/js/main.1ec366fb.chunk.js",
+    "main.js.map": "/personal-site/static/js/main.1ec366fb.chunk.js.map",
     "runtime-main.js": "/personal-site/static/js/runtime-main.2a7dfa4b.js",
     "runtime-main.js.map": "/personal-site/static/js/runtime-main.2a7dfa4b.js.map",
     "static/js/2.63b9d78a.chunk.js": "/personal-site/static/js/2.63b9d78a.chunk.js",
@@ -78,7 +78,7 @@
     "static/media/prudnik_gal_13.009c11ca.jpg": "/personal-site/static/media/prudnik_gal_13.009c11ca.jpg",
     "static/media/prudnik_gal_14.66426f64.jpg": "/personal-site/static/media/prudnik_gal_14.66426f64.jpg",
     "static/media/prudnik_gal_15.a14fb5df.jpg": "/personal-site/static/media/prudnik_gal_15.a14fb5df.jpg",
-    "static/media/quizgenerator.c0257d8a.jpg": "/personal-site/static/media/quizgenerator.c0257d8a.jpg",
+    "static/media/quizgenerator.dfea8f2e.jpg": "/personal-site/static/media/quizgenerator.dfea8f2e.jpg",
     "static/media/renowork.178f3e16.jpg": "/personal-site/static/media/renowork.178f3e16.jpg",
     "static/media/round_self2.354595cc.jpg": "/personal-site/static/media/round_self2.354595cc.jpg",
     "static/media/snake.293834fc.jpg": "/personal-site/static/media/snake.293834fc.jpg",
@@ -89,6 +89,6 @@
   "entrypoints": [
     "static/js/runtime-main.2a7dfa4b.js",
     "static/js/2.63b9d78a.chunk.js",
-    "static/js/main.2b691941.chunk.js"
+    "static/js/main.1ec366fb.chunk.js"
   ]
 }
