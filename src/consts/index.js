@@ -29,6 +29,15 @@ const COLORS = ["rgb(255, 219, 74)", "rgb(60, 60, 60)"];
  */
 const SLIDES = [
   {
+    imgLink: "quizgenerator",
+    imgDesc: "Generator quizów",
+    projectTitle: "Aplikacja - generator quziów",
+    projectDesc:
+      "Stworzona z wykorzystanie NextJS aplikacja. Projekt dość rozbudowany - pozwala na logowanie z pomocą OAuth lub tradycyjnie, głównym celem aplikacji jest możliwość stworzenia quziu, a następnie udostępnienia go innym użytkownikom - można to zrobić z pomocą publicznej listy quizów lub wysłać link jedynie wybranym osobom. Po rozwiązaniu quizu twórca otrzymuje wiadomość zawierającą osiągniety wynik oraz nick gracza. Cały czas dodaję kolejne funkcje (ustawienia, edycja quizu), oraz usprawniam istniejące. Konto testowe - email: t@t.com, hasło: abc123",
+    demoLink: "https://quiz-generator-chi.vercel.app/",
+    codeLink: "https://github.com/Centmsn/quiz-generator",
+  },
+  {
     imgLink: "boxshadowGenerator",
     imgDesc: "BoxShadow - generator",
     projectTitle: "BoxShadow - generator",
@@ -47,15 +56,7 @@ const SLIDES = [
     codeLink: "https://github.com/Centmsn/ToDo-mern",
     backendLink: "https://github.com/Centmsn/ToDo-mern-backend",
   },
-  {
-    imgLink: "quizgenerator",
-    imgDesc: "Generator quizów",
-    projectTitle: "Aplikacja - generator quziów",
-    projectDesc:
-      "Stworzona z wykorzystanie NextJS aplikacja. Projekt dość rozbudowany - pozwala na logowanie z pomocą OAuth lub tradycyjnie, głównym celem aplikacji jest możliwość stworzenia quziu, a następnie udostępnienia go innym użytkownikom - można to zrobić z pomocą publicznej listy quizów lub wysłać link jedynie wybranym osobom. Po rozwiązaniu quizu twórca otrzymuje wiadomość zawierającą osiągniety wynik oraz nick gracza. Cały czas dodaję kolejne funkcje (ustawienia, edycja quizu), oraz usprawniam istniejące. Konto testowe - email: t@t.com, hasło: abc123",
-    demoLink: "https://quiz-generator-chi.vercel.app/",
-    codeLink: "https://github.com/Centmsn/quiz-generator",
-  },
+
   {
     imgLink: "renowork",
     imgDesc: "RenoWork",
