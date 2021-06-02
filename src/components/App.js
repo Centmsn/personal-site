@@ -1,15 +1,16 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { useState } from "react";
 
+// pages
+import ContactSection from "pages/ContactSection";
+import HeaderSection from "pages/HeaderSection";
+import HobbiesSection from "pages/HobbiesSection";
+import InfoSection from "pages/InfoSection";
 // components
 import Arrows from "components/Shared/NavArrows/Arrows";
-import ContactSection from "components/ContactSection/ContactSection";
-import HeaderSection from "components/HeaderSection/HeaderSection";
-import HobbiesSection from "components/HobbiesSection/HobbiesSection";
 import HobbiesPhotography from "components/HobbiesCard/Photography/Photography";
 import HobbiesSport from "components/HobbiesCard/Sport/Sport";
 import HobbiesWebDev from "components/HobbiesCard/Webdev/WebDev";
-import InfoSection from "components/InfoSection/InfoSection";
 import MainContainer from "components/MainContainer/MainContainer";
 import Navigation from "components/Navigation/Navigation";
 import MountainsGallery from "components/HobbiesCard/Photography/MountainsGallery";
