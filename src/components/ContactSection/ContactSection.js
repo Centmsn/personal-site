@@ -9,7 +9,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useState, useRef } from "react";
 
-import Footer from "../Footer/Footer";
+import Footer from "components/Footer/Footer";
+import SectionContainer from "components/SectionContainer/SectionContainer";
 import {
   Wrapper,
   Form,
@@ -20,7 +21,6 @@ import {
   FormTitle,
   FormTooltip,
 } from "./styled";
-import SectionContainer from "../SectionContainer/SectionContainer";
 
 const SERVICE_ID = "service_r7i52mu";
 const TEMPLATE_ID = "template_oasdgmb";

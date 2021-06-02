@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { device } from "../../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Wrapper = styled.div`
   position: relative;
@@ -77,7 +77,7 @@ const FullScreenImg = styled.div`
 
     box-shadow: 0 0 0 4px white;
 
-    @media ${device.laptop} {
+    @media ${breakpoints.laptop} {
       height: auto;
       width: 90%;
     }

@@ -5,7 +5,7 @@ import gsap from "gsap";
 import styled from "styled-components";
 import { useEffect, useRef, useState, useCallback } from "react";
 
-import { device } from "../../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 import { SLIDE_CHANGE_ENUM, SLIDES, LEARNED, LEARNING } from "../../../consts";
 import SubContainer from "../../Shared/SubContainer/SubContainer";
 import WebDevSlide from "./WebDevSlide";
@@ -225,7 +225,7 @@ const StartSection = styled.section`
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
   overflow-y: auto;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     margin-bottom: calc(100vh / 12);
     grid-area: 1/2/-1/12;
 
@@ -242,7 +242,7 @@ const ListSection = styled.section`
 
   padding: 10px;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     flex-basis: 100%;
   }
 `;
@@ -252,7 +252,7 @@ const Summary = styled.section`
 
   padding: 10px;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     flex-basis: 100%;
   }
 

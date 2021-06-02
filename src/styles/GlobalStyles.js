@@ -1,23 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
-// size for media queries
-const size = {
-  mobileS: "320px",
-  mobileL: "400px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "1600px",
-};
-
-const device = {
-  mobileS: `(max-width: ${size.mobileS})`,
-  mobileL: `(max-width: ${size.mobileL})`,
-  tablet: `(max-width: ${size.tablet})`,
-  laptop: `(max-width: ${size.laptop})`,
-  laptopL: `(max-width: ${size.laptopL})`,
-  desktop: `(max-width: ${size.desktop})`,
-};
+import breakpoints from "styles/breakpoints";
 
 export const GlobalStyles = createGlobalStyle`
     * {
@@ -30,23 +12,23 @@ export const GlobalStyles = createGlobalStyle`
 
     html {
 
-        @media ${device.desktop} {
+        @media ${breakpoints.desktop} {
             font-size: 16px;
         }
 
-        @media ${device.laptopL} {
+        @media ${breakpoints.laptopL} {
             font-size: 13px;
         }
 
-        @media ${device.laptop} {
+        @media ${breakpoints.laptop} {
             font-size: 12px;
         }
 
-        @media ${device.tablet} {
+        @media ${breakpoints.tablet} {
             font-size: 10px;
         }
 
-        @media ${device.mobileL} {
+        @media ${breakpoints.mobileL} {
             font-size: 9px;
         }
     }
@@ -131,5 +113,4 @@ export const GlobalStyles = createGlobalStyle`
     }
 `;
 
-export { device };
 export default GlobalStyles;

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-import { device } from "../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const FooterWrapper = styled.footer`
   position: relative;
   flex-basis: 45%;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     flex-basis: 100%;
   }
 `;

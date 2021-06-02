@@ -9,7 +9,7 @@ import weatherapp from "../../../assets/weatherapp.jpg";
 import todomern from "../../../assets/todomern.jpg";
 import quizgenerator from "../../../assets/quizgenerator.jpg";
 
-import { device } from "../../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -141,7 +141,7 @@ const SlideSection = styled.section`
 
     transition: 300ms;
 
-    @media ${device.laptop} {
+    @media ${breakpoints.laptop} {
       width: 90%;
     }
 

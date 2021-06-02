@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { device } from "../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Wrapper = styled.div`
   grid-area: 1/1/12/11;
@@ -10,11 +10,11 @@ const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     overflow-y: auto;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 1/1/-2/-1;
 
     padding: 1rem;
@@ -30,7 +30,7 @@ const Form = styled.form`
   justify-content: center;
   align-items: center;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     flex-basis: 100%;
   }
 `;
@@ -82,7 +82,7 @@ const FormTooltip = styled.span`
   opacity: ${({ active }) => (active ? 1 : 0)};
   transition: 300ms;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     font-size: 1.5rem;
   }
 `;

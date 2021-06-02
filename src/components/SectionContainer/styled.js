@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { device } from "../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
   overflow-x: hidden;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-auto-flow: row;
 
     padding: ${({ paddingSize }) => paddingSize};

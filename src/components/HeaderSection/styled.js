@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { device } from "../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 export const Title = styled.div`
   z-index: 3;
@@ -19,11 +19,11 @@ export const Title = styled.div`
 
   opacity: 0;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 1/1/5/5;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 1/1/2/-1;
   }
 
@@ -55,11 +55,11 @@ export const Map = styled.div`
 
   padding: 0 1rem;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 4/4/9/8;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 4/1/8/-1;
   }
 
@@ -148,11 +148,11 @@ export const Description = styled.div`
 
   opacity: 0;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 8/7/11/12;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 8/1/-1/-1;
 
     border-bottom: 4px solid ${({ theme }) => theme.colors.yellow};
@@ -184,11 +184,11 @@ export const Info = styled.div`
 
   opacity: 0;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 1/6/5/12;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 2/1/4/-1;
   }
 
@@ -206,7 +206,7 @@ export const Info = styled.div`
 
     padding: 3px;
 
-    @media ${device.tablet} {
+    @media ${breakpoints.tablet} {
       left: 0;
     }
   }
@@ -225,7 +225,7 @@ export const Feedback = styled.div`
   cursor: pointer;
   transition: 300ms;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     display: none;
   }
 

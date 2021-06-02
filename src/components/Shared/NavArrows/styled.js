@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { device } from "../../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Wrapper = styled.div`
   z-index: 999;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
   color: ${({ theme }) => theme.colors.gray};
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     display: none;
   }
 `;

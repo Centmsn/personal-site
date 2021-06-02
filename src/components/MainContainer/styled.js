@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { device } from "../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,7 +18,7 @@ const PageInfo = styled.div`
   font-size: 2rem;
   color: transparent;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     display: none;
   }
 `;

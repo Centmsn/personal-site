@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { device } from "../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Wrapper = styled.div`
   grid-area: 1/1/12/11;
@@ -10,11 +10,11 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: stretch;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 1/1/-1/-1;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 1/1/-2/-1;
     overflow-y: auto;
   }
@@ -26,7 +26,7 @@ const Summary = styled.section`
   text-align: center;
   padding: 1rem;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     flex-basis: 100%;
 
     border: none;
@@ -72,7 +72,7 @@ const SkillBar = styled.div`
   border: 2px solid black;
   padding: 2px 0;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     width: 100%;
   }
 
@@ -131,7 +131,7 @@ const Description = styled.section`
     margin-bottom: 2rem;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     flex-basis: 100%;
   }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { device } from "../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const StyledLink = styled(Link)`
   position: relative;
@@ -34,7 +34,7 @@ const StyledLink = styled(Link)`
     border-radius: 50%;
     box-shadow: 0 0 0 2px white;
 
-    @media ${device.mobilesL} {
+    @media ${breakpoints.mobilesL} {
       height: 80%;
     }
   }
@@ -56,7 +56,7 @@ const StyledLink = styled(Link)`
     opacity: 0;
     transition: 300ms;
 
-    @media ${device.tablet} {
+    @media ${breakpoints.tablet} {
       display: none;
     }
   }
@@ -106,7 +106,7 @@ const SectionInfo = styled.aside`
   opacity: 0;
   padding: 0 5px;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     display: none;
   }
 `;
@@ -173,7 +173,7 @@ const CardHolder = styled.div`
   transform: scaleY(0);
   transform-origin: bottom;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     display: none;
   }
 `;
@@ -185,7 +185,7 @@ const CardHolder2 = styled.div`
   transform: scaleX(0);
   transform-origin: left;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     display: none;
   }
 `;
@@ -197,7 +197,7 @@ const CardHolder3 = styled.div`
   transform: scaleY(0);
   transform-origin: bottom;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 1/1/14/1;
   }
 `;

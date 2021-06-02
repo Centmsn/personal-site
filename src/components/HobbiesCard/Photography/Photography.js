@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import SubContainer from "../../Shared/SubContainer/SubContainer";
-import { device } from "../../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 /**
  * functional React component - renders gallery of images
@@ -51,7 +51,7 @@ const Card = styled.section`
 
   cursor: pointer;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     flex-wrap: wrap;
   }
 
@@ -62,11 +62,11 @@ const Card = styled.section`
     border: 2px solid white;
     border-radius: 50%;
 
-    @media ${device.laptop} {
+    @media ${breakpoints.laptop} {
       height: 90%;
     }
 
-    @media ${device.tablet} {
+    @media ${breakpoints.tablet} {
       margin: 0 auto;
       height: 65%;
 
@@ -89,11 +89,11 @@ const StyledLink = styled(Link)`
 
   flex-grow: 1;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     font-size: 8rem;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     flex-basis: 100%;
     text-align: center;
 
@@ -113,15 +113,15 @@ const StyledLink = styled(Link)`
 const MountainsCard = styled(Card)`
   grid-area: 2/3/5/11;
 
-  @media ${device.laptopL} {
+  @media ${breakpoints.laptopL} {
     grid-area: 2/3/5/12;
   }
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 2/1/5/12;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 1/1/3/-1;
   }
 `;
@@ -130,15 +130,15 @@ const PrudnikCard = styled(Card)`
   grid-area: 5/3/8/11;
   text-align: right;
 
-  @media ${device.laptopL} {
+  @media ${breakpoints.laptopL} {
     grid-area: 5/3/8/12;
   }
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 5/1/8/12;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 5/1/7/-1;
   }
 
@@ -150,15 +150,15 @@ const PrudnikCard = styled(Card)`
 const OthersCard = styled(Card)`
   grid-area: 8/3/11/11;
 
-  @media ${device.laptopL} {
+  @media ${breakpoints.laptopL} {
     grid-area: 8/3/11/12;
   }
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     grid-area: 8/1/11/12;
   }
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     grid-area: 9/1/11/-1;
   }
 `;
@@ -170,7 +170,7 @@ const Info = styled.div`
 
   color: white;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     font-size: 0.75rem;
     text-align: right;
   }

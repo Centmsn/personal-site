@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { device } from "../../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Wrapper = styled.div`
   z-index: 9999;
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     ${({ preventLoadingEffect }) => (preventLoadingEffect ? 1 : 0)}
   );
 
-  @media ${device.tablet} {
+  @media ${breakpoints.tablet} {
     overflow-y: auto;
     padding: 1rem;
   }

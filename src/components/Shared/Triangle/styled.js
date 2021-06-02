@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../../GlobalStyles";
+import breakpoints from "styles/breakpoints";
 
 const Shape = styled.div`
   position: absolute;
@@ -7,7 +7,7 @@ const Shape = styled.div`
   width: 0;
   height: 0;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.laptop} {
     display: none;
   }
 `;
