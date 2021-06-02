@@ -1,14 +1,3 @@
-import boxshadowGenerator from "assets/boxshadowGenerator.jpg";
-import checkers from "assets/checkers.jpg";
-import gradientGenerator from "assets/gradientGenerator.jpg";
-import minesweeper from "assets/minesweeper.jpg";
-import renowork from "assets/renowork.jpg";
-import snake from "assets/snake.jpg";
-import todoapp from "assets/todoapp.jpg";
-import weatherapp from "assets/weatherapp.jpg";
-import todomern from "assets/todomern.jpg";
-import quizgenerator from "assets/quizgenerator.jpg";
-
 import breakpoints from "styles/breakpoints";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -27,29 +16,15 @@ const WebDevSlide = ({
   codeLink,
   backendLink,
   demoLink,
-  imgDesc,
 }) => {
-  const images = {
-    boxshadowGenerator,
-    checkers,
-    gradientGenerator,
-    minesweeper,
-    snake,
-    todoapp,
-    weatherapp,
-    renowork,
-    todomern,
-    quizgenerator,
-  };
-
   return (
     <Wrapper isVisible={isVisible}>
       <SlideSection>
         <a href={demoLink} target="_blank" rel="noreferrer">
-          <img src={images[imgLink]} alt={imgDesc} />
+          <img src={imgLink} alt={title} />
         </a>
         <h1>{title}</h1>
-        {description}
+        <p>{description}</p>
       </SlideSection>
 
       <SlideSection>
@@ -128,6 +103,10 @@ const SlideSection = styled.section`
     flex-basis: 100%;
 
     font-size: 3rem;
+  }
+
+  p {
+    text-align: justify;
   }
 
   img {

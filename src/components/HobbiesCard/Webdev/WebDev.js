@@ -4,9 +4,10 @@ import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 import styled from "styled-components";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { createClient } from "contentful";
 
 import breakpoints from "styles/breakpoints";
-import { SLIDE_CHANGE_ENUM, SLIDES, LEARNED, LEARNING } from "consts";
+import { SLIDE_CHANGE_ENUM, LEARNED, LEARNING } from "consts";
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 import WebDevSlide from "./WebDevSlide";
 
@@ -18,8 +19,29 @@ import WebDevSlide from "./WebDevSlide";
  */
 const HobbiesWebDev = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [content, setContent] = useState([]);
   const listLearnedRef = useRef(null);
   const listLearningRef = useRef(null);
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      const client = createClient({
+        space: "6208krsfb26h",
+        accessToken: "dvb9M3sF_ssNQb2oSwuFa32vzVTeY7hbSLuSY8R59-k",
+      });
+
+      let response;
+      try {
+        response = await client.getEntries({ content_type: "slide" });
+        setContent(response.items.reverse());
+      } catch (error) {
+        // TODO add error handling
+        console.log(error);
+      }
+    };
+
+    fetchContent();
+  }, []);
 
   useEffect(() => {
     const learned = listLearnedRef.current.children;
@@ -50,14 +72,14 @@ const HobbiesWebDev = () => {
     direction => {
       if (
         direction === SLIDE_CHANGE_ENUM.NEXT &&
-        currentSlide < SLIDES.length
+        currentSlide < content.length
       ) {
         setCurrentSlide(prev => prev + 1);
       } else if (direction === SLIDE_CHANGE_ENUM.PREV && currentSlide > 0) {
         setCurrentSlide(prev => prev - 1);
       }
     },
-    [currentSlide]
+    [currentSlide, content]
   );
 
   useEffect(() => {
@@ -111,9 +133,9 @@ const HobbiesWebDev = () => {
           <h2>Czego się uczę?</h2>
           <ul ref={listLearningRef}>{renderList(LEARNING)}</ul>
           <small>
-            Moim priorytetem jest aktualnie Jest, Webpack oraz ciągły rozwój w
-            React i czystym JS. Uczę się także Node, choć na ten moment są to
-            zupełne podstawy.
+            Moim priorytetem jest aktualnie Vue, Jest oraz ciągły rozwój w React
+            i czystym JS. Uczę się także Node, choć na ten moment są to zupełne
+            podstawy.
           </small>
         </ListSection>
 
@@ -186,13 +208,12 @@ const HobbiesWebDev = () => {
 
       <WebDevSlide
         isVisible={!(currentSlide === 0)}
-        title={SLIDES[currentSlide - 1]?.projectTitle}
-        description={SLIDES[currentSlide - 1]?.projectDesc}
-        imgLink={SLIDES[currentSlide - 1]?.imgLink}
-        codeLink={SLIDES[currentSlide - 1]?.codeLink}
-        demoLink={SLIDES[currentSlide - 1]?.demoLink}
-        imgDesc={SLIDES[currentSlide - 1]?.imgDesc}
-        backendLink={SLIDES[currentSlide - 1]?.backendLink}
+        title={content[currentSlide - 1]?.fields.title}
+        description={content[currentSlide - 1]?.fields.description}
+        imgLink={content[currentSlide - 1]?.fields.mainImg.fields.file.url}
+        codeLink={content[currentSlide - 1]?.fields.linkCode}
+        demoLink={content[currentSlide - 1]?.fields.linkDemo}
+        backendLink={content[currentSlide - 1]?.backendLink}
       />
 
       <LeftArrow
@@ -204,7 +225,7 @@ const HobbiesWebDev = () => {
 
       <RightArrow
         onClick={() => handleSlideChange(SLIDE_CHANGE_ENUM.NEXT)}
-        disabled={currentSlide > SLIDES.length - 1}
+        disabled={currentSlide > content.length - 1}
       >
         <FontAwesomeIcon icon={faCaretRight} />
       </RightArrow>
