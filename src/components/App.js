@@ -2,19 +2,19 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { useState } from "react";
 
 // components
-import Arrows from "./Shared/NavArrows/Arrows";
-import ContactSection from "./ContactSection/ContactSection";
-import HeaderSection from "./HeaderSection/HeaderSection";
-import HobbiesSection from "./HobbiesSection/HobbiesSection";
-import HobbiesPhotography from "./HobbiesCard/Photography/Photography";
-import HobbiesSport from "./HobbiesCard/Sport/Sport";
-import HobbiesWebDev from "./HobbiesCard/Webdev/WebDev";
-import InfoSection from "./InfoSection/InfoSection";
-import MainContainer from "./MainContainer/MainContainer";
-import Navigation from "./Navigation/Navigation";
-import MountainsGallery from "./HobbiesCard/Photography/MountainsGallery";
-import PrudnikGallery from "./HobbiesCard/Photography/PrudnikGallery";
-import OthersGallery from "./HobbiesCard/Photography/OthersGallery";
+import Arrows from "components/Shared/NavArrows/Arrows";
+import ContactSection from "components/ContactSection/ContactSection";
+import HeaderSection from "components/HeaderSection/HeaderSection";
+import HobbiesSection from "components/HobbiesSection/HobbiesSection";
+import HobbiesPhotography from "components/HobbiesCard/Photography/Photography";
+import HobbiesSport from "components/HobbiesCard/Sport/Sport";
+import HobbiesWebDev from "components/HobbiesCard/Webdev/WebDev";
+import InfoSection from "components/InfoSection/InfoSection";
+import MainContainer from "components/MainContainer/MainContainer";
+import Navigation from "components/Navigation/Navigation";
+import MountainsGallery from "components/HobbiesCard/Photography/MountainsGallery";
+import PrudnikGallery from "components/HobbiesCard/Photography/PrudnikGallery";
+import OthersGallery from "components/HobbiesCard/Photography/OthersGallery";
 // styles
 import GlobalStyles from "styles/GlobalStyles";
 import ThemeProvider from "styles/Theme";

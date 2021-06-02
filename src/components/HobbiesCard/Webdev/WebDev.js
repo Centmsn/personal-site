@@ -6,8 +6,8 @@ import styled from "styled-components";
 import { useEffect, useRef, useState, useCallback } from "react";
 
 import breakpoints from "styles/breakpoints";
-import { SLIDE_CHANGE_ENUM, SLIDES, LEARNED, LEARNING } from "../../../consts";
-import SubContainer from "../../Shared/SubContainer/SubContainer";
+import { SLIDE_CHANGE_ENUM, SLIDES, LEARNED, LEARNING } from "consts";
+import SubContainer from "components/Shared/SubContainer/SubContainer";
 import WebDevSlide from "./WebDevSlide";
 
 /**

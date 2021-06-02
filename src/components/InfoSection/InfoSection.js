@@ -1,9 +1,9 @@
-import round_self2 from "../../assets/round_self2.jpg";
+import round_self2 from "assets/round_self2.jpg";
 
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 
-import SectionContainer from "../SectionContainer/SectionContainer";
+import SectionContainer from "components/SectionContainer/SectionContainer";
 import {
   Wrapper,
   Summary,

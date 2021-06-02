@@ -2,9 +2,9 @@ import gsap from "gsap";
 import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
 
-import Triangle from "../Shared/Triangle/Triangle";
+import Triangle from "components/Shared/Triangle/Triangle";
 import { Wrapper, PageInfo } from "./styled";
-import { COLORS } from "../../consts";
+import { COLORS } from "consts";
 
 /**
  * functional React component - main app container

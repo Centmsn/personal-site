@@ -1,11 +1,11 @@
-import mountains_card from "../../../assets/mountains_card.JPG";
-import prudnik_card from "../../../assets/prudnik_card.jpg";
-import others_card from "../../../assets/others_card.jpg";
+import mountains_card from "assets/mountains_card.JPG";
+import prudnik_card from "assets/prudnik_card.jpg";
+import others_card from "assets/others_card.jpg";
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import SubContainer from "../../Shared/SubContainer/SubContainer";
+import SubContainer from "components/Shared/SubContainer/SubContainer";
 import breakpoints from "styles/breakpoints";
 
 /**

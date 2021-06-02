@@ -1,8 +1,10 @@
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faAt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMapMarkedAlt,
+  faPhone,
+  faAt,
+} from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";

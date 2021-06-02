@@ -5,7 +5,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-import { SLIDE_CHANGE_ENUM } from "../../../consts";
+import { SLIDE_CHANGE_ENUM } from "consts";
 import {
   Wrapper,
   GalleryImg,
@@ -77,7 +77,7 @@ const Gallery = ({ imgList = [] }) => {
    * @param {Object[]} imgList
    * @return {Array} - react components
    */
-  const renderImages = (imgList) => {
+  const renderImages = imgList => {
     if (!Array.isArray(imgList)) {
       console.error(
         `Incorrect type of argument. Expected array instead got ${typeof imgList}. Function execution stopped.`

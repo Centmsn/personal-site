@@ -3,7 +3,7 @@ import { faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
 
-import SubContainer from "../../Shared/SubContainer/SubContainer";
+import SubContainer from "components/Shared/SubContainer/SubContainer";
 
 const HobbiesSport = () => {
   return (

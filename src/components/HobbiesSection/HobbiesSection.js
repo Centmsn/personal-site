@@ -1,13 +1,13 @@
-import photography_photo from "../../assets/hobbies_photography.jpg";
-import sport_photo from "../../assets/hobbies_sport.jpg";
-import webdev_photo from "../../assets/hobbies_webdev.jpg";
+import photography_photo from "assets/hobbies_photography.jpg";
+import sport_photo from "assets/hobbies_sport.jpg";
+import webdev_photo from "assets/hobbies_webdev.jpg";
 
 import gsap from "gsap";
 import PropTypes from "prop-types";
 import { useRef, useEffect, useState } from "react";
 
-import SectionContainer from "../SectionContainer/SectionContainer";
-import useWindowSize from "../../hooks/useWindowSize";
+import SectionContainer from "components/SectionContainer/SectionContainer";
+import useWindowSize from "hooks/useWindowSize";
 import {
   StyledLink,
   CardHolder,
@@ -158,7 +158,7 @@ const HobbiesSection = ({ isVisible = false }) => {
   }, [isVisible, firstRender]);
 
   const renderCards = () =>
-    cards.map((card) => (
+    cards.map(card => (
       <StyledLink
         ref={card.ref}
         tabIndex="0"

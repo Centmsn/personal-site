@@ -6,8 +6,8 @@ import PropTypes, { func } from "prop-types";
 import { useEffect, useRef } from "react";
 
 import { Map, Title, Info, Description, Feedback } from "./styled";
-import SectionContainer from "../SectionContainer/SectionContainer";
-import useWindowSize from "../../hooks/useWindowSize";
+import SectionContainer from "components/SectionContainer/SectionContainer";
+import useWindowSize from "hooks/useWindowSize";
 
 const MOBILE_INFO =
   "Zachęcam Cię również do odwiedzenia mojej strony na urządzeniu z większym wyświetlaczem";
