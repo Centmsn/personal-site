@@ -1,21 +1,17 @@
 {
   "files": {
-    "main.js": "/personal-site/static/js/main.1ec366fb.chunk.js",
-    "main.js.map": "/personal-site/static/js/main.1ec366fb.chunk.js.map",
+    "main.js": "/personal-site/static/js/main.f049b866.chunk.js",
+    "main.js.map": "/personal-site/static/js/main.f049b866.chunk.js.map",
     "runtime-main.js": "/personal-site/static/js/runtime-main.2a7dfa4b.js",
     "runtime-main.js.map": "/personal-site/static/js/runtime-main.2a7dfa4b.js.map",
-    "static/js/2.63b9d78a.chunk.js": "/personal-site/static/js/2.63b9d78a.chunk.js",
-    "static/js/2.63b9d78a.chunk.js.map": "/personal-site/static/js/2.63b9d78a.chunk.js.map",
+    "static/js/2.91b5d83e.chunk.js": "/personal-site/static/js/2.91b5d83e.chunk.js",
+    "static/js/2.91b5d83e.chunk.js.map": "/personal-site/static/js/2.91b5d83e.chunk.js.map",
     "index.html": "/personal-site/index.html",
-    "static/js/2.63b9d78a.chunk.js.LICENSE.txt": "/personal-site/static/js/2.63b9d78a.chunk.js.LICENSE.txt",
-    "static/media/boxshadowGenerator.83900d76.jpg": "/personal-site/static/media/boxshadowGenerator.83900d76.jpg",
-    "static/media/checkers.80e842a3.jpg": "/personal-site/static/media/checkers.80e842a3.jpg",
+    "static/js/2.91b5d83e.chunk.js.LICENSE.txt": "/personal-site/static/js/2.91b5d83e.chunk.js.LICENSE.txt",
     "static/media/email.a7c36532.svg": "/personal-site/static/media/email.a7c36532.svg",
-    "static/media/gradientGenerator.72dc4e91.jpg": "/personal-site/static/media/gradientGenerator.72dc4e91.jpg",
     "static/media/hobbies_photography.67f52d54.jpg": "/personal-site/static/media/hobbies_photography.67f52d54.jpg",
     "static/media/hobbies_sport.d0660064.jpg": "/personal-site/static/media/hobbies_sport.d0660064.jpg",
     "static/media/hobbies_webdev.15bceb85.jpg": "/personal-site/static/media/hobbies_webdev.15bceb85.jpg",
-    "static/media/minesweeper.91932c77.jpg": "/personal-site/static/media/minesweeper.91932c77.jpg",
     "static/media/mountains_card.ce971239.JPG": "/personal-site/static/media/mountains_card.ce971239.JPG",
     "static/media/mountains_gal_01.9c59e62c.jpg": "/personal-site/static/media/mountains_gal_01.9c59e62c.jpg",
     "static/media/mountains_gal_02.b9e9326d.jpg": "/personal-site/static/media/mountains_gal_02.b9e9326d.jpg",
@@ -78,17 +74,11 @@
     "static/media/prudnik_gal_13.009c11ca.jpg": "/personal-site/static/media/prudnik_gal_13.009c11ca.jpg",
     "static/media/prudnik_gal_14.66426f64.jpg": "/personal-site/static/media/prudnik_gal_14.66426f64.jpg",
     "static/media/prudnik_gal_15.a14fb5df.jpg": "/personal-site/static/media/prudnik_gal_15.a14fb5df.jpg",
-    "static/media/quizgenerator.dfea8f2e.jpg": "/personal-site/static/media/quizgenerator.dfea8f2e.jpg",
-    "static/media/renowork.178f3e16.jpg": "/personal-site/static/media/renowork.178f3e16.jpg",
-    "static/media/round_self2.354595cc.jpg": "/personal-site/static/media/round_self2.354595cc.jpg",
-    "static/media/snake.293834fc.jpg": "/personal-site/static/media/snake.293834fc.jpg",
-    "static/media/todoapp.0d79cdf3.jpg": "/personal-site/static/media/todoapp.0d79cdf3.jpg",
-    "static/media/todomern.bc0b933d.jpg": "/personal-site/static/media/todomern.bc0b933d.jpg",
-    "static/media/weatherapp.fd78fc84.jpg": "/personal-site/static/media/weatherapp.fd78fc84.jpg"
+    "static/media/round_self2.354595cc.jpg": "/personal-site/static/media/round_self2.354595cc.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.2a7dfa4b.js",
-    "static/js/2.63b9d78a.chunk.js",
-    "static/js/main.1ec366fb.chunk.js"
+    "static/js/2.91b5d83e.chunk.js",
+    "static/js/main.f049b866.chunk.js"
   ]
 }
