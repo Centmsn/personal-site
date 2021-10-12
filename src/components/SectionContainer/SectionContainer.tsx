@@ -1,9 +1,8 @@
 import gsap from "gsap";
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-
 import { getRandomElement } from "utils";
-import { Wrapper } from "./styled";
+import { Wrapper } from "./parts";
 
 /**
  * functional React component - a container for page sections

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { Wrapper, NavDot } from "./styled";
+import { Wrapper, NavDot } from "./parts";
 
 /**
  * functional React component - naviation dots

@@ -7,7 +7,7 @@ import emailjs from "emailjs-com";
 import gsap from "gsap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 import Footer from "components/Footer/Footer";
 import SectionContainer from "components/SectionContainer/SectionContainer";

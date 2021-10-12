@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import PropTypes from "prop-types";
-
-import { Shape } from "./styled";
+import { Shape } from "./parts";
 
 /**
  * @enum {string}

@@ -3,8 +3,7 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-
-import { Wrapper, ContainerFooter, StyledLink } from "./styled";
+import { Wrapper, ContainerFooter, StyledLink } from "./parts";
 
 /**
  * functional React component - a container for hobbies subSections

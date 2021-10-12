@@ -7,7 +7,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { createClient } from "contentful";
 
 import breakpoints from "styles/breakpoints";
-import { SLIDE_CHANGE_ENUM, LEARNED, LEARNING } from "consts";
+import { SlideChange, LEARNED, LEARNING } from "consts";
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 import WebDevSlide from "./WebDevSlide";
 

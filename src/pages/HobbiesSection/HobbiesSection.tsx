@@ -20,7 +20,7 @@ import {
   CardTitle,
   SectionInfo,
   BorderContainer,
-} from "./styled";
+} from "./parts";
 
 /**
  * Renders HobbiesSection on screen

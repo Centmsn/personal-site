@@ -1,10 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import PropTypes from "prop-types";
 import { useEffect, useCallback } from "react";
-
-import { Wrapper, Icon } from "./styled";
+import { Wrapper, Icon } from "./parts";
 
 /**
  * functional React component - renders navigation arrows
@@ -77,20 +75,6 @@ const Arrows = ({ changeSection, sections }) => {
       </Icon>
     </Wrapper>
   );
-};
-
-Arrows.propTypes = {
-  /**
-   * Function to update state
-   */
-  changeSection: PropTypes.func.isRequired,
-
-  /**
-   * App sections - array of objects
-   */
-  sections: PropTypes.arrayOf(
-    PropTypes.shape({ name: PropTypes.string, isVisible: PropTypes.bool })
-  ).isRequired,
 };
 
 export default Arrows;

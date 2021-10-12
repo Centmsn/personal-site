@@ -1,5 +1,5 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 
 // pages
 import ContactSection from "pages/ContactSection";

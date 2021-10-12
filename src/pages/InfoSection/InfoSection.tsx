@@ -11,7 +11,7 @@ import {
   InnerBar,
   Title,
   Description,
-} from "./styled";
+} from "./parts";
 
 const InfoSection = ({ isVisible }) => {
   const [firstRender, setFirstRender] = useState(true);

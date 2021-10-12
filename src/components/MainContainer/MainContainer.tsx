@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
 
 import Triangle from "components/Shared/Triangle/Triangle";
-import { Wrapper, PageInfo } from "./styled";
-import { COLORS } from "consts";
+import { Wrapper, PageInfo } from "./parts";
+import { AvailableColors } from "consts";
 
 /**
  * functional React component - main app container
@@ -13,7 +13,7 @@ import { COLORS } from "consts";
  * @returns {JSX.Element}
  */
 const MainContainer = ({ children, pageInfo }) => {
-  const [currentColor, setCurrentColor] = useState(COLORS[0]);
+  const [currentColor, setCurrentColor] = useState(AvailableColors[0]);
   const topTriangleRef = useRef(null);
   const pageInfoRef = useRef(null);
 
@@ -30,13 +30,13 @@ const MainContainer = ({ children, pageInfo }) => {
   }, [pageInfo]);
 
   useEffect(() => {
-    setCurrentColor(COLORS[Math.floor(Math.random() * 2)]);
+    setCurrentColor(AvailableColors[Math.floor(Math.random() * 2)]);
   }, [pageInfo]);
 
   return (
     <Wrapper>
       {children}
-      <Triangle color={COLORS[0]} position="bottom-right" />
+      <Triangle color={AvailableColors[0]} position="bottom-right" />
       <Triangle
         color={currentColor}
         position="top-right"

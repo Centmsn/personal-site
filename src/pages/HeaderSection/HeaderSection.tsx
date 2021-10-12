@@ -5,7 +5,7 @@ import gsap from "gsap";
 import PropTypes, { func } from "prop-types";
 import { useEffect, useRef } from "react";
 
-import { Map, Title, Info, Description, Feedback } from "./styled";
+import { Map, Title, Info, Description, Feedback } from "./parts";
 import SectionContainer from "components/SectionContainer/SectionContainer";
 import useWindowSize from "hooks/useWindowSize";
 

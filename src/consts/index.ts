@@ -1,26 +1,19 @@
-/**
- * Enum for slide changing
- * @readonly
- * @enum { number }
- */
-const SLIDE_CHANGE_ENUM = {
-  NEXT: 1,
-  PREV: -1,
-};
+export enum SlideChange {
+  NEXT = 1,
+  PREV = -1,
+}
 
-/**
- * main page theme
- * @readonly
- */
-const COLORS = ["rgb(255, 219, 74)", "rgb(60, 60, 60)"];
+export enum AvailableColors {
+  "rgb(255, 219, 74)",
+  "rgb(60, 60, 60)",
+}
 
-/**
- * WebDev - learned bars
- *
- * @type {{title: string, percent: number}}
- * @readonly
- */
-const LEARNED = [
+export interface TechnologyBar {
+  title: string;
+  percent: number;
+}
+
+export const LEARNED: Array<TechnologyBar> = [
   { title: "Javascript", percent: 65 },
   { title: "HTML", percent: 60 },
   { title: "CSS/SASS", percent: 80 },
@@ -33,13 +26,7 @@ const LEARNED = [
   { title: "Git i Github", percent: 50 },
 ];
 
-/**
- * WebDev - learning bars
- *
- * @type {{title: string, percent: number}}
- * @readonly
- */
-const LEARNING = [
+export const LEARNING: Array<TechnologyBar> = [
   { title: "Vue", percent: 35 },
   { title: "Jest", percent: 25 },
   { title: "Typescript", percent: 25 },
@@ -47,5 +34,3 @@ const LEARNING = [
   { title: "Express", percent: 40 },
   { title: "Pisanie czystego kodu :)", percent: 45 },
 ];
-
-export { COLORS, LEARNING, LEARNED, SLIDE_CHANGE_ENUM };

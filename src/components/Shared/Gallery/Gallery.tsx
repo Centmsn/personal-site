@@ -5,7 +5,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-import { SLIDE_CHANGE_ENUM } from "consts";
+import { SlideChange } from "consts";
 import {
   Wrapper,
   GalleryImg,
@@ -13,7 +13,7 @@ import {
   CloseButton,
   LeftArrowButton,
   RightArrowButton,
-} from "./styled";
+} from "./parts";
 
 /**
  * functional React component - a container for gallery components - requires 12x12 grid
@@ -114,14 +114,14 @@ const Gallery = ({ imgList = [] }) => {
 
         <LeftArrowButton
           onClick={() =>
-            handleSlideChange(SLIDE_CHANGE_ENUM.PREV, currentImg.id, imgList)
+            handleSlideChange(SlideChange.PREV, currentImg.id, imgList)
           }
         >
           <FontAwesomeIcon icon={faCaretLeft} />
         </LeftArrowButton>
         <RightArrowButton
           onClick={() =>
-            handleSlideChange(SLIDE_CHANGE_ENUM.NEXT, currentImg.id, imgList)
+            handleSlideChange(SlideChange.NEXT, currentImg.id, imgList)
           }
         >
           <FontAwesomeIcon icon={faCaretRight} />
