@@ -28,7 +28,7 @@ import img27 from "assets/mountains_gal_27.jpg";
 import img28 from "assets/mountains_gal_28.JPG";
 import img29 from "assets/mountains_gal_29.JPG";
 import img30 from "assets/mountains_gal_30.jpg";
-
+import { ImageObject } from "components/Shared/Gallery/Gallery";
 import Gallery from "components/Shared/Gallery/Gallery";
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 
@@ -39,7 +39,7 @@ import SubContainer from "components/Shared/SubContainer/SubContainer";
  * @returns {JSX.Element}
  */
 const MountainsGallery = () => {
-  const images = [
+  const images: Array<ImageObject> = [
     { img: img01, desc: "Olsztyn" },
     { img: img02, desc: "Olsztyn - zachód słońca" },
     { img: img03, desc: "Bobolice - skały" },

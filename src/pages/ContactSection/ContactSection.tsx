@@ -20,7 +20,7 @@ import {
   Input,
   FormTitle,
   FormTooltip,
-} from "./styled";
+} from "./parts";
 
 const SERVICE_ID = "service_r7i52mu";
 const TEMPLATE_ID = "template_oasdgmb";

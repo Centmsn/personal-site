@@ -20,30 +20,33 @@ import OthersGallery from "components/HobbiesCard/Photography/OthersGallery";
 import GlobalStyles from "styles/GlobalStyles";
 import ThemeProvider from "styles/Theme";
 
-const sections = [
+export type SlideNames = "header" | "hobbies" | "info" | "contact";
+export interface Section {
+  name: string;
+  isVisible: boolean;
+  desc: string;
+}
+
+const sections: Array<Section> = [
   {
     name: "header",
     isVisible: true,
     desc: "Home",
-    component: <HeaderSection />,
   },
   {
     name: "hobbies",
     isVisible: false,
     desc: "Zainteresowania",
-    component: <HobbiesSection />,
   },
   {
     name: "info",
     isVisible: false,
     desc: "Omnie",
-    component: <InfoSection />,
   },
   {
     name: "contact",
     isVisible: false,
     desc: "Kontakt",
-    component: <ContactSection />,
   },
 ];
 
@@ -54,24 +57,19 @@ const sections = [
  * @returns {JSX.Element}
  */
 const App = () => {
-  const [sectionVisibility, setSectionVisibility] = useState(sections);
-  const [activeSection, setActiveSection] = useState(sections[0]);
+  const [sectionVisibility, setSectionVisibility] =
+    useState<Array<Section>>(sections);
+  const [activeSection, setActiveSection] = useState<Section>(sections[0]);
 
-  /**
-   * handles section change
-   * @param {string} slideName - section name
-   */
-  const handleSlideChange = slideName => {
-    const newState = [...sections];
-
-    for (let i = 0; i < sections.length; i++) {
-      newState[i].isVisible = false;
-    }
-    const active = newState.find(el => el.name === slideName);
-    active.isVisible = true;
+  const handleSlideChange = (slideName: SlideNames) => {
+    const newState = sections.map(section => ({
+      ...section,
+      isVisible: section.name === slideName,
+    }));
+    const currentlyActiveSection = newState.find(section => section.isVisible);
 
     setSectionVisibility(newState);
-    setActiveSection(active);
+    setActiveSection(currentlyActiveSection || newState[0]);
   };
 
   return (

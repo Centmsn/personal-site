@@ -15,6 +15,14 @@ import {
   RightArrowButton,
 } from "./parts";
 
+export interface ImageObject {
+  img: HTMLImageElement;
+  desc: string;
+}
+export interface GalleryProps {
+  imgList: Array<ImageObject>;
+}
+
 /**
  * functional React component - a container for gallery components - requires 12x12 grid
  * be displayed properly
@@ -23,7 +31,7 @@ import {
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const Gallery = ({ imgList = [] }) => {
+const Gallery = ({ imgList = [] }: GalleryProps) => {
   const [fullscreenVisible, setFullscreenVisible] = useState(false);
   const [currentImg, setCurrentImg] = useState(null);
 
@@ -133,22 +141,6 @@ const Gallery = ({ imgList = [] }) => {
       </FullScreenImg>
     </Wrapper>
   );
-};
-
-Gallery.propTypes = {
-  /**
-   * list of images to display in gallery
-   */
-  imgList: PropTypes.arrayOf(
-    PropTypes.shape({
-      img: PropTypes.string,
-      desc: PropTypes.string,
-    })
-  ),
-};
-
-Gallery.defaultProps = {
-  imgList: [],
 };
 
 export default Gallery;
