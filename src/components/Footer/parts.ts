@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
 import breakpoints from "styles/breakpoints";
 
-const FooterWrapper = styled.footer`
+export const FooterWrapper = styled.footer`
   position: relative;
   flex-basis: 45%;
 
@@ -11,7 +10,7 @@ const FooterWrapper = styled.footer`
   }
 `;
 
-const FooterSection = styled.footer`
+export const FooterSection = styled.footer`
   position: relative;
   transform: translateY(100vh);
 
@@ -26,7 +25,7 @@ const FooterSection = styled.footer`
   }
 `;
 
-const SectionTitle = styled.h2`
+export const SectionTitle = styled.h2`
   margin: 15px 0;
 
   border-right: 4px solid ${({ theme }) => theme.colors.yellow};
@@ -37,5 +36,3 @@ const SectionTitle = styled.h2`
   color: white;
   background-color: ${({ theme }) => theme.colors.gray};
 `;
-
-export { FooterWrapper, FooterSection, SectionTitle };
