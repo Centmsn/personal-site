@@ -3,14 +3,17 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
 import styled from "styled-components";
-import { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { createClient } from "contentful";
-
 import breakpoints from "styles/breakpoints";
 import { SlideChange, LEARNED, LEARNING } from "consts";
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 import WebDevSlide from "./WebDevSlide";
 
+export interface ProgressBarData {
+  title: string;
+  percent: number;
+}
 /**
  * functional React component - renders webDev section
  * @function
@@ -20,17 +23,22 @@ import WebDevSlide from "./WebDevSlide";
 const HobbiesWebDev = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [content, setContent] = useState([]);
-  const listLearnedRef = useRef(null);
-  const listLearningRef = useRef(null);
+  const listLearnedRef = useRef<HTMLUListElement>(null);
+  const listLearningRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const fetchContent = async () => {
+      const space: string = process.env.REACT_APP_CONTENTFUL_SPACE as string;
+      const accessToken: string = process.env
+        .REACT_APP_CONTENTFUL_ACCESS_TOKEN as string;
+
       const client = createClient({
-        space: "6208krsfb26h",
-        accessToken: "dvb9M3sF_ssNQb2oSwuFa32vzVTeY7hbSLuSY8R59-k",
+        space,
+        accessToken,
       });
 
-      let response;
+      //! FIXME: change any type to contenful response type
+      let response: any;
       try {
         response = await client.getEntries({ content_type: "slide" });
         setContent(response.items.reverse());
@@ -44,38 +52,87 @@ const HobbiesWebDev = () => {
   }, []);
 
   useEffect(() => {
-    const learned = listLearnedRef.current.children;
-    const learning = listLearningRef.current.children;
+    const learned = listLearnedRef.current;
+    const learning = listLearningRef.current;
 
-    const tl = gsap.timeline({ defaults: { duration: 0.5 } });
+    if (learned && learning) {
+      const learnedChildrens = learned.children;
+      const learningChildren = learning.children;
+      const tl = gsap.timeline({ defaults: { duration: 0.5 } });
 
-    tl.to(learned[0].lastChild.lastChild, { scaleX: 1, delay: 1 })
-      .add("triggerLists")
-      .to(learned[2].lastChild.lastChild, { scaleX: 1 })
-      .to(learned[5].lastChild.lastChild, { scaleX: 1 })
-      .to(learned[6].lastChild.lastChild, { scaleX: 1 }, "-=1")
-      .to(learned[4].lastChild.lastChild, { scaleX: 1 }, "-=0.5")
-      .to(learned[7].lastChild.lastChild, { scaleX: 1 }, "-=0.1")
-      .to(learned[8].lastChild.lastChild, { scaleX: 1 }, "-=0.7")
-      .to(learned[3].lastChild.lastChild, { scaleX: 1 }, "-=0.3")
-      .to(learned[1].lastChild.lastChild, { scaleX: 1 }, "-=0.2")
-      .to(learned[9].lastChild.lastChild, { scaleX: 1 }, "-=0.2")
-      .to(learning[0].lastChild.lastChild, { scaleX: 1 }, "triggerLists")
-      .to(learning[2].lastChild.lastChild, { scaleX: 1 }, "-=0.1")
-      .to(learning[1].lastChild.lastChild, { scaleX: 1 })
-      .to(learning[3].lastChild.lastChild, { scaleX: 1 })
-      .to(learning[4].lastChild.lastChild, { scaleX: 1 }, "-=0.3")
-      .to(learning[5].lastChild.lastChild, { scaleX: 1 }, "-=0.3");
+      // TODO: refactor animation
+      tl.to(learnedChildrens[0]?.lastChild?.lastChild || null, {
+        scaleX: 1,
+        delay: 1,
+      })
+        .add("triggerLists")
+        .to(learnedChildrens[2]?.lastChild?.lastChild || null, { scaleX: 1 })
+        .to(learnedChildrens[5]?.lastChild?.lastChild || null, { scaleX: 1 })
+        .to(
+          learnedChildrens[6]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=1"
+        )
+        .to(
+          learnedChildrens[4]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.5"
+        )
+        .to(
+          learnedChildrens[7]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.1"
+        )
+        .to(
+          learnedChildrens[8]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.7"
+        )
+        .to(
+          learnedChildrens[3]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.3"
+        )
+        .to(
+          learnedChildrens[1]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.2"
+        )
+        .to(
+          learnedChildrens[9]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.2"
+        )
+        .to(
+          learningChildren[0]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "triggerLists"
+        )
+        .to(
+          learningChildren[2]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.1"
+        )
+        .to(learningChildren[1]?.lastChild?.lastChild || null, { scaleX: 1 })
+        .to(learningChildren[3]?.lastChild?.lastChild || null, { scaleX: 1 })
+        .to(
+          learningChildren[4]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.3"
+        )
+        .to(
+          learningChildren[5]?.lastChild?.lastChild || null,
+          { scaleX: 1 },
+          "-=0.3"
+        );
+    }
   }, []);
 
   const handleSlideChange = useCallback(
     direction => {
-      if (
-        direction === SLIDE_CHANGE_ENUM.NEXT &&
-        currentSlide < content.length
-      ) {
+      if (direction === SlideChange.NEXT && currentSlide < content.length) {
         setCurrentSlide(prev => prev + 1);
-      } else if (direction === SLIDE_CHANGE_ENUM.PREV && currentSlide > 0) {
+      } else if (direction === SlideChange.PREV && currentSlide > 0) {
         setCurrentSlide(prev => prev - 1);
       }
     },
@@ -83,11 +140,11 @@ const HobbiesWebDev = () => {
   );
 
   useEffect(() => {
-    const listener = e => {
+    const listener = (e: KeyboardEvent) => {
       if (e.keyCode === 37) {
-        handleSlideChange(SLIDE_CHANGE_ENUM.PREV);
+        handleSlideChange(SlideChange.PREV);
       } else if (e.keyCode === 39) {
-        handleSlideChange(SLIDE_CHANGE_ENUM.NEXT);
+        handleSlideChange(SlideChange.NEXT);
       }
     };
 
@@ -106,12 +163,12 @@ const HobbiesWebDev = () => {
    * @param {number} listElement[].percent - progress bar width
    * @return {Array}
    */
-  const renderList = arr => {
-    return arr.map((el, i) => (
-      <li key={i}>
-        {el.title}
-        <ProgressBar content={el.percent}>
-          <InnerBar width={el.percent} />
+  const renderList = (progressBarData: Array<ProgressBarData>) => {
+    return progressBarData.map((data, index) => (
+      <li key={index}>
+        {data.title}
+        <ProgressBar>
+          <InnerBar width={data.percent} />
         </ProgressBar>
       </li>
     ));
@@ -217,14 +274,14 @@ const HobbiesWebDev = () => {
       />
 
       <LeftArrow
-        onClick={() => handleSlideChange(SLIDE_CHANGE_ENUM.PREV)}
+        onClick={() => handleSlideChange(SlideChange.PREV)}
         disabled={currentSlide === 0}
       >
         <FontAwesomeIcon icon={faCaretLeft} />
       </LeftArrow>
 
       <RightArrow
-        onClick={() => handleSlideChange(SLIDE_CHANGE_ENUM.NEXT)}
+        onClick={() => handleSlideChange(SlideChange.NEXT)}
         disabled={currentSlide > content.length - 1}
       >
         <FontAwesomeIcon icon={faCaretRight} />
@@ -233,7 +290,11 @@ const HobbiesWebDev = () => {
   );
 };
 
-const StartSection = styled.section`
+interface StartSectionProps {
+  isVisible: boolean;
+}
+
+const StartSection = styled.section<StartSectionProps>`
   grid-area: 2/2/11/12;
 
   display: flex;
@@ -324,7 +385,11 @@ const ProgressBar = styled.div`
   overflow: hidden;
 `;
 
-const InnerBar = styled.div`
+interface InnerBarProps {
+  width: number;
+}
+
+const InnerBar = styled.div<InnerBarProps>`
   width: ${({ width }) => width}%;
   height: 100%;
   transform: scaleX(5);

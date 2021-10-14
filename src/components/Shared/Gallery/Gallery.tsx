@@ -1,10 +1,8 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import PropTypes from "prop-types";
-import { useState } from "react";
-
 import { SlideChange } from "consts";
 import {
   Wrapper,
@@ -16,11 +14,16 @@ import {
 } from "./parts";
 
 export interface ImageObject {
-  img: HTMLImageElement;
+  img: string;
   desc: string;
 }
 export interface GalleryProps {
   imgList: Array<ImageObject>;
+}
+
+export interface CurrentImageObject {
+  img: string;
+  id: number;
 }
 
 /**
@@ -33,7 +36,7 @@ export interface GalleryProps {
  */
 const Gallery = ({ imgList = [] }: GalleryProps) => {
   const [fullscreenVisible, setFullscreenVisible] = useState(false);
-  const [currentImg, setCurrentImg] = useState(null);
+  const [currentImg, setCurrentImg] = useState<CurrentImageObject | null>(null);
 
   /**
    * Triggers fullscreen mode and updates active image
@@ -41,7 +44,7 @@ const Gallery = ({ imgList = [] }: GalleryProps) => {
    * @param {number} [id] - clicked image id
    * @return {undefined}
    */
-  const handleFullScreen = (img, id) => {
+  const handleFullScreen = (img: string, id: number) => {
     if (typeof img === "string" && typeof id === "number") {
       setFullscreenVisible(true);
       setCurrentImg({ img, id });
@@ -59,7 +62,11 @@ const Gallery = ({ imgList = [] }: GalleryProps) => {
    * @param {number} arr[].id - img id
    * @return {undefined}
    */
-  const handleSlideChange = (direction, current, arr) => {
+  const handleSlideChange = (
+    direction: SlideChange,
+    current: number,
+    arr: Array<CurrentImageObject>
+  ) => {
     if (!Array.isArray(arr)) {
       console.warn(
         `Incorrect type of argument. Expected Array instead got ${typeof arr}`

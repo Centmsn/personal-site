@@ -1,10 +1,8 @@
 import mountains_card from "assets/mountains_card.JPG";
 import prudnik_card from "assets/prudnik_card.jpg";
 import others_card from "assets/others_card.jpg";
-
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 import breakpoints from "styles/breakpoints";
 
@@ -17,15 +15,15 @@ import breakpoints from "styles/breakpoints";
 const HobbiesPhotography = () => {
   return (
     <SubContainer preventLoadingEffect={true}>
-      <MountainsCard content="Góry">
+      <MountainsCard>
         <img src={mountains_card} alt="" />
         <StyledLink to="/photography/mountains">Góry</StyledLink>
       </MountainsCard>
-      <PrudnikCard content="Okolice Prudnika">
+      <PrudnikCard>
         <StyledLink to="/photography/prudnik">Prudnik</StyledLink>
         <img src={prudnik_card} alt="" />
       </PrudnikCard>
-      <OthersCard content="Pozostałe">
+      <OthersCard>
         <img src={others_card} alt="" />
         <StyledLink to="/photography/others">Pozostałe</StyledLink>
       </OthersCard>

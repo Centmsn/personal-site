@@ -32,7 +32,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const GalleryImg = styled.div`
+export interface GalleryImageProps {
+  content: string;
+}
+
+const GalleryImg = styled.div<GalleryImageProps>`
   position: relative;
 
   &:after {
