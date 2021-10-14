@@ -4,14 +4,7 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { SlideChange } from "consts";
-import {
-  Wrapper,
-  GalleryImg,
-  FullScreenImg,
-  CloseButton,
-  LeftArrowButton,
-  RightArrowButton,
-} from "./parts";
+import * as P from "./parts";
 
 export interface ImageObject {
   img: string;
@@ -36,7 +29,9 @@ export interface CurrentImageObject {
  */
 const Gallery = ({ imgList = [] }: GalleryProps) => {
   const [fullscreenVisible, setFullscreenVisible] = useState(false);
-  const [currentImg, setCurrentImg] = useState<CurrentImageObject | null>(null);
+  const [currentImg, setCurrentImg] = useState<
+    CurrentImageObject | undefined
+  >();
 
   /**
    * Triggers fullscreen mode and updates active image
@@ -64,12 +59,11 @@ const Gallery = ({ imgList = [] }: GalleryProps) => {
    */
   const handleSlideChange = (
     direction: SlideChange,
-    current: number,
-    arr: Array<CurrentImageObject>
+    current: number | undefined
   ) => {
-    if (!Array.isArray(arr)) {
+    if (!Array.isArray(imgList)) {
       console.warn(
-        `Incorrect type of argument. Expected Array instead got ${typeof arr}`
+        `Incorrect type of argument. Expected Array instead got ${typeof imgList}`
       );
       return;
     }
@@ -80,8 +74,8 @@ const Gallery = ({ imgList = [] }: GalleryProps) => {
       return;
     } else {
       const nextSlideId = current + direction;
-      if (nextSlideId < 0 || nextSlideId >= arr.length) return;
-      const { img } = arr[nextSlideId];
+      if (nextSlideId < 0 || nextSlideId >= imgList.length) return;
+      const { img } = imgList[nextSlideId];
 
       setCurrentImg({ img, id: nextSlideId });
     }
@@ -92,7 +86,7 @@ const Gallery = ({ imgList = [] }: GalleryProps) => {
    * @param {Object[]} imgList
    * @return {Array} - react components
    */
-  const renderImages = imgList => {
+  const renderImages = () => {
     if (!Array.isArray(imgList)) {
       console.error(
         `Incorrect type of argument. Expected array instead got ${typeof imgList}. Function execution stopped.`
@@ -111,42 +105,41 @@ const Gallery = ({ imgList = [] }: GalleryProps) => {
     }
 
     return imgList.map((el, index) => (
-      <GalleryImg content={el.desc} key={index}>
+      <P.GalleryImg content={el.desc} key={index}>
         <img
           src={el.img}
           alt={el.desc}
           onClick={() => handleFullScreen(el.img, index)}
         />
-      </GalleryImg>
+      </P.GalleryImg>
     ));
   };
   return (
-    <Wrapper>
-      {renderImages(imgList)}
+    <P.Wrapper>
+      {renderImages()}
 
-      <FullScreenImg isVisible={fullscreenVisible}>
-        <img src={currentImg && currentImg.img} alt="fullscreenImg" />
+      <P.FullScreenImageContainer isVisible={fullscreenVisible}>
+        <P.FullScreenImage
+          src={currentImg && currentImg.img}
+          alt="fullscreenImg"
+        />
 
-        <LeftArrowButton
-          onClick={() =>
-            handleSlideChange(SlideChange.PREV, currentImg.id, imgList)
-          }
+        <P.LeftArrowButton
+          onClick={() => handleSlideChange(SlideChange.PREV, currentImg?.id)}
         >
           <FontAwesomeIcon icon={faCaretLeft} />
-        </LeftArrowButton>
-        <RightArrowButton
-          onClick={() =>
-            handleSlideChange(SlideChange.NEXT, currentImg.id, imgList)
-          }
+        </P.LeftArrowButton>
+        <P.RightArrowButton
+          onClick={() => handleSlideChange(SlideChange.NEXT, currentImg?.id)}
         >
           <FontAwesomeIcon icon={faCaretRight} />
-        </RightArrowButton>
+        </P.RightArrowButton>
 
-        <CloseButton onClick={handleFullScreen}>
+        <P.CloseButton onClick={() => handleFullScreen}>
           <FontAwesomeIcon icon={faTimes} />
-        </CloseButton>
-      </FullScreenImg>
-    </Wrapper>
+        </P.CloseButton>
+      </P.FullScreenImageContainer>
+    </P.Wrapper>
   );
 };
 

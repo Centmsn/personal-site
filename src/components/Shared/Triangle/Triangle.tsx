@@ -1,74 +1,64 @@
-import { forwardRef } from "react";
-import PropTypes from "prop-types";
-import { Shape } from "./parts";
+import React, { forwardRef } from "react";
+import * as P from "./parts";
 
-/**
- * @enum {string}
- * @readonly
- */
-const positionEnum = {
-  1: "bottom-right",
-  2: "bottom-left",
-  3: "top-right",
-  4: "top-left",
-};
+export type Positions =
+  | "bottom-right"
+  | "bottom-left"
+  | "top-right"
+  | "top-left";
+
+export interface TriangleProps {
+  position: Positions;
+  color: string;
+}
 
 /**
  * functional React component - renders triangle shape
- * @function
- * @param {Object} props - React props
- * @returns {JSX.Element}
  */
-const Triangle = forwardRef((props, ref) => {
+const Triangle = forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<TriangleProps>
+>(({ color, position }, ref) => {
   let style;
-  if (props.position === positionEnum[2]) {
-    style = {
-      bottom: 0,
-      left: 0,
-      borderBottom: `18vw solid ${props.color}`,
-      borderRight: `27vw solid transparent`,
-    };
-  } else if (props.position === positionEnum[3]) {
-    style = {
-      top: 0,
-      right: 0,
-      borderTop: `12vw solid ${props.color}`,
-      borderLeft: `20vw solid transparent`,
-    };
-  } else if (props.position === positionEnum[4]) {
-    style = {
-      top: 0,
-      left: 0,
-      borderTop: `18vw solid ${props.color}`,
-      borderRight: `27vw solid transparent`,
-    };
-  } else {
-    style = {
-      bottom: 0,
-      right: 0,
-      borderBottom: `18vw solid ${props.color}`,
-      borderLeft: `27vw solid transparent`,
-    };
+
+  switch (position) {
+    case "bottom-left":
+      style = {
+        bottom: 0,
+        left: 0,
+        borderBottom: `18vw solid ${color}`,
+        borderRight: `27vw solid transparent`,
+      };
+      break;
+
+    case "top-right":
+      style = {
+        top: 0,
+        right: 0,
+        borderTop: `12vw solid ${color}`,
+        borderLeft: `20vw solid transparent`,
+      };
+      break;
+
+    case "top-left":
+      style = {
+        top: 0,
+        left: 0,
+        borderTop: `18vw solid ${color}`,
+        borderRight: `27vw solid transparent`,
+      };
+      break;
+
+    default:
+      style = {
+        bottom: 0,
+        right: 0,
+        borderBottom: `18vw solid ${color}`,
+        borderLeft: `27vw solid transparent`,
+      };
   }
 
-  return <Shape style={style} ref={ref} />;
+  return <P.Shape style={style} ref={ref} />;
 });
-
-Triangle.propTypes = {
-  /**
-   * triangle color - accepts all formats
-   */
-  color: PropTypes.string.isRequired,
-
-  /**
-   * allows to place triangle in the corners of the screen
-   */
-  position: PropTypes.oneOf([
-    "bottom-right",
-    "bottom-left",
-    "top-right",
-    "top-left",
-  ]).isRequired,
-};
 
 export default Triangle;

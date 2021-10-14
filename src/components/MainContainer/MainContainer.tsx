@@ -1,18 +1,22 @@
 import gsap from "gsap";
-import PropTypes from "prop-types";
-import { useEffect, useRef, useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
 import Triangle from "components/Shared/Triangle/Triangle";
 import { Wrapper, PageInfo } from "./parts";
 import { AvailableColors } from "consts";
 
+export interface MainContainerProps {
+  pageInfo: string;
+}
 /**
  * functional React component - main app container
  * @function
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const MainContainer = ({ children, pageInfo }) => {
+const MainContainer = ({
+  children,
+  pageInfo,
+}: React.PropsWithChildren<MainContainerProps>) => {
   const [currentColor, setCurrentColor] = useState(AvailableColors[0]);
   const topTriangleRef = useRef(null);
   const pageInfoRef = useRef(null);
@@ -45,13 +49,6 @@ const MainContainer = ({ children, pageInfo }) => {
       <PageInfo ref={pageInfoRef}>{pageInfo}</PageInfo>
     </Wrapper>
   );
-};
-
-MainContainer.propTypes = {
-  /**
-   * Renders on the screen current page description
-   */
-  pageInfo: PropTypes.string,
 };
 
 export default MainContainer;

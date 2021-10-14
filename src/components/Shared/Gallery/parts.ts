@@ -1,8 +1,19 @@
+import React, { HTMLAttributes } from "react";
 import styled from "styled-components";
-
 import breakpoints from "styles/breakpoints";
 
-const Wrapper = styled.div`
+export interface GalleryImageProps {
+  content: string;
+}
+
+export interface FullScreenImgProps {
+  isVisible: boolean;
+}
+export interface ButtonProps
+  extends HTMLAttributes<HTMLButtonElement>,
+    React.HTMLAttributes<HTMLButtonElement> {}
+
+export const Wrapper = styled.div`
   position: relative;
   grid-area: 1/1/12/13;
 
@@ -32,11 +43,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export interface GalleryImageProps {
-  content: string;
-}
-
-const GalleryImg = styled.div<GalleryImageProps>`
+export const GalleryImg = styled.div<GalleryImageProps>`
   position: relative;
 
   &:after {
@@ -57,7 +64,7 @@ const GalleryImg = styled.div<GalleryImageProps>`
   }
 `;
 
-const FullScreenImg = styled.div`
+export const FullScreenImageContainer = styled.div<FullScreenImgProps>`
   z-index: 999;
   position: fixed;
   top: 0;
@@ -72,23 +79,23 @@ const FullScreenImg = styled.div`
   background-color: rgba(150, 150, 150, 0.75);
 
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
+`;
 
-  img {
-    max-width: 1600px;
-    max-height: 1200px;
-    height: calc(90%);
-    width: auto;
+export const FullScreenImage = styled.img`
+  max-width: 1600px;
+  max-height: 1200px;
+  height: calc(90%);
+  width: auto;
 
-    box-shadow: 0 0 0 4px white;
+  box-shadow: 0 0 0 4px white;
 
-    @media ${breakpoints.laptop} {
-      height: auto;
-      width: 90%;
-    }
+  @media ${breakpoints.laptop} {
+    height: auto;
+    width: 90%;
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button<React.HTMLAttributes<HTMLButtonElement>>`
   position: absolute;
 
   border: none;
@@ -106,26 +113,17 @@ const Button = styled.button`
   }
 `;
 
-const CloseButton = styled(Button)`
+export const CloseButton = styled(Button)`
   top: 0;
   left: 1rem;
 `;
 
-const LeftArrowButton = styled(Button)`
+export const LeftArrowButton = styled(Button)`
   left: 1rem;
   top: 50%;
 `;
 
-const RightArrowButton = styled(Button)`
+export const RightArrowButton = styled(Button)`
   right: 1rem;
   top: 50%;
 `;
-
-export {
-  Wrapper,
-  GalleryImg,
-  FullScreenImg,
-  CloseButton,
-  LeftArrowButton,
-  RightArrowButton,
-};
