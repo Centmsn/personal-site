@@ -1,8 +1,12 @@
 import gsap from "gsap";
-import PropTypes from "prop-types";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { getRandomElement } from "utils";
-import { Wrapper } from "./parts";
+import * as P from "./parts";
+
+export interface SectionContainerProps {
+  isVisible: boolean;
+  paddingSize: null | string;
+}
 
 /**
  * functional React component - a container for page sections
@@ -14,8 +18,8 @@ const SectionContainer = ({
   children,
   isVisible = false,
   paddingSize = null,
-}) => {
-  const wrapperRef = useRef(null);
+}: React.PropsWithChildren<SectionContainerProps>) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { duration: 0.5 } });
@@ -40,18 +44,10 @@ const SectionContainer = ({
   }, [isVisible]);
 
   return (
-    <Wrapper ref={wrapperRef} paddingSize={paddingSize || "1rem"}>
+    <P.Wrapper ref={wrapperRef} paddingSize={paddingSize || "1rem"}>
       {children}
-    </Wrapper>
+    </P.Wrapper>
   );
-};
-
-SectionContainer.propTypes = {
-  /**
-   * switches component visibility
-   */
-  isVisible: PropTypes.bool.isRequired,
-  paddingSize: PropTypes.number,
 };
 
 export default SectionContainer;

@@ -1,8 +1,11 @@
 import styled from "styled-components";
-
 import breakpoints from "styles/breakpoints";
 
-const Wrapper = styled.div`
+export interface WrapperProps {
+  paddingSize: string | null;
+}
+
+export const Wrapper = styled.div<WrapperProps>`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -23,5 +26,3 @@ const Wrapper = styled.div`
     overflow-y: auto;
   }
 `;
-
-export { Wrapper };

@@ -1,42 +1,23 @@
-import email_svg from "../../assets/email.svg";
-
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "emailjs-com";
 import gsap from "gsap";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import React, { useState, useRef } from "react";
-
 import Footer from "components/Footer/Footer";
 import SectionContainer from "components/SectionContainer/SectionContainer";
-import {
-  Wrapper,
-  Form,
-  FormSection,
-  SendingFeedback,
-  Button,
-  Input,
-  FormTitle,
-  FormTooltip,
-} from "./parts";
+import { validationSchema, MessageStatus } from "./constants";
+import * as P from "./parts";
+import email_svg from "../../assets/email.svg";
 
 const SERVICE_ID = "service_r7i52mu";
 const TEMPLATE_ID = "template_oasdgmb";
 const USER_ID = "user_GfqNlxrr83xLpWWIrrG8x";
 
-/**
- * Enum for contact form status
- * @readonly
- * @enum { number }
- */
-const MESSAGE_STATUS = {
-  PENDING: 0,
-  SENDING: 1,
-  ERROR: 2,
-  OK: 3,
-};
+export interface ContactSectionProps {
+  isVisible: boolean;
+}
 
 /**
  * functional React component - renders contant section on the screen
@@ -44,22 +25,9 @@ const MESSAGE_STATUS = {
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const ContactSection = ({ isVisible }) => {
-  const [status, setStatus] = useState(MESSAGE_STATUS.OK);
-  const contactFormRef = useRef(null);
-
-  const validationSchema = () =>
-    Yup.object().shape({
-      from_name: Yup.string()
-        .required("Przedstaw się proszę")
-        .min(2, "Imię musi zawierać co najmniej 2 znaki"),
-      reply_to: Yup.string()
-        .required("Muszę wiedzieć komu mam odpisać")
-        .email("Niepoprawny adres email"),
-      message: Yup.string()
-        .required("Wiadomość jest trochę za krótka...")
-        .min(10, "Wiadomość musi zawierać co najmniej 10 znaków"),
-    });
+const ContactSection = ({ isVisible }: ContactSectionProps) => {
+  const [status, setStatus] = useState(MessageStatus.OK);
+  const contactFormRef = useRef<HTMLFormElement>(null);
 
   const formik = useFormik({
     initialValues: {
@@ -69,12 +37,12 @@ const ContactSection = ({ isVisible }) => {
     },
     validationSchema,
     onSubmit: (_, { resetForm }) => {
-      setStatus(MESSAGE_STATUS.SENDING);
+      setStatus(MessageStatus.SENDING);
       emailjs
         .sendForm(SERVICE_ID, TEMPLATE_ID, contactFormRef.current, USER_ID)
         .then(
           () => {
-            setStatus(MESSAGE_STATUS.OK);
+            setStatus(MessageStatus.OK);
             resetForm({});
 
             const tl = gsap.timeline();
@@ -85,11 +53,11 @@ const ContactSection = ({ isVisible }) => {
               .to(form.lastChild, { autoAlpha: 0, duration: 0 });
 
             setTimeout(() => {
-              setStatus(MESSAGE_STATUS.PENDING);
+              setStatus(MessageStatus.PENDING);
             }, 8000);
           },
           () => {
-            setStatus(MESSAGE_STATUS.ERROR);
+            setStatus(MessageStatus.ERROR);
 
             const tl = gsap.timeline();
             const form = contactFormRef.current;
@@ -99,7 +67,7 @@ const ContactSection = ({ isVisible }) => {
               .to(form.lastChild, { autoAlpha: 0, duration: 0 });
 
             setTimeout(() => {
-              setStatus(MESSAGE_STATUS.PENDING);
+              setStatus(MessageStatus.PENDING);
             }, 8000);
           }
         );
@@ -107,35 +75,35 @@ const ContactSection = ({ isVisible }) => {
   });
 
   const buttonText =
-    status === MESSAGE_STATUS.SENDING && !Object.keys(formik.errors).length
+    status === MessageStatus.SENDING && !Object.keys(formik.errors).length
       ? "Wysyłanie..."
       : "Wyślij";
 
   let feedback;
 
-  if (status === MESSAGE_STATUS.ERROR) {
+  if (status === MessageStatus.ERROR) {
     feedback =
       "Uupsss... coś poszło nie tak. Spróbuj ponownie za chwilę, lub skorzystaj z innej formy kontaktu";
-  } else if (status === MESSAGE_STATUS.OK) {
+  } else if (status === MessageStatus.OK) {
     feedback =
       "Otrzymałem Twoją wiadomość i odpowiem najszybciej jak to możliwe.";
   }
 
   return (
     <SectionContainer isVisible={isVisible} paddingSize="0px">
-      <Wrapper>
-        <Form
+      <P.Wrapper>
+        <P.Form
           id="form"
           onSubmit={formik.handleSubmit}
           ref={contactFormRef}
           onBlur={formik.handleBlur}
         >
-          <FormSection>
-            <FormTitle>Napisz do mnie wiadomość</FormTitle>
-          </FormSection>
+          <P.FormSection>
+            <P.FormTitle>Napisz do mnie wiadomość</P.FormTitle>
+          </P.FormSection>
 
-          <FormSection>
-            <Input
+          <P.FormSection>
+            <P.Input
               type="text"
               name="from_name"
               id="from_name"
@@ -143,15 +111,15 @@ const ContactSection = ({ isVisible }) => {
               value={formik.values.from_name}
               placeholder="Jak Cię zwą?"
             />
-            <FormTooltip
-              active={!!(formik.errors.from_name && formik.touched.from_name)}
+            <P.FormTooltip
+              isActive={!!(formik.errors.from_name && formik.touched.from_name)}
             >
               {formik.errors.from_name}
-            </FormTooltip>
-          </FormSection>
+            </P.FormTooltip>
+          </P.FormSection>
 
-          <FormSection>
-            <Input
+          <P.FormSection>
+            <P.Input
               type="email"
               name="reply_to"
               id="reply_to"
@@ -159,15 +127,15 @@ const ContactSection = ({ isVisible }) => {
               value={formik.values.reply_to}
               placeholder="adres@email.com"
             />
-            <FormTooltip
-              active={!!(formik.errors.reply_to && formik.touched.reply_to)}
+            <P.FormTooltip
+              isActive={!!(formik.errors.reply_to && formik.touched.reply_to)}
             >
               {formik.errors.reply_to}
-            </FormTooltip>
-          </FormSection>
+            </P.FormTooltip>
+          </P.FormSection>
 
-          <FormSection>
-            <Input
+          <P.FormSection>
+            <P.Input
               type="text"
               name="message"
               id="message"
@@ -176,43 +144,43 @@ const ContactSection = ({ isVisible }) => {
               placeholder="wiadomość..."
               as="textarea"
               style={{ height: "15rem" }}
-            ></Input>
-            <FormTooltip
-              active={!!(formik.errors.message && formik.touched.message)}
+            ></P.Input>
+            <P.FormTooltip
+              isActive={!!(formik.errors.message && formik.touched.message)}
             >
               {formik.errors.message}
-            </FormTooltip>
-          </FormSection>
+            </P.FormTooltip>
+          </P.FormSection>
 
-          <FormSection>
-            <Button
+          <P.FormSection>
+            <P.Button
               type="submit"
               id="button"
               disabled={
-                status === MESSAGE_STATUS.SENDING &&
+                status === MessageStatus.SENDING &&
                 !Object.keys(formik.errors).length
               }
             >
               {buttonText}
               <img src={email_svg} alt="" />
-            </Button>
-          </FormSection>
+            </P.Button>
+          </P.FormSection>
 
-          <SendingFeedback error={status === MESSAGE_STATUS.ERROR}>
+          <P.SendingFeedback hasError={status === MessageStatus.ERROR}>
             <span>
               <FontAwesomeIcon
                 icon={
-                  status === MESSAGE_STATUS.OK
+                  status === MessageStatus.OK
                     ? faCheckCircle
                     : faExclamationTriangle
                 }
               />
             </span>
             <p>{feedback}</p>
-          </SendingFeedback>
-        </Form>
+          </P.SendingFeedback>
+        </P.Form>
         <Footer isVisible={isVisible} />
-      </Wrapper>
+      </P.Wrapper>
     </SectionContainer>
   );
 };

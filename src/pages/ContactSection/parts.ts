@@ -1,8 +1,15 @@
 import styled from "styled-components";
-
 import breakpoints from "styles/breakpoints";
 
-const Wrapper = styled.div`
+export interface SendingFeedbackProps {
+  hasError: boolean;
+}
+
+export interface FormTooltipProps {
+  isActive: boolean;
+}
+
+export const Wrapper = styled.div`
   grid-area: 1/1/12/11;
 
   display: flex;
@@ -21,7 +28,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Form = styled.form`
+export const Form = styled.form`
   flex-basis: 45%;
   position: relative;
 
@@ -35,7 +42,7 @@ const Form = styled.form`
   }
 `;
 
-const FormSection = styled.div`
+export const FormSection = styled.div`
   position: relative;
   flex-basis: 100%;
   margin-bottom: 25px;
@@ -44,7 +51,7 @@ const FormSection = styled.div`
   justify-content: center;
 `;
 
-const SendingFeedback = styled.div`
+export const SendingFeedback = styled.div<SendingFeedbackProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -61,17 +68,17 @@ const SendingFeedback = styled.div`
 
   span {
     font-size: 10rem;
-    color: ${({ error, theme }) =>
-      error ? theme.colors.yellow : "rgb(98, 168, 116)"};
+    color: ${({ hasError, theme }) =>
+      hasError ? theme.colors.yellow : "rgb(98, 168, 116)"};
   }
 `;
 
-const FormTooltip = styled.span`
+export const FormTooltip = styled.span<FormTooltipProps>`
   position: absolute;
   top: calc(-1.25rem - 10px);
   left: 0;
   right: 0;
-  transform: translateY(${({ active }) => (active ? 0 : "-10px")});
+  transform: translateY(${({ isActive }) => (isActive ? 0 : "-10px")});
 
   font-size: 1.25rem;
   text-align: center;
@@ -79,7 +86,7 @@ const FormTooltip = styled.span`
   background-color: ${({ theme }) => theme.colors.yellow};
   color: ${({ theme }) => theme.colors.gray};
 
-  opacity: ${({ active }) => (active ? 1 : 0)};
+  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
   transition: 300ms;
 
   @media ${breakpoints.tablet} {
@@ -87,7 +94,7 @@ const FormTooltip = styled.span`
   }
 `;
 
-const FormTitle = styled.h1`
+export const FormTitle = styled.h1`
   font-size: 2.5rem;
   text-align: center;
   text-shadow: 4px 4px 0 ${({ theme }) => theme.colors.yellow};
@@ -95,7 +102,7 @@ const FormTitle = styled.h1`
   color: ${({ theme }) => theme.colors.gray};
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   width: 100%;
   margin-bottom: 1.75rem;
 
@@ -111,7 +118,7 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   position: relative;
   width: 200px;
 
@@ -150,14 +157,3 @@ const Button = styled.button`
     transition: 300ms;
   }
 `;
-
-export {
-  Wrapper,
-  Form,
-  FormSection,
-  SendingFeedback,
-  Button,
-  Input,
-  FormTitle,
-  FormTooltip,
-};
