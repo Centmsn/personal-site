@@ -1,30 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareFull } from "@fortawesome/free-solid-svg-icons";
-
 import gsap from "gsap";
-import PropTypes, { func } from "prop-types";
 import { useEffect, useRef } from "react";
-
 import { Map, Title, Info, Description, Feedback } from "./parts";
+import { HeaderSectionProps, MOBILE_INFO, DESKTOP_INFO } from "./constants";
 import SectionContainer from "components/SectionContainer/SectionContainer";
 import useWindowSize from "hooks/useWindowSize";
-
-const MOBILE_INFO =
-  "Zachęcam Cię również do odwiedzenia mojej strony na urządzeniu z większym wyświetlaczem";
-const DESKTOP_INFO =
-  "Jeśli korzystasz z komputera to do dyspozycji masz również strzałki (te z klawiatury oraz te w prawym rogu)";
 
 /**
  * React functional component - renders header section on the screen
  * @returns {JSX.Element}
  */
-const HeaderSection = ({ isVisible, slideChange }) => {
-  const titleRef = useRef(null);
-  const infoRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const mapRef = useRef(null);
-  const feedbackRef = useRef(null);
-
+const HeaderSection = ({ isVisible, slideChange }: HeaderSectionProps) => {
+  const titleRef = useRef<HTMLDivElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+  const descriptionRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const feedbackRef = useRef<HTMLDivElement>(null);
   const { width } = useWindowSize();
 
   useEffect(() => {
@@ -124,18 +116,6 @@ const HeaderSection = ({ isVisible, slideChange }) => {
       </Feedback>
     </SectionContainer>
   );
-};
-
-HeaderSection.propTypes = {
-  /**
-   * switches component visibility
-   */
-  isVisible: PropTypes.bool.isRequired,
-
-  /**
-   * allows slide change
-   */
-  slideChange: func.isRequired,
 };
 
 export default HeaderSection;
