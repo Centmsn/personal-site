@@ -3,7 +3,7 @@
  * @param {Array} arr - length must be >1
  * @return - random element from array
  */
-const getRandomElement = arr => {
+const getRandomArrElement = (arr: any[]) => {
   if (Array.isArray(arr) && arr.length > 1) {
     return arr[Math.floor(Math.random() * arr.length)];
   } else {
@@ -11,4 +11,4 @@ const getRandomElement = arr => {
   }
 };
 
-export { getRandomElement };
+export { getRandomArrElement };

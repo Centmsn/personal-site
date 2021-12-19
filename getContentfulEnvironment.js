@@ -1,10 +1,14 @@
-const contentfulManagement = require("contentful");
+require("dotenv").config();
+const contentfulManagement = require("contentful-management");
 
-module.exports = async function () {
-  const client = await contentfulManagement.createClient({
-    accessToken: "dvb9M3sF_ssNQb2oSwuFa32vzVTeY7hbSLuSY8R59-k",
-    space: "6208krsfb26h",
+module.exports = function () {
+  const contentfulClient = contentfulManagement.createClient({
+    accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN,
   });
 
-  return client.getSpace().then(space => space);
+  return contentfulClient
+    .getSpace(process.env.REACT_APP_CONTENTFUL_SPACE)
+    .then(space =>
+      space.getEnvironment(process.env.REACT_APP_CONTENTFUL_ENVIRONMENT)
+    );
 };

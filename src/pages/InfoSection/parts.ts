@@ -1,8 +1,11 @@
 import styled from "styled-components";
-
 import breakpoints from "styles/breakpoints";
 
-const Wrapper = styled.div`
+export interface SkillBarProps {
+  content: string;
+}
+
+export const Wrapper = styled.div`
   grid-area: 1/1/12/11;
 
   display: flex;
@@ -20,7 +23,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Summary = styled.section`
+export const Summary = styled.section`
   flex-basis: 30%;
 
   text-align: center;
@@ -60,7 +63,7 @@ const Summary = styled.section`
   }
 `;
 
-const SkillBar = styled.div`
+export const SkillBar = styled.div<SkillBarProps>`
   position: relative;
   margin: 0 auto;
 
@@ -95,7 +98,7 @@ const SkillBar = styled.div`
   }
 `;
 
-const InnerBar = styled.div`
+export const InnerBar = styled.div`
   margin-left: 3px;
   width: calc(5% - 3px);
   height: 100%;
@@ -109,7 +112,7 @@ const InnerBar = styled.div`
   opacity: 0;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   font-size: 5rem;
 
@@ -117,7 +120,7 @@ const Title = styled.h1`
   text-shadow: 4px 4px 0 ${({ theme }) => theme.colors.yellow};
 `;
 
-const Description = styled.section`
+export const Description = styled.section`
   flex-basis: 70%;
 
   text-align: justify;
@@ -135,5 +138,3 @@ const Description = styled.section`
     flex-basis: 100%;
   }
 `;
-
-export { Wrapper, Summary, SkillBar, InnerBar, Title, Description };

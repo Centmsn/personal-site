@@ -1,26 +1,11 @@
 import photography_photo from "assets/hobbies_photography.jpg";
 import sport_photo from "assets/hobbies_sport.jpg";
 import webdev_photo from "assets/hobbies_webdev.jpg";
-
 import gsap from "gsap";
-import PropTypes from "prop-types";
 import { useRef, useEffect, useState } from "react";
-
 import SectionContainer from "components/SectionContainer/SectionContainer";
 import useWindowSize from "hooks/useWindowSize";
-import {
-  StyledLink,
-  CardHolder,
-  CardHolder2,
-  CardHolder3,
-  BorderRight,
-  BorderLeft,
-  BorderTop,
-  BorderBottom,
-  CardTitle,
-  SectionInfo,
-  BorderContainer,
-} from "./parts";
+import * as P from "./parts";
 
 /**
  * Renders HobbiesSection on screen
@@ -159,44 +144,37 @@ const HobbiesSection = ({ isVisible = false }) => {
 
   const renderCards = () =>
     cards.map(card => (
-      <StyledLink
+      <P.StyledLink
         ref={card.ref}
-        tabIndex="0"
+        tabIndex={0}
         key={card.title}
         area={card.area}
         to={card.link}
       >
         <p>{card.desc}</p>
         <img src={card.img} alt={card.title} />
-        <BorderContainer ref={card.borderRef}>
-          <BorderLeft />
-          <BorderBottom />
-          <BorderTop />
-          <BorderRight />
-        </BorderContainer>
-        <CardTitle>{card.title}</CardTitle>
-      </StyledLink>
+        <P.BorderContainer ref={card.borderRef}>
+          <P.BorderLeft />
+          <P.BorderBottom />
+          <P.BorderTop />
+          <P.BorderRight />
+        </P.BorderContainer>
+        <P.CardTitle>{card.title}</P.CardTitle>
+      </P.StyledLink>
     ));
 
   return (
     <SectionContainer isVisible={isVisible}>
       {renderCards()}
-      <SectionInfo ref={sectionInfoRef}>
+      <P.SectionInfo ref={sectionInfoRef}>
         Kliknij jedną z sekcji i dowiedz się więcej
-      </SectionInfo>
+      </P.SectionInfo>
 
-      <CardHolder ref={topHolderRef} />
-      <CardHolder2 ref={middleHolderRef} />
-      <CardHolder3 ref={bottomHolderRef} />
+      <P.CardHolder ref={topHolderRef} />
+      <P.CardHolder2 ref={middleHolderRef} />
+      <P.CardHolder3 ref={bottomHolderRef} />
     </SectionContainer>
   );
-};
-
-HobbiesSection.propTypes = {
-  /**
-   * switches component visibility
-   */
-  isVisible: PropTypes.bool.isRequired,
 };
 
 export default HobbiesSection;

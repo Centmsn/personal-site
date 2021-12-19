@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
 import breakpoints from "styles/breakpoints";
 
-const StyledLink = styled(Link)`
+export interface StyledLinkProps {
+  area: string;
+}
+
+export const StyledLink = styled(Link)<StyledLinkProps>`
   position: relative;
   grid-area: ${({ area }) => area};
 
@@ -34,7 +37,7 @@ const StyledLink = styled(Link)`
     border-radius: 50%;
     box-shadow: 0 0 0 2px white;
 
-    @media ${breakpoints.mobilesL} {
+    @media ${breakpoints.mobileL} {
       height: 80%;
     }
   }
@@ -67,7 +70,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const CardTitle = styled.div`
+export const CardTitle = styled.div`
   position: absolute;
   bottom: calc(-2rem - 1.5rem);
   right: 0;
@@ -85,7 +88,7 @@ const CardTitle = styled.div`
   padding: 0 1rem;
 `;
 
-const SectionInfo = styled.aside`
+export const SectionInfo = styled.aside`
   grid-area: 5/1/7/3;
   transform: translateX(-50vw);
 
@@ -111,7 +114,7 @@ const SectionInfo = styled.aside`
   }
 `;
 
-const BorderContainer = styled.div`
+export const BorderContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -121,7 +124,7 @@ const BorderContainer = styled.div`
   background-color: white;
 `;
 
-const Border = styled.div`
+export const Border = styled.div`
   position: absolute;
 
   transform: scaleX(0);
@@ -130,21 +133,21 @@ const Border = styled.div`
   background-color: ${({ theme }) => theme.colors.gray};
 `;
 
-const BorderBottom = styled(Border)`
+export const BorderBottom = styled(Border)`
   left: 0;
   right: 0;
   bottom: 0;
 
   height: 4px;
 `;
-const BorderTop = styled(Border)`
+export const BorderTop = styled(Border)`
   left: 0;
   right: 0;
   top: 0;
 
   height: 4px;
 `;
-const BorderLeft = styled(Border)`
+export const BorderLeft = styled(Border)`
   left: 0;
   top: 0;
   bottom: 0;
@@ -154,7 +157,7 @@ const BorderLeft = styled(Border)`
 
   width: 4px;
 `;
-const BorderRight = styled(Border)`
+export const BorderRight = styled(Border)`
   top: 0;
   right: 0;
   bottom: 0;
@@ -166,7 +169,7 @@ const BorderRight = styled(Border)`
   background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
-const CardHolder = styled.div`
+export const CardHolder = styled.div`
   grid-area: 4/2/8/2;
   border-left: 4px solid ${({ theme }) => theme.colors.gray};
 
@@ -178,7 +181,7 @@ const CardHolder = styled.div`
   }
 `;
 
-const CardHolder2 = styled.div`
+export const CardHolder2 = styled.div`
   grid-area: 5/2/6/4;
   border-bottom: 4px solid ${({ theme }) => theme.colors.gray};
 
@@ -190,7 +193,7 @@ const CardHolder2 = styled.div`
   }
 `;
 
-const CardHolder3 = styled.div`
+export const CardHolder3 = styled.div`
   grid-area: 10/2/14/2;
   border-left: 4px solid ${({ theme }) => theme.colors.gray};
 
@@ -201,17 +204,3 @@ const CardHolder3 = styled.div`
     grid-area: 1/1/14/1;
   }
 `;
-
-export {
-  StyledLink,
-  CardHolder,
-  CardHolder2,
-  CardHolder3,
-  BorderRight,
-  BorderLeft,
-  BorderTop,
-  BorderBottom,
-  CardTitle,
-  SectionInfo,
-  BorderContainer,
-};

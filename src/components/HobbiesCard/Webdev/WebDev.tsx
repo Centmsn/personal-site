@@ -2,13 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import gsap from "gsap";
-import styled from "styled-components";
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { createClient } from "contentful";
-import breakpoints from "styles/breakpoints";
+import { createClient, Entry } from "contentful";
 import { SlideChange, LEARNED, LEARNING } from "consts";
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 import WebDevSlide from "./WebDevSlide";
+import { ISlideFields } from "types/contentful";
+import * as P from "./parts";
 
 export interface ProgressBarData {
   title: string;
@@ -22,12 +22,12 @@ export interface ProgressBarData {
  */
 const HobbiesWebDev = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [content, setContent] = useState([]);
+  const [content, setContent] = useState<Entry<ISlideFields>[]>([]);
   const listLearnedRef = useRef<HTMLUListElement>(null);
   const listLearningRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const fetchContent = async () => {
+    (async () => {
       const space: string = process.env.REACT_APP_CONTENTFUL_SPACE as string;
       const accessToken: string = process.env
         .REACT_APP_CONTENTFUL_ACCESS_TOKEN as string;
@@ -37,18 +37,17 @@ const HobbiesWebDev = () => {
         accessToken,
       });
 
-      //! FIXME: change any type to contenful response type
-      let response: any;
       try {
-        response = await client.getEntries({ content_type: "slide" });
+        const response = await client.getEntries<ISlideFields>({
+          content_type: "slide",
+        });
+
         setContent(response.items.reverse());
       } catch (error) {
         // TODO add error handling
         console.log(error);
       }
-    };
-
-    fetchContent();
+    })();
   }, []);
 
   useEffect(() => {
@@ -167,26 +166,26 @@ const HobbiesWebDev = () => {
     return progressBarData.map((data, index) => (
       <li key={index}>
         {data.title}
-        <ProgressBar>
-          <InnerBar width={data.percent} />
-        </ProgressBar>
+        <P.ProgressBar>
+          <P.InnerBar width={data.percent} />
+        </P.ProgressBar>
       </li>
     ));
   };
 
   return (
     <SubContainer>
-      <StartSection isVisible={currentSlide === 0}>
-        <ListSection>
+      <P.StartSection isVisible={currentSlide === 0}>
+        <P.ListSection>
           <h2>Co umiem?</h2>
           <ul ref={listLearnedRef}>{renderList(LEARNED)} </ul>
           <small>
             Do powyższej listy dopisać można jeszcze kilka mniejszych bibliotek:{" "}
             React-router, Lodash - podstawy.
           </small>
-        </ListSection>
+        </P.ListSection>
 
-        <ListSection>
+        <P.ListSection>
           <h2>Czego się uczę?</h2>
           <ul ref={listLearningRef}>{renderList(LEARNING)}</ul>
           <small>
@@ -194,9 +193,9 @@ const HobbiesWebDev = () => {
             i czystym JS. Uczę się także Node, choć na ten moment są to zupełne
             podstawy.
           </small>
-        </ListSection>
+        </P.ListSection>
 
-        <Summary>
+        <P.Summary>
           <h1>Szybkie podsumowanie</h1>
           <p>
             Jestem samoukiem z wielkim zapałem do ciągłego rozwoju, tworzenie
@@ -260,8 +259,8 @@ const HobbiesWebDev = () => {
               title="CodeWars - poziom"
             />
           </a>
-        </Summary>
-      </StartSection>
+        </P.Summary>
+      </P.StartSection>
 
       <WebDevSlide
         isVisible={!(currentSlide === 0)}
@@ -270,156 +269,24 @@ const HobbiesWebDev = () => {
         imgLink={content[currentSlide - 1]?.fields.mainImg.fields.file.url}
         codeLink={content[currentSlide - 1]?.fields.linkCode}
         demoLink={content[currentSlide - 1]?.fields.linkDemo}
-        backendLink={content[currentSlide - 1]?.backendLink}
+        backendLink={content[currentSlide - 1]?.fields.linkBackend}
       />
 
-      <LeftArrow
+      <P.LeftArrow
         onClick={() => handleSlideChange(SlideChange.PREV)}
         disabled={currentSlide === 0}
       >
         <FontAwesomeIcon icon={faCaretLeft} />
-      </LeftArrow>
+      </P.LeftArrow>
 
-      <RightArrow
+      <P.RightArrow
         onClick={() => handleSlideChange(SlideChange.NEXT)}
         disabled={currentSlide > content.length - 1}
       >
         <FontAwesomeIcon icon={faCaretRight} />
-      </RightArrow>
+      </P.RightArrow>
     </SubContainer>
   );
 };
-
-interface StartSectionProps {
-  isVisible: boolean;
-}
-
-const StartSection = styled.section<StartSectionProps>`
-  grid-area: 2/2/11/12;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch;
-
-  color: white;
-
-  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
-  overflow-y: auto;
-
-  @media ${breakpoints.laptop} {
-    margin-bottom: calc(100vh / 12);
-    grid-area: 1/2/-1/12;
-
-    overflow-y: scroll;
-  }
-
-  small {
-    color: ${({ theme }) => theme.colors.smokedWhite};
-  }
-`;
-
-const ListSection = styled.section`
-  flex-basis: 21%;
-
-  padding: 10px;
-
-  @media ${breakpoints.laptop} {
-    flex-basis: 100%;
-  }
-`;
-
-const Summary = styled.section`
-  flex-basis: 47%;
-
-  padding: 10px;
-
-  @media ${breakpoints.laptop} {
-    flex-basis: 100%;
-  }
-
-  section {
-    margin-bottom: 1rem;
-
-    display: flex;
-    justify-content: space-around;
-  }
-
-  img {
-    width: 75%;
-    max-width: 500px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  p {
-    margin-bottom: 1rem;
-
-    text-align: justify;
-    font-size: 1.25rem;
-  }
-
-  a {
-    display: block;
-
-    font-size: 1.75rem;
-    text-align: center;
-
-    color: white;
-
-    &:hover {
-      color: ${({ theme }) => theme.colors.yellow};
-    }
-  }
-`;
-
-const ProgressBar = styled.div`
-  position: relative;
-  width: 100%;
-  height: 10px;
-
-  background-color: ${({ theme }) => theme.colors.lightGray};
-
-  overflow: hidden;
-`;
-
-interface InnerBarProps {
-  width: number;
-}
-
-const InnerBar = styled.div<InnerBarProps>`
-  width: ${({ width }) => width}%;
-  height: 100%;
-  transform: scaleX(5);
-  transform-origin: left;
-
-  background-color: ${({ theme }) => theme.colors.yellow};
-`;
-
-const Arrow = styled.button`
-  font-size: 7rem;
-
-  color: ${({ disabled, theme }) =>
-    disabled ? theme.colors.lightGray : theme.colors.yellow};
-
-  background: none;
-  transition: 300ms;
-
-  &:hover {
-    transform: scale(1.2);
-    color: ${({ disabled, theme }) =>
-      disabled ? theme.colors.lightGray : theme.colors.yellow};
-  }
-`;
-
-const LeftArrow = styled(Arrow)`
-  grid-area: 6/1/8/2;
-`;
-
-const RightArrow = styled(Arrow)`
-  grid-area: 6/12/8/13;
-`;
 
 export default HobbiesWebDev;

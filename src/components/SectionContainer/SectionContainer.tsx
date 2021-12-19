@@ -1,11 +1,11 @@
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
-import { getRandomElement } from "utils";
+import { getRandomArrElement } from "utils/getRandomArrElement";
 import * as P from "./parts";
 
 export interface SectionContainerProps {
   isVisible: boolean;
-  paddingSize: null | string;
+  paddingSize?: null | string;
 }
 
 /**
@@ -29,11 +29,11 @@ const SectionContainer = ({
       gsap.set(wrapper, {
         y: 0,
         autoAlpha: 1,
-        x: `${getRandomElement(["100", "-100"])}vw`,
+        x: `${getRandomArrElement(["100", "-100"])}vw`,
       });
       tl.to(wrapper, { x: 0 }, "+=0.3");
     } else {
-      tl.to(wrapper, { y: `${getRandomElement(["100", "-100"])}vh` }).to(
+      tl.to(wrapper, { y: `${getRandomArrElement(["100", "-100"])}vh` }).to(
         wrapper,
         {
           autoAlpha: 0,
