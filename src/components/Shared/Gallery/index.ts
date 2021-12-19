@@ -1,1 +1,1 @@
-export { default, GalleryProps, ImageObject } from "./Gallery";
+export { default } from "./Gallery";

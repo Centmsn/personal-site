@@ -27,7 +27,7 @@ export interface ContactSectionProps {
  */
 const ContactSection = ({ isVisible }: ContactSectionProps) => {
   const [status, setStatus] = useState(MessageStatus.OK);
-  const contactFormRef = useRef<HTMLFormElement>(null);
+  const contactFormRef = useRef<HTMLFormElement>(null!);
 
   const formik = useFormik({
     initialValues: {
@@ -136,7 +136,6 @@ const ContactSection = ({ isVisible }: ContactSectionProps) => {
 
           <P.FormSection>
             <P.Input
-              type="text"
               name="message"
               id="message"
               onChange={formik.handleChange}
@@ -144,7 +143,7 @@ const ContactSection = ({ isVisible }: ContactSectionProps) => {
               placeholder="wiadomość..."
               as="textarea"
               style={{ height: "15rem" }}
-            ></P.Input>
+            />
             <P.FormTooltip
               isActive={!!(formik.errors.message && formik.touched.message)}
             >

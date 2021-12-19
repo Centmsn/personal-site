@@ -1,21 +1,16 @@
-import round_self2 from "assets/round_self2.jpg";
-
-import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-
+import gsap from "gsap";
 import SectionContainer from "components/SectionContainer/SectionContainer";
-import {
-  Wrapper,
-  Summary,
-  SkillBar,
-  InnerBar,
-  Title,
-  Description,
-} from "./parts";
+import round_self2 from "assets/round_self2.jpg";
+import * as P from "./parts";
 
-const InfoSection = ({ isVisible }) => {
+interface InfoSectionProps {
+  isVisible: boolean;
+}
+
+const InfoSection = ({ isVisible }: InfoSectionProps) => {
   const [firstRender, setFirstRender] = useState(true);
-  const skillListRef = useRef(null);
+  const skillListRef = useRef<HTMLUListElement>(null!);
   const bars = [
     { title: "Angielski", percent: 75, desc: "Poziom B2/C1" },
     { title: "Javascript", percent: 65, desc: "65%" },
@@ -28,51 +23,49 @@ const InfoSection = ({ isVisible }) => {
     if (isVisible && firstRender) {
       setFirstRender(false);
 
+      //! Changed from children to childNoes
       const listElement = skillListRef.current.children;
       const tl = gsap.timeline({ defaults: { duration: 0.2 } });
 
-      tl.to(listElement[0].lastChild.children, {
+      tl.to(listElement[0].lastChild!.childNodes, {
         stagger: 0.2,
         autoAlpha: 1,
       })
         .to(
-          listElement[1].lastChild.children,
+          listElement[1].lastChild!.childNodes,
           { stagger: 0.1, autoAlpha: 1 },
           "-=0.5"
         )
         .to(
-          listElement[2].lastChild.children,
+          listElement[2].lastChild!.childNodes,
           { stagger: 0.2, autoAlpha: 1 },
           "-=2"
         )
         .to(
-          listElement[3].lastChild.children,
+          listElement[3].lastChild!.childNodes,
           { stagger: 0.2, autoAlpha: 1 },
           "-=3"
         )
         .to(
-          listElement[4].lastChild.children,
+          listElement[4].lastChild!.childNodes,
           { stagger: 0.1, autoAlpha: 1 },
           "-=2.5"
         );
     }
   }, [isVisible, firstRender]);
 
-  /**
-   * Renders skills bars on the screen
-   */
   const renderBars = () => {
     return bars.map(bar => {
       const skillBarElements = [];
 
       for (let i = 0; i < Math.floor(bar.percent / 5); i++) {
-        skillBarElements.push(<InnerBar key={i} />);
+        skillBarElements.push(<P.InnerBar key={i} />);
       }
 
       return (
         <li key={bar.title}>
           {bar.title}
-          <SkillBar content={bar.desc}>{skillBarElements}</SkillBar>
+          <P.SkillBar content={bar.desc}>{skillBarElements}</P.SkillBar>
         </li>
       );
     });
@@ -80,18 +73,18 @@ const InfoSection = ({ isVisible }) => {
 
   return (
     <SectionContainer isVisible={isVisible} paddingSize="0px">
-      <Wrapper>
-        <Summary>
+      <P.Wrapper>
+        <P.Summary>
           <img src={round_self2} alt="Autor" />
           <h4>Co umiem?</h4>
           <ul ref={skillListRef}>{renderBars()}</ul>
 
           <small>Subiektywna ocena umiejętności</small>
-        </Summary>
+        </P.Summary>
 
-        <Description>
+        <P.Description>
           <article>
-            <Title>Krótko o mnie</Title>
+            <P.Title>Krótko o mnie</P.Title>
             <p>
               Informacje które znajdziesz poniżej dotyczą w większej części
               mojego życia prywatnego niż zawodowego - jeżeli interesuje Cię
@@ -134,13 +127,9 @@ const InfoSection = ({ isVisible }) => {
               będąc na miejscu, długie godziny spędzam jeżdżąc po okolicznych
               lasach na rowerze.
             </p>
-
-            {/* <br />
-
-            <small>Sekcja niepełna, opis będzie rozwijany / modyfikowany</small> */}
           </article>
-        </Description>
-      </Wrapper>
+        </P.Description>
+      </P.Wrapper>
     </SectionContainer>
   );
 };

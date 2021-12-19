@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface NavDotProps {
+  isActive: boolean;
+  description: string;
+}
+
 const Wrapper = styled.div`
   position: absolute;
   bottom: 15px;
@@ -10,7 +15,7 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const NavDot = styled.div`
+const NavDot = styled.div<NavDotProps>`
   width: 15px;
   height: 15px;
   margin: 0 15px;
@@ -18,9 +23,9 @@ const NavDot = styled.div`
   border-radius: 50%;
   box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.gray}, 0 0 0 4px white,
     0 0 0 6px
-      ${({ theme, active }) => (active ? theme.colors.gray : "transparent")};
-  background-color: ${({ theme, active }) =>
-    active ? theme.colors.yellow : "none"};
+      ${({ theme, isActive }) => (isActive ? theme.colors.gray : "transparent")};
+  background-color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.yellow : "none"};
 
   cursor: pointer;
   transition: 300ms;
@@ -51,8 +56,8 @@ const NavDot = styled.div`
   }
 
   &:hover {
-    background-color: ${({ theme, active }) =>
-      active ? theme.colors.yellow : theme.colors.gray};
+    background-color: ${({ theme, isActive }) =>
+      isActive ? theme.colors.yellow : theme.colors.gray};
   }
 `;
 

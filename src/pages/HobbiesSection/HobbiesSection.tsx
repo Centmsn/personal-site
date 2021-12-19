@@ -17,19 +17,19 @@ const HobbiesSection = ({ isVisible = false }) => {
   const [firstRender, setFirstRender] = useState(true);
   const { width } = useWindowSize();
 
-  const webDevRef = useRef(null);
-  const webDevBorderRef = useRef(null);
+  const webDevRef = useRef<HTMLAnchorElement>(null!);
+  const webDevBorderRef = useRef<HTMLDivElement>(null!);
 
-  const sportRef = useRef(null);
-  const sportBorderRef = useRef(null);
+  const sportRef = useRef<HTMLAnchorElement>(null!);
+  const sportBorderRef = useRef<HTMLDivElement>(null!);
 
-  const photographyRef = useRef(null);
-  const photographyBorderRef = useRef(null);
+  const photographyRef = useRef<HTMLAnchorElement>(null!);
+  const photographyBorderRef = useRef<HTMLDivElement>(null!);
 
-  const bottomHolderRef = useRef(null);
-  const topHolderRef = useRef(null);
-  const middleHolderRef = useRef(null);
-  const sectionInfoRef = useRef(null);
+  const bottomHolderRef = useRef<HTMLDivElement>(null!);
+  const topHolderRef = useRef<HTMLDivElement>(null!);
+  const middleHolderRef = useRef<HTMLDivElement>(null!);
+  const sectionInfoRef = useRef<HTMLDivElement>(null!);
 
   const cards = [
     {

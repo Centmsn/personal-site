@@ -1,9 +1,12 @@
+import { useEffect, useRef, PropsWithChildren } from "react";
+import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import gsap from "gsap";
-import PropTypes from "prop-types";
-import { useEffect, useRef } from "react";
 import { Wrapper, ContainerFooter, StyledLink } from "./parts";
+
+interface SubContainerProps {
+  shouldPreventLoadingEffect?: boolean;
+}
 
 /**
  * functional React component - a container for hobbies subSections
@@ -11,19 +14,25 @@ import { Wrapper, ContainerFooter, StyledLink } from "./parts";
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const SubSectionContainer = ({ children, preventLoadingEffect = false }) => {
+const SubSectionContainer = ({
+  children,
+  shouldPreventLoadingEffect = false,
+}: PropsWithChildren<SubContainerProps>) => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    if (!preventLoadingEffect) {
+    if (!shouldPreventLoadingEffect) {
       const wrapper = wrapperRef.current;
 
       gsap.to(wrapper, { scale: 1, duration: 0.5 });
     }
-  }, [preventLoadingEffect]);
+  }, [shouldPreventLoadingEffect]);
 
   return (
-    <Wrapper ref={wrapperRef} preventLoadingEffect={!!preventLoadingEffect}>
+    <Wrapper
+      ref={wrapperRef}
+      shouldPreventLoadingEffect={shouldPreventLoadingEffect}
+    >
       {children}
       <ContainerFooter>
         <StyledLink to="/">
@@ -36,13 +45,6 @@ const SubSectionContainer = ({ children, preventLoadingEffect = false }) => {
       </ContainerFooter>
     </Wrapper>
   );
-};
-
-SubSectionContainer.propTypes = {
-  /**
-   * Prevents loading animation
-   */
-  preventLoadingEffect: PropTypes.bool,
 };
 
 export default SubSectionContainer;

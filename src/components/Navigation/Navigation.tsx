@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
-
+import { PageSection, SectionNames } from "types/common";
 import { Wrapper, NavDot } from "./parts";
+
+interface NavigationProps {
+  sections: PageSection[];
+  changeSection: (sectionName: SectionNames) => void;
+}
 
 /**
  * functional React component - naviation dots
@@ -8,46 +13,25 @@ import { Wrapper, NavDot } from "./parts";
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const Navigation = ({ sections, changeSection }) => {
+const Navigation = ({ sections, changeSection }: NavigationProps) => {
   /**
    * Renders navigation dots on the screen
    * @param {{isVisible: boolean, name: string}} arr - array containg page sections
    * @param {function} callback - function that allows state change
    * @return {Object[]}
    */
-  const renderNavDots = (arr, callback) => {
-    if (!Array.isArray(arr)) {
-      console.error(
-        `Incorrect type of argument. Expected Array instead got ${typeof arr}. Function execution has stopped.`
-      );
-      return;
-    }
-
-    if (typeof callback !== "function") {
-      console.error(
-        `Incorrect type of argument. Expected Function instead got ${typeof arr}. Function execution has stopped.`
-      );
-      return;
-    }
-
-    if (arr.length < 1) {
-      console.error(
-        `Array must contain atleast one element. Function execution has stopped.`
-      );
-      return;
-    }
-
-    return arr.map(section => (
+  const renderNavDots = () => {
+    return sections.map(section => (
       <NavDot
-        onClick={() => callback(section.name)}
+        onClick={() => changeSection(section.name)}
         key={section.name}
-        active={section.isVisible}
-        description={section.desc || null}
-      ></NavDot>
+        isActive={section.isVisible}
+        description={section.desc || ""}
+      />
     ));
   };
 
-  return <Wrapper>{renderNavDots(sections, changeSection)}</Wrapper>;
+  return <Wrapper>{renderNavDots()}</Wrapper>;
 };
 
 Navigation.propTypes = {

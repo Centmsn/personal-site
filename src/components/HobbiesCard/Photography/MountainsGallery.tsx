@@ -72,7 +72,7 @@ const MountainsGallery = () => {
     { img: img30, desc: "szczyt" },
   ];
   return (
-    <SubContainer preventLoadingEffect={true}>
+    <SubContainer shouldPreventLoadingEffect={true}>
       <Gallery imgList={images}></Gallery>
     </SubContainer>
   );

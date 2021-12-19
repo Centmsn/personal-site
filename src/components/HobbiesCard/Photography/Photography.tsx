@@ -14,7 +14,7 @@ import breakpoints from "styles/breakpoints";
  */
 const HobbiesPhotography = () => {
   return (
-    <SubContainer preventLoadingEffect={true}>
+    <SubContainer shouldPreventLoadingEffect={true}>
       <MountainsCard>
         <img src={mountains_card} alt="" />
         <StyledLink to="/photography/mountains">Góry</StyledLink>

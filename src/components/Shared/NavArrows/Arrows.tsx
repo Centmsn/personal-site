@@ -2,7 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useCallback } from "react";
+import { PageSection, SectionNames } from "types/common";
 import { Wrapper, Icon } from "./parts";
+
+interface ArrowProps {
+  changeSection: (sectionName: SectionNames) => void;
+  sections: PageSection[];
+}
 
 /**
  * functional React component - renders navigation arrows
@@ -10,7 +16,7 @@ import { Wrapper, Icon } from "./parts";
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const Arrows = ({ changeSection, sections }) => {
+const Arrows = ({ changeSection, sections }: ArrowProps) => {
   /**
    * Calls changeSection callback
    * @param {string} direction - "prev" or "next"
@@ -18,7 +24,7 @@ const Arrows = ({ changeSection, sections }) => {
    * @return {undefined}
    */
   const handleSectionChange = useCallback(
-    (direction, e) => {
+    (direction: string, e?: KeyboardEvent) => {
       const active = sections.findIndex(el => el.isVisible);
 
       if (e && e.hasOwnProperty("keyCode")) {
@@ -41,7 +47,7 @@ const Arrows = ({ changeSection, sections }) => {
   );
 
   useEffect(() => {
-    const listener = e => {
+    const listener = (e: KeyboardEvent) => {
       if (e.keyCode === 40) {
         handleSectionChange("next", e);
       } else if (e.keyCode === 38) {
@@ -60,16 +66,16 @@ const Arrows = ({ changeSection, sections }) => {
     <Wrapper>
       <Icon
         onClick={() => handleSectionChange("prev")}
-        onKeyDown={e => handleSectionChange("prev", e)}
-        tabIndex="0"
+        // onKeyDown={e => handleSectionChange("prev", e)}
+        tabIndex={0}
       >
         <FontAwesomeIcon icon={faCaretUp} />
       </Icon>
 
       <Icon
         onClick={() => handleSectionChange("next")}
-        onKeyDown={e => handleSectionChange("next", e)}
-        tabIndex="0"
+        // onKeyDown={e => handleSectionChange("next", e)}
+        tabIndex={0}
       >
         <FontAwesomeIcon icon={faCaretDown} />
       </Icon>

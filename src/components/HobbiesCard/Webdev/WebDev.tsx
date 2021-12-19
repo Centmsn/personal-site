@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { createClient, Entry } from "contentful";
 import { SlideChange, LEARNED, LEARNING } from "consts";
 import SubContainer from "components/Shared/SubContainer/SubContainer";
-import WebDevSlide from "./WebDevSlide";
+import Slide from "./Slide";
 import { ISlideFields } from "types/contentful";
 import * as P from "./parts";
 
@@ -262,14 +262,9 @@ const HobbiesWebDev = () => {
         </P.Summary>
       </P.StartSection>
 
-      <WebDevSlide
+      <Slide
         isVisible={!(currentSlide === 0)}
-        title={content[currentSlide - 1]?.fields.title}
-        description={content[currentSlide - 1]?.fields.description}
-        imgLink={content[currentSlide - 1]?.fields.mainImg.fields.file.url}
-        codeLink={content[currentSlide - 1]?.fields.linkCode}
-        demoLink={content[currentSlide - 1]?.fields.linkDemo}
-        backendLink={content[currentSlide - 1]?.fields.linkBackend}
+        slideFields={content[currentSlide - 1].fields}
       />
 
       <P.LeftArrow

@@ -1,6 +1,5 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import React, { useState } from "react";
-
 // pages
 import ContactSection from "pages/ContactSection";
 import HeaderSection from "pages/HeaderSection";
@@ -19,15 +18,9 @@ import OthersGallery from "components/HobbiesCard/Photography/OthersGallery";
 // styles
 import GlobalStyles from "styles/GlobalStyles";
 import ThemeProvider from "styles/Theme";
+import { PageSection, SectionNames } from "types/common";
 
-export type SlideNames = "header" | "hobbies" | "info" | "contact";
-export interface Section {
-  name: string;
-  isVisible: boolean;
-  desc: string;
-}
-
-const sections: Array<Section> = [
+const sections: Array<PageSection> = [
   {
     name: "header",
     isVisible: true,
@@ -58,10 +51,10 @@ const sections: Array<Section> = [
  */
 const App = () => {
   const [sectionVisibility, setSectionVisibility] =
-    useState<Array<Section>>(sections);
-  const [activeSection, setActiveSection] = useState<Section>(sections[0]);
+    useState<Array<PageSection>>(sections);
+  const [activeSection, setActiveSection] = useState<PageSection>(sections[0]);
 
-  const handleSlideChange = (slideName: SlideNames) => {
+  const handleSlideChange = (slideName: SectionNames) => {
     const newState = sections.map(section => ({
       ...section,
       isVisible: section.name === slideName,

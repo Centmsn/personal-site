@@ -43,7 +43,7 @@ const PrudnikGallery = () => {
   ];
 
   return (
-    <SubContainer preventLoadingEffect={true}>
+    <SubContainer shouldPreventLoadingEffect={true}>
       <Gallery imgList={list} />
     </SubContainer>
   );

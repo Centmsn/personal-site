@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
 import breakpoints from "styles/breakpoints";
 
-const Wrapper = styled.div`
+interface WrapperProps {
+  shouldPreventLoadingEffect: boolean;
+}
+
+const Wrapper = styled.div<WrapperProps>`
   z-index: 9999;
   position: absolute;
   top: 0;
@@ -18,7 +21,7 @@ const Wrapper = styled.div`
   background-color: rgba(60, 60, 60, 0.98);
 
   transform: scale(
-    ${({ preventLoadingEffect }) => (preventLoadingEffect ? 1 : 0)}
+    ${({ shouldPreventLoadingEffect }) => (shouldPreventLoadingEffect ? 1 : 0)}
   );
 
   @media ${breakpoints.tablet} {

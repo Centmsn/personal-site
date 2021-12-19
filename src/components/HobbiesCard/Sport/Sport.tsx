@@ -1,8 +1,6 @@
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilRuler } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
-import { useEffect, useRef } from "react";
-
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 
 const HobbiesSport = () => {
