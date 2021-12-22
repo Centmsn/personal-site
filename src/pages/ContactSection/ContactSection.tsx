@@ -11,10 +11,6 @@ import { validationSchema, MessageStatus } from "./constants";
 import * as P from "./parts";
 import email_svg from "../../assets/email.svg";
 
-const SERVICE_ID = "service_r7i52mu";
-const TEMPLATE_ID = "template_oasdgmb";
-const USER_ID = "user_GfqNlxrr83xLpWWIrrG8x";
-
 export interface ContactSectionProps {
   isVisible: boolean;
 }
@@ -39,7 +35,12 @@ const ContactSection = ({ isVisible }: ContactSectionProps) => {
     onSubmit: (_, { resetForm }) => {
       setStatus(MessageStatus.SENDING);
       emailjs
-        .sendForm(SERVICE_ID, TEMPLATE_ID, contactFormRef.current, USER_ID)
+        .sendForm(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+          contactFormRef.current,
+          process.env.REACT_APP_EMAILJS_USER_ID
+        )
         .then(
           () => {
             setStatus(MessageStatus.OK);
@@ -112,7 +113,9 @@ const ContactSection = ({ isVisible }: ContactSectionProps) => {
               placeholder="Jak Cię zwą?"
             />
             <P.FormTooltip
-              isActive={!!(formik.errors.from_name && formik.touched.from_name)}
+              isActive={Boolean(
+                formik.errors.from_name && formik.touched.from_name
+              )}
             >
               {formik.errors.from_name}
             </P.FormTooltip>
@@ -128,7 +131,9 @@ const ContactSection = ({ isVisible }: ContactSectionProps) => {
               placeholder="adres@email.com"
             />
             <P.FormTooltip
-              isActive={!!(formik.errors.reply_to && formik.touched.reply_to)}
+              isActive={Boolean(
+                formik.errors.reply_to && formik.touched.reply_to
+              )}
             >
               {formik.errors.reply_to}
             </P.FormTooltip>
