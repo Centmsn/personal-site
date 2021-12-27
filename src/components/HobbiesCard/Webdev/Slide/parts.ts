@@ -45,7 +45,7 @@ export const SlideSection = styled.section`
       0 0 0 6px rgba(60, 60, 60, 0.98),
       0 0 0 8px ${({ theme }) => theme.colors.yellow};
 
-    transition: 300ms;
+    transition: box-shadow 300ms;
 
     @media ${breakpoints.laptop} {
       width: 90%;

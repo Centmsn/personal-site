@@ -2,12 +2,8 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ContactList from "./ContactList";
 import PropTypes from "prop-types";
-import { CONTACT_LIST } from "./constants";
+import { CONTACT_LIST, FooterProps } from "./constants";
 import * as P from "./parts";
-
-interface FooterProps {
-  isVisible: boolean;
-}
 
 const Footer = ({ isVisible }: FooterProps) => {
   const footerWrapperRef = useRef<HTMLElement>(null);
@@ -31,16 +27,16 @@ const Footer = ({ isVisible }: FooterProps) => {
       <P.FooterSection>
         <P.SectionTitle>Projekt i wykonanie</P.SectionTitle>
         <p>
-          Stronę zaprojektowałem i wykonałem sam, przy użyciu frameworka React
-          oraz kilku mniejszych bibliotek - styled components, gsap, formik, yup
+          Stronę zaprojektowałem i wykonałem sam, przy użyciu Typescripta, Reacta, oraz kilku mniejszych bibliotek -
+          styled components, gsap, formik, yup. Dodatkowo posłużyłem się Contentful - headless CMS
         </p>
       </P.FooterSection>
 
       <P.FooterSection>
         <P.SectionTitle as="h3">Współpraca</P.SectionTitle>
         <p>
-          Masz dla mnie propozycję współpracy / pracy? A może chcesz wspólnie
-          zrealizować jakiś projekt? Nie wahaj się i napisz!<br></br>
+          Masz dla mnie propozycję współpracy / pracy? A może chcesz wspólnie zrealizować jakiś projekt? Nie wahaj się i
+          napisz!<br></br>
           Dane do kontaktu znajdziesz poniżej.
         </p>
       </P.FooterSection>
@@ -62,7 +58,7 @@ const Footer = ({ isVisible }: FooterProps) => {
           </a>
         </small>
 
-        <small>Copyright &#169; 2021 Wojciech Rygorowicz</small>
+        <small>Copyright &#169; {new Date().getFullYear()} Wojciech Rygorowicz</small>
       </P.FooterSection>
     </P.FooterWrapper>
   );

@@ -16,6 +16,10 @@ export interface ContactListItem {
   };
 }
 
+export interface FooterProps {
+  isVisible: boolean;
+}
+
 export type ContactList = Array<ContactListItem>;
 
 export const CONTACT_LIST: ContactList = [
