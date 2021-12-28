@@ -109,7 +109,8 @@ export const GlobalStyles = createGlobalStyle`
 
     hr {
         border: 1px solid ${({ theme }) => theme.colors.lightGray};
-        background-color: ${({ theme }) => theme.colors.gray}
+        background-color: ${({ theme }) => theme.colors.gray};
+        margin: 10px 0;
     }
 `;
 

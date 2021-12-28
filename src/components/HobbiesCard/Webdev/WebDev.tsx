@@ -7,6 +7,7 @@ import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import SubContainer from "components/Shared/SubContainer/SubContainer";
 import Slide from "./Slide";
 import Spinner from "components/Shared/Spinner";
+import Text, { TextSize } from "components/Shared/Text";
 import { ProgressBarData } from "./constants";
 import { generateRandomNumber } from "utils/generateRandomNumber";
 import { CONTENT_TYPE_ENUM } from "utils/enums/contentfulContentTypes";
@@ -104,19 +105,19 @@ const HobbiesWebDev = () => {
             {/* REFACTOR - DRY */}
             {renderList(sectionContent.items[0].fields.learnedSkills)}
           </ul>
-          <small>
+          <Text size={TextSize.small} light>
             Do powyższej listy dopisać można jeszcze kilka mniejszych bibliotek: React-router, Lodash - podstawy.
-          </small>
+          </Text>
         </P.ListSection>
 
         <P.ListSection>
           <h2>Czego się uczę?</h2>
           {/* REFACTOR - DRY */}
           <ul ref={listLearningRef}>{renderList(sectionContent.items[0].fields.learningSkills)}</ul>
-          <small>
+          <Text size={TextSize.small} light>
             Moim priorytetem jest aktualnie Vue, Jest oraz ciągły rozwój w React i czystym JS. Uczę się także Node, choć
             na ten moment są to zupełne podstawy.
-          </small>
+          </Text>
         </P.ListSection>
 
         <P.Summary>

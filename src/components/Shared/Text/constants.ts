@@ -1,18 +1,21 @@
 import { PropsWithChildren } from "react";
 
 export enum TextSize {
-  small = "SMALL",
-  regular = "REGULAR",
-  large = "LARGE",
+  small = "0.8rem",
+  regular = "1.4rem",
+  large = "1.75rem",
 }
 
 export interface TextProps {
-  size: TextSize;
+  size?: TextSize;
   as?: keyof HTMLElementTagNameMap;
   bold?: boolean;
   important?: boolean;
+  light?: boolean;
 }
 
-export type StyledTextProps = TextProps;
+export interface StyledTextProps extends TextProps {
+  size: TextSize;
+}
 
 export type ExtendtedTextProps = PropsWithChildren<TextProps>;

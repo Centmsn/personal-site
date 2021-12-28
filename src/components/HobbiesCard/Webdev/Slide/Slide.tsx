@@ -1,4 +1,5 @@
 import { ISlideFields } from "types/contentful";
+import Text, { TextSize } from "components/Shared/Text";
 import * as P from "./parts";
 
 interface SlideProps {
@@ -23,7 +24,7 @@ const Slide = ({
           <img src={mainImg.fields.file.url} alt={title} />
         </a>
         <h1>{title}</h1>
-        <p>{description}</p>
+        <Text light>{description}</Text>
       </P.SlideSection>
 
       <P.SlideSection>

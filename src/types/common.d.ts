@@ -5,3 +5,7 @@ export interface PageSection {
 }
 
 export type SectionNames = "header" | "hobbies" | "info" | "contact";
+
+export type Maybe<T> = T | undefined | null;
+
+export type HTMLTagNames = keyof HTMLElementTagNameMap;
