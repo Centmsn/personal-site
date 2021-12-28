@@ -8,6 +8,7 @@ import SubContainer from "components/Shared/SubContainer/SubContainer";
 import Slide from "./Slide";
 import Spinner from "components/Shared/Spinner";
 import Text, { TextSize } from "components/Shared/Text";
+import Title, { TitleVariant } from "components/Shared/Title";
 import { ProgressBarData } from "./constants";
 import { generateRandomNumber } from "utils/generateRandomNumber";
 import { CONTENT_TYPE_ENUM } from "utils/enums/contentfulContentTypes";
@@ -41,7 +42,6 @@ const HobbiesWebDev = () => {
       const learningChildren = learning.children;
 
       [...Array.from(learningChildren), ...Array.from(learnedChildrens)].forEach(el => {
-        // better solution than casting?
         gsap.to(el.lastChild?.lastChild as HTMLElement, { scaleX: 1, delay: generateRandomNumber(0, 2) });
       });
     }
@@ -100,23 +100,26 @@ const HobbiesWebDev = () => {
     <SubContainer>
       <P.StartSection isVisible={isFirstSlide}>
         <P.ListSection>
-          <h2>Co umiem?</h2>
+          <Title as="h2" variant={TitleVariant.yellow}>
+            Co umiem?
+          </Title>
           <ul ref={listLearnedRef}>
             {/* REFACTOR - DRY */}
             {renderList(sectionContent.items[0].fields.learnedSkills)}
           </ul>
           <Text size={TextSize.small} light>
-            Do powyższej listy dopisać można jeszcze kilka mniejszych bibliotek: React-router, Lodash - podstawy.
+            {sectionContent.items[0].fields.learnedSkillsAdditional}
           </Text>
         </P.ListSection>
 
         <P.ListSection>
-          <h2>Czego się uczę?</h2>
+          <Title as="h2" variant={TitleVariant.yellow}>
+            Czego się uczę?
+          </Title>
           {/* REFACTOR - DRY */}
           <ul ref={listLearningRef}>{renderList(sectionContent.items[0].fields.learningSkills)}</ul>
           <Text size={TextSize.small} light>
-            Moim priorytetem jest aktualnie Vue, Jest oraz ciągły rozwój w React i czystym JS. Uczę się także Node, choć
-            na ten moment są to zupełne podstawy.
+            {sectionContent.items[0].fields.learningSkillsAdditional}
           </Text>
         </P.ListSection>
 

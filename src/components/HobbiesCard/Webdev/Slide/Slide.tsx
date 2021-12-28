@@ -1,11 +1,7 @@
-import { ISlideFields } from "types/contentful";
-import Text, { TextSize } from "components/Shared/Text";
+import Text from "components/Shared/Text";
+import Title, { TitleVariant, TitleSize } from "components/Shared/Title";
+import { SlideProps } from "./constants";
 import * as P from "./parts";
-
-interface SlideProps {
-  slideFields: ISlideFields;
-  isVisible: boolean;
-}
 
 /**
  * functional React component - a container for slides of WebDev
@@ -23,7 +19,9 @@ const Slide = ({
         <a href={linkDemo} target="_blank" rel="noreferrer">
           <img src={mainImg.fields.file.url} alt={title} />
         </a>
-        <h1>{title}</h1>
+        <Title size={TitleSize["4xl"]} variant={TitleVariant.yellow}>
+          {title}
+        </Title>
         <Text light>{description}</Text>
       </P.SlideSection>
 

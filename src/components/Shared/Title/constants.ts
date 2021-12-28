@@ -21,9 +21,9 @@ export enum TitleSize {
 }
 
 export type TitleProps = PropsWithChildren<{
-  as: HTMLTagNames;
-  variant: TitleVariant;
-  size: TitleSize;
+  as?: HTMLTagNames;
+  variant?: TitleVariant;
+  size?: TitleSize;
 }>;
 
-export type StyledTitleProps = Omit<TitleProps, "children">;
+export type StyledTitleProps = Required<Omit<TitleProps, "children">>;

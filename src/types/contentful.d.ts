@@ -79,8 +79,14 @@ export interface IWebDevFields {
   /** learnedSkills */
   learnedSkills: Array<WebDevSectionBar>;
 
+  /** learnedSkillsAdditional */
+  learnedSkillsAdditional?: string | undefined;
+
   /** learningSkills */
   learningSkills: Array<WebDevSectionBar>;
+
+  /** learningSkillsAdditional */
+  learningSkillsAdditional?: string | undefined;
 }
 
 /** opis znajdujący się na pierwszej stronie po wejściu w zakładkę webDev */
