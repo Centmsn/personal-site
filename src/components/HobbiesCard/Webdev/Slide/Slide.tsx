@@ -1,5 +1,5 @@
-import Text from "components/Shared/Text";
-import Title, { TitleVariant, TitleSize } from "components/Shared/Title";
+import Text from "components/generics/Text";
+import Title, { TitleVariant, TitleSize } from "components/generics/Title";
 import { SlideProps } from "./constants";
 import * as P from "./parts";
 

@@ -3,7 +3,7 @@ import prudnik_card from "assets/prudnik_card.jpg";
 import others_card from "assets/others_card.jpg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import SubContainer from "components/Shared/SubContainer/SubContainer";
+import SubContainer from "components/generics/SubContainer/SubContainer";
 import breakpoints from "styles/breakpoints";
 
 /**
@@ -29,14 +29,10 @@ const HobbiesPhotography = () => {
       </OthersCard>
 
       <Info>
+        <p>Pamiętaj proszę, że jakość zdjęć w galerii jest znacznie obniżona by przyspieszyć ich ładowanie.</p>
         <p>
-          Pamiętaj proszę, że jakość zdjęć w galerii jest znacznie obniżona by
-          przyspieszyć ich ładowanie.
-        </p>
-        <p>
-          Jeżeli jesteś zainteresowany użyciem któregoś ze zdjęc (w pełnej
-          rozdzielczości), lub chcesz zobaczyć więcej moich fotografii, to nie
-          wahaj się ze mną skontaktować.
+          Jeżeli jesteś zainteresowany użyciem któregoś ze zdjęc (w pełnej rozdzielczości), lub chcesz zobaczyć więcej
+          moich fotografii, to nie wahaj się ze mną skontaktować.
         </p>
       </Info>
     </SubContainer>

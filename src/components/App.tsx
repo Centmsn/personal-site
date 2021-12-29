@@ -6,7 +6,7 @@ import HeaderSection from "pages/HeaderSection";
 import HobbiesSection from "pages/HobbiesSection";
 import InfoSection from "pages/InfoSection";
 // components
-import Arrows from "components/Shared/NavArrows/Arrows";
+import Arrows from "components/generics/NavArrows/Arrows";
 import HobbiesPhotography from "components/HobbiesCard/Photography/Photography";
 import HobbiesSport from "components/HobbiesCard/Sport/Sport";
 import HobbiesWebDev from "components/HobbiesCard/Webdev/WebDev";
@@ -50,8 +50,7 @@ const sections: Array<PageSection> = [
  * @returns {JSX.Element}
  */
 const App = () => {
-  const [sectionVisibility, setSectionVisibility] =
-    useState<Array<PageSection>>(sections);
+  const [sectionVisibility, setSectionVisibility] = useState<Array<PageSection>>(sections);
   const [activeSection, setActiveSection] = useState<PageSection>(sections[0]);
 
   const handleSlideChange = (slideName: SectionNames) => {
@@ -71,10 +70,7 @@ const App = () => {
         <GlobalStyles />
         <Router>
           <MainContainer pageInfo={activeSection.desc}>
-            <HeaderSection
-              isVisible={sectionVisibility[0].isVisible}
-              slideChange={handleSlideChange}
-            />
+            <HeaderSection isVisible={sectionVisibility[0].isVisible} slideChange={handleSlideChange} />
             <HobbiesSection isVisible={sectionVisibility[1].isVisible} />
             <InfoSection isVisible={sectionVisibility[2].isVisible} />
             <ContactSection isVisible={sectionVisibility[3].isVisible} />
@@ -82,23 +78,14 @@ const App = () => {
             <Switch>
               <Route path="/webDev" component={HobbiesWebDev} />
               <Route path="/sport" component={HobbiesSport} />
-              <Route
-                path="/photography/mountains"
-                component={MountainsGallery}
-              />
+              <Route path="/photography/mountains" component={MountainsGallery} />
               <Route path="/photography/prudnik" component={PrudnikGallery} />
               <Route path="/photography/others" component={OthersGallery} />
               <Route path="/photography" component={HobbiesPhotography} />
             </Switch>
 
-            <Navigation
-              changeSection={handleSlideChange}
-              sections={sectionVisibility}
-            />
-            <Arrows
-              changeSection={handleSlideChange}
-              sections={sectionVisibility}
-            />
+            <Navigation changeSection={handleSlideChange} sections={sectionVisibility} />
+            <Arrows changeSection={handleSlideChange} sections={sectionVisibility} />
           </MainContainer>
         </Router>
       </ThemeProvider>

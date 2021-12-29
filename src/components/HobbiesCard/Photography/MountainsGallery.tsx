@@ -28,9 +28,9 @@ import img27 from "assets/mountains_gal_27.jpg";
 import img28 from "assets/mountains_gal_28.JPG";
 import img29 from "assets/mountains_gal_29.JPG";
 import img30 from "assets/mountains_gal_30.jpg";
-import { ImageObject } from "components/Shared/Gallery/Gallery";
-import Gallery from "components/Shared/Gallery/Gallery";
-import SubContainer from "components/Shared/SubContainer/SubContainer";
+import { ImageObject } from "components/generics/Gallery/Gallery";
+import Gallery from "components/generics/Gallery/Gallery";
+import SubContainer from "components/generics/SubContainer/SubContainer";
 
 /**
  * functional React component - renders gallery of images

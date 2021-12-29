@@ -13,8 +13,8 @@ import img12 from "assets/others_gal_12.jpg";
 import img13 from "assets/others_gal_13.JPG";
 import img14 from "assets/others_gal_14.jpg";
 
-import SubContainer from "components/Shared/SubContainer/SubContainer";
-import Gallery from "components/Shared/Gallery/Gallery";
+import SubContainer from "components/generics/SubContainer/SubContainer";
+import Gallery from "components/generics/Gallery/Gallery";
 
 /**
  * functional React component - renders gallery of images

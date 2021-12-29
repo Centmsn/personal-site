@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { HTMLAttributes, PropsWithChildren } from "react";
 
 export enum LinkVariant {
   light = "LIGHT",
@@ -10,4 +10,7 @@ export type LinkProps = PropsWithChildren<{
   to: string;
   variant?: LinkVariant;
   underline?: boolean;
-}>;
+}> &
+  HTMLAttributes<HTMLAnchorElement>;
+
+export type StyledLinkProps = Pick<LinkProps, "underline" | "variant">;

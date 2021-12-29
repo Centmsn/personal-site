@@ -14,8 +14,8 @@ import img13 from "assets/prudnik_gal_13.jpg";
 import img14 from "assets/prudnik_gal_14.jpg";
 import img15 from "assets/prudnik_gal_15.jpg";
 
-import SubContainer from "components/Shared/SubContainer/SubContainer";
-import Gallery from "components/Shared/Gallery/Gallery";
+import SubContainer from "components/generics/SubContainer/SubContainer";
+import Gallery from "components/generics/Gallery/Gallery";
 
 /**
  * functional React component - renders gallery of images

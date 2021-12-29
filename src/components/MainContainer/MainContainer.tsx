@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
-import Triangle from "components/Shared/Triangle/Triangle";
+import Triangle from "components/generics/Triangle/Triangle";
 import { Wrapper, PageInfo } from "./parts";
 import { AvailableColors } from "consts";
 
@@ -13,10 +13,7 @@ export interface MainContainerProps {
  * @param {Object} props - React props
  * @returns {JSX.Element}
  */
-const MainContainer = ({
-  children,
-  pageInfo,
-}: React.PropsWithChildren<MainContainerProps>) => {
+const MainContainer = ({ children, pageInfo }: React.PropsWithChildren<MainContainerProps>) => {
   const [currentColor, setCurrentColor] = useState(AvailableColors[0]);
   const topTriangleRef = useRef(null);
   const pageInfoRef = useRef(null);
@@ -28,9 +25,7 @@ const MainContainer = ({
     gsap.set(text, { color: "transparent" });
     const tl = gsap.timeline({ defaults: { duration: 0.5 } });
 
-    tl.to(triangle, { x: "25vw", y: "-25vh" })
-      .to(triangle, { x: 0, y: 0 }, "+=0.3")
-      .to(text, { color: "white" });
+    tl.to(triangle, { x: "25vw", y: "-25vh" }).to(triangle, { x: 0, y: 0 }, "+=0.3").to(text, { color: "white" });
   }, [pageInfo]);
 
   useEffect(() => {
@@ -41,11 +36,7 @@ const MainContainer = ({
     <Wrapper>
       {children}
       <Triangle color={AvailableColors[0]} position="bottom-right" />
-      <Triangle
-        color={currentColor}
-        position="top-right"
-        ref={topTriangleRef}
-      />
+      <Triangle color={currentColor} position="top-right" ref={topTriangleRef} />
       <PageInfo ref={pageInfoRef}>{pageInfo}</PageInfo>
     </Wrapper>
   );

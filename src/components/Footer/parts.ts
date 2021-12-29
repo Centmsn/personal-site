@@ -14,7 +14,7 @@ export const FooterSection = styled.footer`
   position: relative;
   transform: translateY(100vh);
 
-  font-size: 1.25rem;
+  /* font-size: 1.25rem; */
 
   p {
     text-align: justify;
@@ -25,14 +25,8 @@ export const FooterSection = styled.footer`
   }
 `;
 
-export const SectionTitle = styled.h2`
+export const TitleWrapper = styled.div`
   margin: 15px 0;
-
   border-right: 4px solid ${({ theme }) => theme.colors.yellow};
-
-  text-align: center;
-  text-shadow: none;
-
-  color: white;
   background-color: ${({ theme }) => theme.colors.gray};
 `;
