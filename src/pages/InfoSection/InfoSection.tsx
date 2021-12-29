@@ -76,7 +76,7 @@ const InfoSection = ({ isVisible }: InfoSectionProps) => {
           </Title>
           <ul ref={skillListRef}>{renderBars()}</ul>
 
-          <Text size={TextSize.small}>Subiektywna ocena umiejętności</Text>
+          <Text size={TextSize.s}>Subiektywna ocena umiejętności</Text>
         </P.Summary>
 
         <P.Description>

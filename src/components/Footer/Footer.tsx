@@ -62,18 +62,18 @@ const Footer = ({ isVisible }: FooterProps) => {
       </P.FooterSection>
 
       <P.FooterSection>
-        <Text size={TextSize.small}>
+        <Text size={TextSize.s}>
           Icons made by{" "}
-          <Link to="https://www.flaticon.com/authors/freepik" title="Freepik">
+          <Link to="https://www.flaticon.com/authors/freepik" title="Freepik" external>
             Freepik
           </Link>{" "}
           from{" "}
-          <Link to="https://www.flaticon.com/" title="Flaticon">
+          <Link to="https://www.flaticon.com/" title="Flaticon" external>
             www.flaticon.com
           </Link>
         </Text>
 
-        <Text size={TextSize.small}>Copyright &#169; {new Date().getFullYear()} Wojciech Rygorowicz</Text>
+        <Text size={TextSize.s}>Copyright &#169; {new Date().getFullYear()} Wojciech Rygorowicz</Text>
       </P.FooterSection>
     </P.FooterWrapper>
   );

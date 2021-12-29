@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledLinkProps, LinkVariant } from "./constants";
+import { StyledLinkProps } from "./constants";
 
 export const StyledLink = styled(Link)<StyledLinkProps>`
   text-decoration: ${({ underline }) => (underline ? "underline" : "none")};
   text-decoration-color: ${({ theme }) => theme.colors.yellow};
-  color: ${({ theme, variant }) => (variant === LinkVariant.dark ? theme.colors.black : theme.colors.white)};
+  color: ${({ theme, light }) => (light ? theme.colors.white : theme.colors.black)};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.yellow};
+  }
 `;

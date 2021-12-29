@@ -1,9 +1,13 @@
 import { PropsWithChildren } from "react";
 
 export enum TextSize {
-  small = "0.8rem",
-  regular = "1.25rem",
-  large = "1.75rem",
+  xs = "0.7rem",
+  s = "0.8rem",
+  m = "1rem",
+  l = "1.25rem",
+  xl = "1.5rem",
+  "2xl" = "1.75rem",
+  "3xl" = "2rem",
 }
 
 export interface TextProps {

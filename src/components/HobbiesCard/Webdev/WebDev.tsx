@@ -107,7 +107,7 @@ const HobbiesWebDev = () => {
             {/* REFACTOR - DRY */}
             {renderList(sectionContent.items[0].fields.learnedSkills)}
           </ul>
-          <Text size={TextSize.small} light>
+          <Text size={TextSize.s} light>
             {sectionContent.items[0].fields.learnedSkillsAdditional}
           </Text>
         </P.ListSection>
@@ -118,7 +118,7 @@ const HobbiesWebDev = () => {
           </Title>
           {/* REFACTOR - DRY */}
           <ul ref={listLearningRef}>{renderList(sectionContent.items[0].fields.learningSkills)}</ul>
-          <Text size={TextSize.small} light>
+          <Text size={TextSize.s} light>
             {sectionContent.items[0].fields.learningSkillsAdditional}
           </Text>
         </P.ListSection>

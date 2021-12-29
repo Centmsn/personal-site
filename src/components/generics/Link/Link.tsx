@@ -1,17 +1,17 @@
-import { LinkProps, LinkVariant } from "./constants";
+import { LinkProps } from "./constants";
 import * as P from "./parts";
 
-const Link = ({ external = false, to, variant = LinkVariant.dark, underline, children, ...restProps }: LinkProps) => {
+const Link = ({ external = false, to, light, underline = true, children, ...restProps }: LinkProps) => {
   if (external) {
     return (
-      <P.StyledLink as="a" target="_blank" href={to} {...restProps} variant={variant} {...restProps} underline>
+      <P.StyledLink as="a" target="_blank" href={to} light={light} {...restProps} underline>
         {children}
       </P.StyledLink>
     );
   }
 
   return (
-    <P.StyledLink to={to} variant={variant} {...restProps} underline>
+    <P.StyledLink to={to} light={light} {...restProps} underline>
       {children}
     </P.StyledLink>
   );

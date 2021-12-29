@@ -1,8 +1,4 @@
-import {
-  faMapMarkedAlt,
-  faPhone,
-  faAt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkedAlt, faPhone, faAt } from "@fortawesome/free-solid-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 

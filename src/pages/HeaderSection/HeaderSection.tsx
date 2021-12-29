@@ -1,11 +1,14 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareFull } from "@fortawesome/free-solid-svg-icons";
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
-import { Map, Title, Info, Description, Feedback } from "./parts";
+import Text, { TextSize } from "components/generics/Text";
+import Title, { TitleSize, TitleVariant } from "components/generics/Title";
+import Link from "components/generics/Link";
 import { HeaderSectionProps, MOBILE_INFO, DESKTOP_INFO } from "./constants";
 import SectionContainer from "components/SectionContainer/SectionContainer";
 import useWindowSize from "hooks/useWindowSize";
+import * as P from "./parts";
 
 /**
  * React functional component - renders header section on the screen
@@ -17,7 +20,7 @@ const HeaderSection = ({ isVisible, slideChange }: HeaderSectionProps) => {
   const descriptionRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
-  const { width } = useWindowSize();
+  const { isMobile } = useWindowSize();
 
   useEffect(() => {
     const title = titleRef.current;
@@ -52,68 +55,86 @@ const HeaderSection = ({ isVisible, slideChange }: HeaderSectionProps) => {
       });
   }, []);
 
-  const content = width > 768 ? DESKTOP_INFO : MOBILE_INFO;
+  const content = isMobile ? MOBILE_INFO : DESKTOP_INFO;
 
   return (
     <SectionContainer isVisible={isVisible} paddingSize="0px">
-      <Info ref={infoRef}>
-        <p>
+      <P.Info ref={infoRef}>
+        <Text size={TextSize["2xl"]} light>
           Jeżeli interesują Cię wyłącznie kwestie zawodowe to odsyłam{" "}
-          <a href="#/webDev">tutaj</a>.
-        </p>
+          <Link to="webDev" light>
+            tutaj
+          </Link>
+        </Text>
 
-        <small>
-          Będzie mi jednak bardzo miło, jeśli zdecydujesz się zwiedzić całą
-          stronę.
-        </small>
-      </Info>
-      <Title ref={titleRef}>
-        <span>
-          <FontAwesomeIcon icon={faSquareFull} />
-        </span>
-        <h1>Cześć jestem Wojtek</h1>
-        <h2>Deweloper z Prudnika</h2>
-      </Title>
-      <Map ref={mapRef}>
-        <h3>Mapa witryny</h3>
+        <P.SmallTextContainer>
+          <Text size={TextSize.s}>Będzie mi jednak bardzo miło, jeśli zdecydujesz się zwiedzić całą stronę.</Text>
+        </P.SmallTextContainer>
+      </P.Info>
+
+      <P.TitleContainer ref={titleRef}>
+        <P.MainTitleWrapper>
+          <P.IconWrapper>
+            <FontAwesomeIcon icon={faSquareFull} />
+          </P.IconWrapper>
+          <Title variant={TitleVariant.yellow} size={TitleSize["2xl"]}>
+            Cześć jestem Wojtek
+          </Title>
+        </P.MainTitleWrapper>
+
+        <Title as="h2" variant={TitleVariant.white} size={TitleSize.xl} align="left">
+          Deweloper z Prudnika
+        </Title>
+      </P.TitleContainer>
+
+      <P.SiteMapContainer ref={mapRef}>
+        <P.SiteMapTitleWrapper>
+          <Title as="h3" align="right">
+            Mapa witryny
+          </Title>
+        </P.SiteMapTitleWrapper>
 
         <button onClick={() => slideChange("header")}>Home</button>
         <button onClick={() => slideChange("hobbies")}>Zainteresowania</button>
         <button onClick={() => slideChange("info")}>O mnie</button>
         <button onClick={() => slideChange("contact")}>Kontakt</button>
-      </Map>
-      <Description ref={descriptionRef}>
-        <p>
-          <span>
+      </P.SiteMapContainer>
+
+      <P.DescriptionContainer ref={descriptionRef}>
+        <Text light size={TextSize.l}>
+          <P.IconWrapper>
             <FontAwesomeIcon icon={faSquareFull} />
-          </span>
+          </P.IconWrapper>
           Do poruszania się po witrynie możesz użyc kropek do nawigacji
-        </p>
+        </Text>
 
-        <p>
-          <span>
+        <Text light>
+          <P.IconWrapper>
             <FontAwesomeIcon icon={faSquareFull} />
-          </span>
+          </P.IconWrapper>
           {content}
-        </p>
+        </Text>
 
-        {width < 768 && (
-          <p>
-            <span>
+        {isMobile && (
+          <Text light>
+            <P.IconWrapper>
               <FontAwesomeIcon icon={faSquareFull} />
-            </span>
-            Będę Ci bardzo wdzięczny, jeśli poświecisz chwilę i napiszesz mi co
-            sądzisz na temat warstwy wizualnej tej strony.
-          </p>
+            </P.IconWrapper>
+            Będę Ci bardzo wdzięczny, jeśli poświecisz chwilę i napiszesz mi co sądzisz na temat warstwy wizualnej tej
+            strony.
+          </Text>
         )}
-      </Description>
-      <Feedback onClick={() => slideChange("contact")} ref={feedbackRef}>
-        <small>
-          Poświęć chwilę i napisz co sądzisz o warstwie wizualnej strony.
-        </small>
+      </P.DescriptionContainer>
 
-        <small>Sugestie mile widziane.</small>
-      </Feedback>
+      <P.Feedback onClick={() => slideChange("contact")} ref={feedbackRef}>
+        <Text size={TextSize.s} light>
+          Poświęć chwilę i napisz co sądzisz o warstwie wizualnej strony.
+        </Text>
+
+        <Text size={TextSize.s} light>
+          Sugestie mile widziane.
+        </Text>
+      </P.Feedback>
     </SectionContainer>
   );
 };

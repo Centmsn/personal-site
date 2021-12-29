@@ -36,13 +36,9 @@ export const GlobalStyles = createGlobalStyle`
     body {
         width: 100vw;
         max-width: 1920px;
-
         height: 100vh;
         max-height: 1080px;
-
         overflow: hidden;
-
-
     }
 
     ::-webkit-scrollbar {

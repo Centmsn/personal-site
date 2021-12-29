@@ -20,10 +20,13 @@ export enum TitleSize {
   "5xl" = "5rem",
 }
 
+export type Align = "left" | "center" | "right";
+
 export type TitleProps = PropsWithChildren<{
   as?: HTMLTagNames;
   variant?: TitleVariant;
   size?: TitleSize;
+  align?: Align;
 }>;
 
 export type StyledTitleProps = Required<Omit<TitleProps, "children">>;

@@ -1,18 +1,20 @@
-import { StyledProps } from "styled-components";
+import { StyledProps, css } from "styled-components";
 import { TextSize, StyledTextProps } from "./constants";
 
 export const getTextColor = ({ important, theme, size, light }: StyledProps<StyledTextProps>) => {
+  let textColor: string;
+
   if (important) {
-    return theme.colors.yellow;
-  }
-
-  if (light) {
-    return theme.colors.white;
-  }
-
-  if (size === TextSize.small) {
-    return theme.colors.gray;
+    textColor = theme.colors.yellow;
+  } else if (light) {
+    textColor = theme.colors.white;
+  } else if ([TextSize.s, TextSize.xs].includes(size)) {
+    textColor = theme.colors.gray;
   } else {
-    return theme.colors.black;
+    textColor = theme.colors.black;
   }
+
+  return css`
+    color: ${textColor};
+  `;
 };

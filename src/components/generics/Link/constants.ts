@@ -1,16 +1,11 @@
 import { HTMLAttributes, PropsWithChildren } from "react";
 
-export enum LinkVariant {
-  light = "LIGHT",
-  dark = "DARK",
-}
-
 export type LinkProps = PropsWithChildren<{
   external?: boolean;
   to: string;
-  variant?: LinkVariant;
+  light?: boolean;
   underline?: boolean;
 }> &
   HTMLAttributes<HTMLAnchorElement>;
 
-export type StyledLinkProps = Pick<LinkProps, "underline" | "variant">;
+export type StyledLinkProps = Pick<LinkProps, "underline" | "light">;
