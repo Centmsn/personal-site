@@ -3,3 +3,7 @@ export interface SkillBar {
   percent: number;
   title: string;
 }
+
+export interface InfoSectionProps {
+  isVisible: boolean;
+}

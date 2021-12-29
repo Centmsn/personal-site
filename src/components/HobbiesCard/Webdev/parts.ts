@@ -112,16 +112,14 @@ export const InnerBar = styled.div<InnerBarProps>`
 export const Arrow = styled.button`
   font-size: 7rem;
 
-  color: ${({ disabled, theme }) =>
-    disabled ? theme.colors.lightGray : theme.colors.yellow};
+  color: ${({ disabled, theme }) => (disabled ? theme.colors.lightGray : theme.colors.yellow)};
 
   background: none;
   transition: 300ms;
 
   &:hover {
     transform: scale(1.2);
-    color: ${({ disabled, theme }) =>
-      disabled ? theme.colors.lightGray : theme.colors.yellow};
+    color: ${({ disabled, theme }) => (disabled ? theme.colors.lightGray : theme.colors.yellow)};
   }
 `;
 

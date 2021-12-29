@@ -2,17 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Entry } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import SectionContainer from "components/SectionContainer/SectionContainer";
+import SectionContainer from "components/SectionContainer";
+import Title, { TitleSize, TitleVariant } from "components/Shared/Title";
+import Text, { TextSize } from "components/Shared/Text";
 import { createContentfulClient } from "utils/createContentfulClient";
 import { CONTENT_TYPE_ENUM } from "utils/enums/contentfulContentTypes";
 import { IAboutMeFields } from "types/contentful";
-import { SkillBar } from "./constants";
+import { SkillBar, InfoSectionProps } from "./constants";
 import round_self2 from "assets/round_self2.jpg";
 import * as P from "./parts";
-
-interface InfoSectionProps {
-  isVisible: boolean;
-}
 
 const InfoSection = ({ isVisible }: InfoSectionProps) => {
   const [sectionContent, setSectionContent] = useState<Entry<IAboutMeFields>>();
@@ -73,15 +71,19 @@ const InfoSection = ({ isVisible }: InfoSectionProps) => {
       <P.Wrapper>
         <P.Summary>
           <img src={round_self2} alt="Autor" />
-          <h4>Co umiem?</h4>
+          <Title as="h4" size={TitleSize.l}>
+            Co umiem?
+          </Title>
           <ul ref={skillListRef}>{renderBars()}</ul>
 
-          <small>Subiektywna ocena umiejętności</small>
+          <Text size={TextSize.small}>Subiektywna ocena umiejętności</Text>
         </P.Summary>
 
         <P.Description>
           <article>
-            <P.Title>Krótko o mnie</P.Title>
+            <Title variant={TitleVariant.mixed} size={TitleSize["5xl"]}>
+              Krótko o mnie
+            </Title>
             {documentToReactComponents(sectionContent?.fields.mainText!)}
           </article>
         </P.Description>

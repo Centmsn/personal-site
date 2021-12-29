@@ -30,7 +30,7 @@ const HobbiesWebDev = () => {
   const { contentulData, isLoading } = useContentfulData<ISlideFields>(CONTENT_TYPE_ENUM.slide);
   const { contentulData: sectionContent } = useContentfulData<IWebDevFields>(CONTENT_TYPE_ENUM.webDev);
   const isFirstSlide = currentSlideIndex === 0;
-  const isLastSlide = contentulData && currentSlideIndex > contentulData?.items.length - 1;
+  const isLastSlide = contentulData && currentSlideIndex === contentulData?.items.length - 1;
   const currentSlide = contentulData?.items[currentSlideIndex].fields;
 
   useEffect(() => {

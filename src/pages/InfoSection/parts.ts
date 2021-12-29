@@ -25,7 +25,6 @@ export const Wrapper = styled.div`
 
 export const Summary = styled.section`
   flex-basis: 30%;
-
   text-align: center;
   padding: 1rem;
 
@@ -39,19 +38,10 @@ export const Summary = styled.section`
     margin: 0 auto;
     width: 60%;
     height: auto;
-
     display: block;
-
-    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.yellow}, 0 0 0 6px white,
-      0 0 0 8px white, 0 0 0 10px ${({ theme }) => theme.colors.gray};
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.yellow}, 0 0 0 6px white, 0 0 0 8px white,
+      0 0 0 10px ${({ theme }) => theme.colors.gray};
     border-radius: 50%;
-  }
-
-  h4 {
-    font-size: 1.75rem;
-    text-shadow: none;
-
-    color: ${({ theme }) => theme.colors.gray};
   }
 
   ul {
@@ -110,14 +100,6 @@ export const InnerBar = styled.div`
   background-color: ${({ theme }) => theme.colors.yellow};
 
   opacity: 0;
-`;
-
-export const Title = styled.h1`
-  text-align: center;
-  font-size: 5rem;
-
-  color: ${({ theme }) => theme.colors.gray};
-  text-shadow: 4px 4px 0 ${({ theme }) => theme.colors.yellow};
 `;
 
 export const Description = styled.section`
