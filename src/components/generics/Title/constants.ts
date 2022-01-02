@@ -27,6 +27,7 @@ export type TitleProps = PropsWithChildren<{
   variant?: TitleVariant;
   size?: TitleSize;
   align?: Align;
+  fullwidth?: boolean;
 }>;
 
 export type StyledTitleProps = Required<Omit<TitleProps, "children">>;

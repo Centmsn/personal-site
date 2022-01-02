@@ -1,58 +1,78 @@
 import styled from "styled-components";
+import Title from "components/generics/Title";
 import breakpoints from "styles/breakpoints";
 
-interface WrapperProps {
-  isVisible: boolean;
-}
-
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div`
   grid-area: 2/2/12/12;
   display: flex;
   flex-wrap: wrap;
-  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
 `;
 
 export const SlideSection = styled.section`
   flex-basis: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  margin-bottom: 20px;
+
+  &:not(:last-child) {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.lightGray};
+  }
+`;
+
+export const ProjectTitle = styled(Title)`
+  width: auto;
+`;
+
+export const ProjectImage = styled.img`
+  width: 100%;
+  box-shadow: 0px 3px 0px 0px rgba(60, 60, 60, 0.98), 0px 4px 0px 0px ${({ theme }) => theme.colors.yellow},
+    0px 7px 0px 0px rgba(60, 60, 60, 0.98), 0px 8px 0px 0px ${({ theme }) => theme.colors.yellow};
+`;
+
+export const ImageWrapper = styled.div`
+  width: 50%;
+
+  @media ${breakpoints.tablet} {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+`;
+
+export const TitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
   align-items: center;
-  text-align: center;
-  font-size: 1.5rem;
-  color: white;
+`;
 
-  p {
-    text-align: justify;
+export const TextWrapper = styled.div`
+  width: 50%;
+  padding-left: 10px;
+
+  @media ${breakpoints.tablet} {
+    width: 100%;
   }
+`;
 
-  img {
-    height: auto;
-    width: 60%;
-    box-shadow: 0 0 0 2px rgba(60, 60, 60, 0.98), 0 0 0 4px ${({ theme }) => theme.colors.yellow},
-      0 0 0 6px rgba(60, 60, 60, 0.98), 0 0 0 8px ${({ theme }) => theme.colors.yellow};
-    transition: box-shadow 300ms;
-
-    @media ${breakpoints.laptop} {
-      width: 90%;
-    }
-
-    &:hover {
-      box-shadow: 0 0 0 2px rgba(60, 60, 60, 0.98), 0 0 0 4px ${({ theme }) => theme.colors.yellow},
-        0 0 0 10px rgba(60, 60, 60, 0.98), 0 0 0 12px ${({ theme }) => theme.colors.yellow};
-    }
-  }
+export const DescriptionContainer = styled.div`
+  width: 100%;
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: justify;
 `;
 
 export const SectionLink = styled.a`
   position: relative;
-  margin: 0 3rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: none;
   border: 2px solid ${({ theme }) => theme.colors.yellow};
   color: white;
   padding: 5px;
   transition: color 400ms;
+
+  &:not(&:first-child) {
+    margin-left: 2rem;
+  }
 
   &::after {
     content: "";
@@ -75,3 +95,5 @@ export const SectionLink = styled.a`
     color: ${({ theme }) => theme.colors.gray};
   }
 `;
+
+export const Test = styled.div``;

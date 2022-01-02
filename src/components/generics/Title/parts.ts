@@ -3,7 +3,7 @@ import { getTitleShadow, getTitleColor } from "./utils";
 import styled from "styled-components";
 
 export const StyledTitle = styled.h1<StyledTitleProps>`
-  width: 100%;
+  width: ${({ fullwidth }) => (fullwidth ? "100%" : "auto")};
   font-size: ${({ size }) => size};
   text-align: ${({ align }) => align};
   ${getTitleShadow}

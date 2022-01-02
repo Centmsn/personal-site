@@ -6,10 +6,11 @@ const Title = ({
   align = "center",
   size = TitleSize.m,
   variant = TitleVariant.black,
+  fullwidth = false,
   children,
 }: TitleProps) => {
   return (
-    <P.StyledTitle as={as} size={size} variant={variant} align={align}>
+    <P.StyledTitle as={as} size={size} variant={variant} align={align} fullwidth={fullwidth}>
       {children}
     </P.StyledTitle>
   );

@@ -82,14 +82,14 @@ const HeaderSection = ({ isVisible, slideChange }: HeaderSectionProps) => {
           </Title>
         </P.MainTitleWrapper>
 
-        <Title as="h2" variant={TitleVariant.white} size={TitleSize.xl} align="left">
+        <Title as="h2" variant={TitleVariant.white} size={TitleSize.xl} align="left" fullwidth>
           Deweloper z Prudnika
         </Title>
       </P.TitleContainer>
 
       <P.SiteMapContainer ref={mapRef}>
         <P.SiteMapTitleWrapper>
-          <Title as="h3" align="right">
+          <Title as="h3" align="right" fullwidth>
             Mapa witryny
           </Title>
         </P.SiteMapTitleWrapper>

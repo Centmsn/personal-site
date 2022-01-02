@@ -1,5 +1,6 @@
 import Text from "components/generics/Text";
 import Title, { TitleVariant, TitleSize } from "components/generics/Title";
+import Link from "components/generics/Link";
 import { SlideProps } from "./constants";
 import * as P from "./parts";
 
@@ -11,18 +12,30 @@ import * as P from "./parts";
  */
 const Slide = ({
   slideFields: { description, linkCode, linkDemo, mainImg, title, linkBackend },
-  isVisible,
+  slideIndex,
 }: SlideProps) => {
   return (
-    <P.Wrapper isVisible={isVisible}>
+    <P.Wrapper>
       <P.SlideSection>
-        <a href={linkDemo} target="_blank" rel="noreferrer">
-          <img src={mainImg.fields.file.url} alt={title} />
-        </a>
-        <Title size={TitleSize["4xl"]} variant={TitleVariant.yellow}>
-          {title}
-        </Title>
-        <Text light>{description}</Text>
+        <P.TitleWrapper>
+          <Title as="span" size={TitleSize["4xl"]} variant={TitleVariant.white} align="left">
+            {slideIndex}.
+          </Title>
+          <Title size={TitleSize["4xl"]} variant={TitleVariant.yellow} align="left">
+            {title}
+          </Title>
+        </P.TitleWrapper>
+
+        <P.DescriptionContainer>
+          <P.ImageWrapper>
+            <Link to={linkDemo} external>
+              <P.ProjectImage src={mainImg.fields.file.url} alt={title} />
+            </Link>
+          </P.ImageWrapper>
+          <P.TextWrapper>
+            <Text light>{description}</Text>
+          </P.TextWrapper>
+        </P.DescriptionContainer>
       </P.SlideSection>
 
       <P.SlideSection>

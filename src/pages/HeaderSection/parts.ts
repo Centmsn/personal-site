@@ -110,6 +110,8 @@ export const SiteMapContainer = styled.div`
 
 export const SiteMapTitleWrapper = styled.div`
   grid-area: 1/6/3/-1;
+  display: flex;
+  align-items: center;
 `;
 
 export const DescriptionContainer = styled.div`
